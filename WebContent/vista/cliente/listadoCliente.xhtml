@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="../../vista/template/layout.xhtml">
+
+	<ui:define name="content">				
+	<h:form id="form" enctype="multipart/form-data">   			
+			<div class="row">
+				<p>Seleccione el <b>ITEM E INTRODUZCA EL VALOR</b> por el cual desea buscar al <b>CLIENTE</b></p>
+			</div>	
+			<div class="row">
+				<div class="col-sm-1 col-lg-4">
+					<h:selectOneMenu id="opcion_busqueda" value="#{clienteBean.opcion_busqueda}">
+				            <f:selectItem itemLabel="DOCUMENTO" itemValue="D"/>
+				            <f:selectItem itemLabel="NOMBRE" itemValue="N"/>
+				            <f:selectItem itemLabel="CIUDAD" itemValue="C"/>
+		        	</h:selectOneMenu>
+		        </div>
+		        <div class="col-sm-1 col-lg-4">		
+		        	<h:inputText id="valor_busqueda" value="#{clienteBean.valor_busqueda}"/>	
+				</div>
+
+				<div class="col-sm-1 col-lg-4">
+					<p:commandButton value="Filtrar" update="@form"
+						icon="ui-icon-search" action="#{clienteBean.filtroClientes}" />
+						
+					<p:commandButton value="Agregar" 
+	   				    update="form"
+	   				    icon="ui-icon-plus"
+	   				    action="#{clienteBean.irVistaRegistroCliente}"/>
+	   				<p></p>    		
+				</div>
+			</div>			
+
+
+			<p:growl id="msgs" showDetail="true" />
+			<article class="module width_full">
+				<p:dataTable id="tbCliente" value="#{clienteBean.listaClientes}"
+					var="cli" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{cli.cli_id}" />
+					</p:column>
+					
+					<p:column headerText="Tipo Documento">
+						<h:outputText value="#{cli.cli_tip_docum} / #{cli.cli_num_docum}" />
+					</p:column>
+
+					<p:column headerText="Nombre o Razón social">
+						<h:outputText value="#{cli.cli_nombre}" />
+					</p:column>
+
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{cli.cli_ciudad}" />
+					</p:column>
+
+					<p:column headerText="Ver" styleClass="center">
+					      <p:commandButton value="Ver Detalles" title="Ver" procces="@form" update="@form" action="#{clienteBean.consultarUnCliente}">
+					           <f:setPropertyActionListener value="#{cli}" target="#{clienteBean.selectClienteDto}"/>
+					      </p:commandButton>
+					</p:column>
+					
+
+				</p:dataTable>
+
+				<div class="col-sm-2 col-lg-12">
+					<p:commandButton value="Generar Listado" update="@form"
+						icon="ui-icon-note" action="#{clienteBean.consultaClientes}" />
+				</div>
+
+			</article>
+		</h:form>
+	</ui:define>
+</ui:composition>

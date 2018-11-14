@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="../../vista/template/layout.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form" enctype="multipart/form-data">
+
+			<article class="module width_full">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Registro Producto" />
+						</h3>
+					</div>
+				</div>
+				
+				<p class="lineForm" />
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="labelOut">
+						   <h:outputLabel value="Referencia" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.codigo}" styleClass="inputText" />
+					</div>
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Nombre" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.nombre}" styleClass="inputText" />
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Cantidad" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.cantidad}" styleClass="inputText" />
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Valor Costo" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.vlrCosto}" styleClass="inputText" />
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="% Iva" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.pct_iva}" styleClass="inputText" />
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						   <h:outputLabel value="Valor Venta" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.vlrVenta}" styleClass="inputText" />
+					</div>					
+				</div>
+				
+				<div class="row">
+
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Unidad Medida" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.unidadMedida}" styleClass="inputText" />
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Material" />
+						</div>
+						<h:inputText value="#{productoBean.productoDto.material}" styleClass="inputText" />
+					</div>
+
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-9 col-lg-9">
+						<div class="labelOut">
+						   <h:outputLabel value="Descripcion" />
+						</div>
+						<h:inputTextarea value="#{productoBean.productoDto.descripcion}" styleClass="inputText" style="width:90%"/>
+					</div>				
+				</div>
+				
+				<div class="row">
+				   <div class="col-sm-8">
+				      <div class="labelOut">
+				        <h:outputLabel value="Imagen:"/>	
+				      </div>  	   
+				           <p:fileUpload value="#{productoBean.file}" 
+				                       mode="simple" rendered="#{empty productoBean.productoDto.rutaArchivo}"
+				                       sizeLimit="90000" invalidSizeMessage="El archivo es muy pesado"
+					  					invalidFileMessage="EL archivo debe ser de las extensiones gif, jpg, jpeg o png"
+				                	   allowTypes="/(\.|\/)(gif|jpe?g|png)$/" update="@form"/>  
+
+						    <p:commandButton value="Cargar archivo" ajax="false"  update="@form" rendered="#{empty productoBean.productoDto.rutaArchivo}"
+						                    actionListener="#{productoBean.cargarImagen}"/>         			
+					  				
+				   </div>
+ 				  <h:panelGroup rendered="#{not empty productoBean.productoDto.rutaArchivo}">
+ 				   <div class="col-sm-6">
+ 				   	 <img src="/imagenesPro/#{productoBean.productoDto.rutaArchivo}"  width="80" height="95"/>
+ 				   </div>
+ 				  </h:panelGroup> 
+				</div>
+
+				<p:separator/>
+
+				<div class="row">
+					<div class="col-sm-1">
+						<p:commandButton value="Guardar" action="#{productoBean.guardarProducto}" 
+						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
+					</div>
+				</div>
+
+			</article>
+		</h:form>
+	</ui:define>
+</ui:composition>
