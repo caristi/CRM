@@ -34,6 +34,14 @@
 			<property name="usuarioSrv" ref="usuarioSrv" />
 		</bean>	
 		
+		<bean id="compraBean" class="com.crm.bean.CompraBean">
+			<property name="compraSrv" ref="compraSrv" />
+		</bean>	
+		
+		<bean id="listaValoresBean" class="com.crm.bean.ListaValoresBean">
+			<property name="listaValoresSrv" ref="listaValoresSrv" />
+		</bean>
+		
 		<!-- Configuracion Servicios -->
 		
 		<bean id="usuarioSrv" class="com.crm.services.UsuarioSrv">
@@ -50,6 +58,14 @@
 		
 		<bean id="clienteSrv" class="com.crm.services.ClienteSrv">
 			<property name="clienteDao" ref="clienteDao" />
+		</bean>	
+		
+		<bean id="compraSrv" class="com.crm.services.CompraSrv">
+			<property name="compraDao" ref="compraDao" />
+		</bean>
+		
+		<bean id="listaValoresSrv" class="com.crm.services.ListaValoresSrv">
+			<property name="listaValoresDao" ref="listaValoresDao" />
 		</bean>		
 		
 		<!-- Configuracion DAOs -->
@@ -67,6 +83,14 @@
 		</bean>
 		
 		<bean id="clienteDao" class="com.crm.dao.ClienteDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		
+		<bean id="compraDao" class="com.crm.dao.CompraDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		
+		<bean id="listaValoresDao" class="com.crm.dao.ListaValoresDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
 		

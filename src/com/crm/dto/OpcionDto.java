@@ -24,7 +24,7 @@ public class OpcionDto implements Serializable{
 	@Column(name="opc_codigo")
 	private int codigo;
 	
-	@Column(name="op_url")
+	@Column(name="opc_url")
 	private String url;
 	
 	@Column(name="opc_descripcion")

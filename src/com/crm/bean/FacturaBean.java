@@ -3,18 +3,16 @@ package com.crm.bean;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import com.crm.dto.FacturaCabeceraDto;
-import com.crm.dto.FacturaDetalleDto;
 
 public class FacturaBean {
 
 	private FacturaCabeceraDto facCabeceraDto;
 	
 	public FacturaBean() {
-		
+		 
 		facCabeceraDto = new FacturaCabeceraDto();
 //		FacturaDetalleDto detalleFactura= new FacturaDetalleDto();
 //		facCabeceraDto.getListaDetalleFactura().add(detalleFactura);

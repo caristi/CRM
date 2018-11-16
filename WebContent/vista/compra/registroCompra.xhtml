@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="../../vista/template/layout.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form" enctype="multipart/form-data">
+
+			<article class="module width_full">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Registro Compra" />
+						</h3>
+					</div>
+				</div>
+				
+				<p class="lineForm" />
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Producto" />
+						</div>
+						 <p:selectOneListbox value="#{compraBean.compraDto.productoDto.proId}">
+					  		<f:selectItems value="#{listaValoresBean.listaProductos}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}"/>
+						 </p:selectOneListbox>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						  <h:outputLabel value="Cantidad" />
+						</div>
+						<h:inputText value="#{compraBean.compraDto.cantidad}" styleClass="inputText" />
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="labelOut">
+						   <h:outputLabel value="Valor Venta" />
+						</div>
+						<h:inputText value="#{compraBean.compraDto.vlrTotal}" styleClass="inputText" />
+					</div>	
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-9 col-lg-9">
+						<div class="labelOut">
+						   <h:outputLabel value="Descripcion" />
+						</div>
+						<h:inputTextarea value="#{compraBean.compraDto.observacion}" styleClass="inputText" style="width:90%"/>
+					</div>				
+				</div>
+				
+				<p:separator/>
+
+				<div class="row">
+					<div class="col-sm-1">
+						<p:commandButton value="Guardar" action="#{compraBean.guardarCompra}" 
+						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
+					</div>
+				</div>
+
+			</article>
+		</h:form>
+	</ui:define>
+</ui:composition>
