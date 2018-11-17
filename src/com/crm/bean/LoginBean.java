@@ -60,7 +60,7 @@ public class LoginBean implements java.io.Serializable  {
 			
 			establecerPermisos();
 			
-			return "index.xhtml";
+			return "/vista/login/index.jsf";
 		
 		}else{
 			
@@ -83,7 +83,8 @@ public class LoginBean implements java.io.Serializable  {
 			}
 		}
 		this.usuario.setAcceso(false);
-		return "/faces/login.xhtml";
+		
+		return "/vista/login/login.xhtml";
 	}
 	
 	public void establecerPermisos(){

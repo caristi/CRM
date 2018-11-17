@@ -78,36 +78,6 @@
         <dependent-module archiveName="javassist-3.18.1-GA.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="spring-jdbc-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-jdbc-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-web-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-web-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-beans-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-beans-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-orm-4.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-orm-4.0.3.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-context-support-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-context-support-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-tx-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-tx-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-core-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-core-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-aop-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-aop-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-context-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-context-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="spring-expression-4.1.7.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/spring-expression-4.1.7.RELEASE.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/CRM/build/classes"/>
         <property name="context-root" value="CRM"/>
     </wb-module>

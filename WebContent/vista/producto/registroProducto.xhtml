@@ -46,7 +46,7 @@
 						<div class="labelOut">
 						  <h:outputLabel value="Cantidad" />
 						</div>
-						<h:inputText value="#{productoBean.productoDto.cantidad}" styleClass="inputText" />
+						<p:inputNumber value="#{productoBean.productoDto.cantidad}" styleClass="inputText" decimalPlaces="0"/>
 					</div>
 				</div>
 				
@@ -55,14 +55,15 @@
 						<div class="labelOut">
 						  <h:outputLabel value="Valor Costo" />
 						</div>
-						<h:inputText value="#{productoBean.productoDto.vlrCosto}" styleClass="inputText" />
+						<p:inputNumber value="#{productoBean.productoDto.vlrCosto}" styleClass="inputText" decimalSeparator="," thousandSeparator="." decimalPlaces="2" />
 					</div>
 					
 					<div class="col-sm-3">
 						<div class="labelOut">
 						  <h:outputLabel value="% Iva" />
 						</div>
-						<h:inputText value="#{productoBean.productoDto.pct_iva}" styleClass="inputText" />
+						<p:inputNumber value="#{productoBean.productoDto.pct_iva}" styleClass="inputText" minValue="0" maxValue="100"
+						               decimalSeparator="," thousandSeparator="." decimalPlaces="2"  symbol="%"/>
 					</div>
 					
 					<div class="col-sm-3">
@@ -126,9 +127,12 @@
 
 				<div class="row">
 					<div class="col-sm-1">
-						<p:commandButton value="Guardar" action="#{productoBean.guardarProducto}" 
+						<p:commandButton value="Guardar" action="#{productoBean.guardarProducto}"  rendered="#{!productoBean.mcaEditar}"
 						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
-					</div>
+					
+						<p:commandButton value="Actualizar"  update="form" icon="ui-icon-plus" rendered="#{productoBean.mcaEditar}"
+		   				    		     action="#{productoBean.actualizar}" styleClass="btnGuardar" />
+		   		    </div>		    		     
 				</div>
 
 			</article>

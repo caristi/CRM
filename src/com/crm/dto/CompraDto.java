@@ -45,6 +45,9 @@ public class CompraDto implements java.io.Serializable{
 	@ManyToOne
 	@JoinColumn(name="usu_id")
 	private UsuarioDto usuarioDto;
+	
+	public CompraDto() {
+	}
 
 	public int getId() {
 		return id;

@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
+import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.ProductoSrv;
 import com.crm.util.BundleUtils;
@@ -21,6 +22,7 @@ public class ProductoBean {
 
 	private ProductoDto productoDto;
 	private ProductoDto productoSelecDto;
+	private FiltroBusquedaDto filtro;
 	
 	private List<ProductoDto> listaProductos;
 	
@@ -35,6 +37,7 @@ public class ProductoBean {
 	public ProductoBean() {
 		
 		productoDto = new ProductoDto();
+		filtro = new FiltroBusquedaDto();
 		mcaEditar = false;
 		
 		filePath = BundleUtils.getString("com.crm.util.aplicacion", "app.ruta");
@@ -45,12 +48,18 @@ public class ProductoBean {
 		int id = productoSrv.guardarProducto(productoDto);
 		cargarImagen();
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo el producto con código" + id));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo el producto con código " + id));
 	}
 	
 	public void consultarProducto(){
 		
-		listaProductos = productoSrv.buscarProducto(productoDto);
+		listaProductos = productoSrv.buscarProducto(filtro);
+		 
+		if(listaProductos == null || listaProductos.size() == 0){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "", "No se encontraron registros con ese filtro"));
+		}else{
+			filtro = new FiltroBusquedaDto();
+		}
 	}
 	
 	public String consultarUnProducto(){
@@ -68,7 +77,10 @@ public class ProductoBean {
 	}
 	
 	public void actualizar(){
+		
 		productoSrv.actualizarProducto(productoDto);
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se actualizo el producto"));
 	}
 	
 	public void handleFileUpload(FileUploadEvent event) {
@@ -154,5 +166,9 @@ public class ProductoBean {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	public FiltroBusquedaDto getFiltro() {
+		return filtro;
 	}
 }

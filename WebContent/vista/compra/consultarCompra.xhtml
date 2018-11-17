@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<h3 class="tituloH1">
-							<h:outputText value="Consultar Producto" />
+							<h:outputText value="Consultar Compra" />
 						</h3>
 					</div>
 				</div>
@@ -31,47 +31,61 @@
 				<div class="row">
 					<div class="col-sm-3 col-lg-3">
 						<div class="labelOut">
-						   <h:outputLabel value="Buscar por Nombre" />
+						   <h:outputLabel value="Fecha inicio" />
 						</div>
-						<h:inputText value="#{productoBean.filtro.nombre}" styleClass="inputText" />
+						 <p:calendar value="#{compraBean.filtro.fechaInicio}" showOn="button" pattern="dd/MM/yyyy">
+ 				   	     </p:calendar>
+					</div>	
+					
+					<div class="col-sm-3 col-lg-3">
+						<div class="labelOut">
+						   <h:outputLabel value="Fecha fin" />
+						</div>
+						<p:calendar value="#{compraBean.filtro.fechaFin}" showOn="button"  pattern="dd/MM/yyyy">
+				   	    </p:calendar>
 					</div>		
 				</div>
-				<br />
+				<br/>
 				<div class="row">
-					<div class="col-sm-2 col-lg-2">
-						<p:commandButton value="Consultar" action="#{productoBean.consultarProducto}" 
+					<div class="col-sm-1">
+						<p:commandButton value="Buscar" action="#{compraBean.consultarCompra}" 
 						                 update="@form" icon="ui-icon-disk" styleClass="btnBuscar" />
 					</div>
 					
 					<div class="col-sm-2">
-						<p:commandButton value="Nuevo producto" action="#{productoBean.nuevoProducto}" 
+						<p:commandButton value="Nuevo compra" action="#{compraBean.nuevoCompra}" 
 						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
 					</div>
 				</div>
 				
 				<p:separator/>
 				
-				 <p:dataTable id="tbl" value="#{productoBean.listaProductos}" var="p" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"  reflow="true"
+				 <p:dataTable id="tbl" value="#{compraBean.listaCompras}" var="p" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"  reflow="true"
               			      emptyMessage="No se encuentran registros" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" >
  
-				   <p:column headerText="">
-					     <img src="/imagenesPro/#{p.rutaArchivo}"  width="80" height="70"/>
-					</p:column>
 				   <p:column headerText="Identificador">
 					   <h:outputText value="#{p.id}"  />
 					</p:column>
 					
-				   <p:column headerText="Referencia">
-					   <h:outputText value="#{p.codigo}" />
+				   <p:column headerText="Fecha compra">
+					   <h:outputText value="#{p.fecha}">
+					     <f:convertDateTime pattern="dd/MM/yyyy"/>
+					   </h:outputText>
 					</p:column>	
 					
-				   <p:column headerText="Nombre">
-					   <h:outputText value="#{p.nombre}" />
+				   <p:column headerText="Cantidad">
+					   <h:outputText value="#{p.cantidad}" />
 					</p:column>	
+					
+					<p:column headerText="Valor">
+					   <h:outputText value="#{p.vlrTotal}">
+					    <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
+					   </h:outputText>
+					</p:column>
 					
 					<p:column style="text-align: center">
-					    <p:commandButton icon="ui-icon-pencil" title="Vista"  update="@form" action="#{productoBean.consultarUnProducto}">
-				            <f:setPropertyActionListener value="#{p}" target="#{productoBean.productoSelecDto}" />
+					    <p:commandButton icon="ui-icon-pencil" title="Vista"  update="@form" action="#{compraBean.consultarUnCompra}">
+				            <f:setPropertyActionListener value="#{p}" target="#{compraBean.compraSelecDto}" />
 				        </p:commandButton>
 					</p:column>	
 					

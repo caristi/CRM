@@ -29,28 +29,39 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-sm-9">
 						<div class="labelOut">
-						  <h:outputLabel value="Producto" />
+						  <h:outputLabel value="Producto"/>
 						</div>
-						 <p:selectOneListbox value="#{compraBean.compraDto.productoDto.proId}">
-					  		<f:selectItems value="#{listaValoresBean.listaProductos}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}"/>
-						 </p:selectOneListbox>
+						 <p:selectOneMenu value="#{compraBean.compraDto.productoDto.id}" styleClass="inputText" filter="true" disabled="#{!compraBean.mcaEditar}">
+					  		<f:selectItems value="#{listaValoresBean.listaProductos}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}" />
+						 </p:selectOneMenu>
 					</div>
-					
-					<div class="col-sm-3">
+				</div>
+				
+				<div class="row">
+				 	<div class="col-sm-2">
 						<div class="labelOut">
 						  <h:outputLabel value="Cantidad" />
 						</div>
-						<h:inputText value="#{compraBean.compraDto.cantidad}" styleClass="inputText" />
+						<p:inputNumber  value="#{compraBean.compraDto.cantidad}" styleClass="inputText" disabled="#{!compraBean.mcaEditar}" decimalPlaces="0"/>
 					</div>
 					
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="labelOut">
 						   <h:outputLabel value="Valor Venta" />
 						</div>
-						<h:inputText value="#{compraBean.compraDto.vlrTotal}" styleClass="inputText" />
-					</div>	
+						<p:inputNumber value="#{compraBean.compraDto.vlrTotal}" styleClass="inputText" disabled="#{!compraBean.mcaEditar}"
+						               decimalSeparator="," thousandSeparator="." decimalPlaces="2" />
+					</div>
+					
+					<div class="col-sm-3">
+					   <div class="labelOut">
+						   <h:outputLabel value="Fecha Registro" />
+						</div>
+				   	    <p:calendar value="#{compraBean.compraDto.fecha}" showOn="button" disabled="true">
+				   	    </p:calendar>
+					 </div>		
 				</div>
 				
 				<div class="row">
@@ -58,8 +69,8 @@
 						<div class="labelOut">
 						   <h:outputLabel value="Descripcion" />
 						</div>
-						<h:inputTextarea value="#{compraBean.compraDto.observacion}" styleClass="inputText" style="width:90%"/>
-					</div>				
+						<h:inputTextarea value="#{compraBean.compraDto.observacion}" styleClass="inputText" style="width:90%" disabled="#{!compraBean.mcaEditar}"/>
+					</div>	
 				</div>
 				
 				<p:separator/>

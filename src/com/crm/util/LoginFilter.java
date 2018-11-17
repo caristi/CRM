@@ -55,7 +55,7 @@ public class LoginFilter implements Filter {
 
 		//El usuario no esta logueado
 		if (loginBean == null || (loginBean.getUsuario() == null || !loginBean.getUsuario().isAcceso())) {
-			res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
+			res.sendRedirect(req.getContextPath() + "/vista/login/login.jsf");
 			return;
 		}
 

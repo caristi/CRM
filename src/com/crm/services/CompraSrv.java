@@ -6,30 +6,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.crm.dao.CompraDao;
 import com.crm.dto.CompraDto;
+import com.crm.dto.FiltroBusquedaDto;
 
 public class CompraSrv{
 
 	@Autowired
-	private CompraDao CompraDao;
+	private CompraDao compraDao;
 
-	public int guardarCompra(CompraDto CompraDto){
+	public int guardarCompra(CompraDto compraDto){
 
-		return	CompraDao.guardarCompra(CompraDto);
+		return	compraDao.guardarCompra(compraDto);
 	}
 
 	public List<CompraDto> listarCompras(){
-		return CompraDao.listarCompras();
+		return compraDao.listarCompras();
 	}
 
-	public List<CompraDto> buscarCompra(CompraDto CompraDto){
-		return CompraDao.buscarCompra(CompraDto);
+	public List<CompraDto> buscarCompra(FiltroBusquedaDto filtro){
+		return compraDao.buscarCompra(filtro);
 	}
 	
-	public void actualizarCompra(CompraDto CompraDto){
-		CompraDao.actualizarCompra(CompraDto);
+	public void actualizarCompra(CompraDto compraDto){
+		compraDao.actualizarCompra(compraDto);
 	}
 	
-	public void setCompraDao(CompraDao CompraDao) {
-		this.CompraDao = CompraDao;
+	public void setCompraDao(CompraDao compraDao) {
+		this.compraDao = compraDao;
 	}
 }

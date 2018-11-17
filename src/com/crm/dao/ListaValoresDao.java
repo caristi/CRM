@@ -30,7 +30,7 @@ public class ListaValoresDao{
     		
     		ListaValoresDto lista = new ListaValoresDto();
     		
-    		lista.setCodItem(p.getId());
+    		lista.setCodItem(p.getId()+"");
     		lista.setNomItem(p.getNombre());
     		
     		listaValores.add(lista);

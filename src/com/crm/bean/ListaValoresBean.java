@@ -12,14 +12,9 @@ public class ListaValoresBean implements Serializable {
 
 	private ListaValoresSrv listaValoresSrv;
 	
-	private List<ListaValoresDto> listaProductos;
-	
 	public List<ListaValoresDto> getListaProductos() {
-		
-		if(listaProductos == null || listaProductos.isEmpty()){
-			listaProductos = listaValoresSrv.listaProductos();
-		}
-		return listaProductos;
+
+		return listaValoresSrv.listaProductos();
 	}
 
 	public void setListaValoresSrv(ListaValoresSrv listaValoresSrv) {

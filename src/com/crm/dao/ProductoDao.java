@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 
 public class ProductoDao{
@@ -43,15 +44,15 @@ public class ProductoDao{
     
 	@SuppressWarnings("unchecked")
 	@Transactional
-    public List<ProductoDto> buscarProducto(ProductoDto productoDto){
+    public List<ProductoDto> buscarProducto(FiltroBusquedaDto filtro){
 		
 		String sql = "select p from ProductoDto p ";
 	    			     
 	   	sesion = sessionFactory.getCurrentSession();
 	   	
-	   	if(productoDto.getNombre() != null && !productoDto.getNombre().isEmpty()){
+	   	if(filtro.getNombre() != null && !filtro.getNombre().isEmpty()){
 	   		
-	   		sql += "Where p.nombre like '%" + productoDto.getNombre() + "%' ";
+	   		sql += "Where p.nombre like '%" + filtro.getNombre() + "%' ";
 	   	}
 	   	
 	   	return sesion.createQuery(sql).list();

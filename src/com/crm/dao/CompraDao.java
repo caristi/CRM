@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.CompraDto;
+import com.crm.dto.FiltroBusquedaDto;
 
 public class CompraDao{
 	
@@ -43,13 +44,14 @@ public class CompraDao{
     
 	@SuppressWarnings("unchecked")
 	@Transactional
-    public List<CompraDto> buscarCompra(CompraDto CompraDto){
+    public List<CompraDto> buscarCompra(FiltroBusquedaDto filtro){
 		
-		String sql = "select p from CompraDto p ";
+		String sql = "select p from CompraDto p where fecha between :fecInicio and :fecFin";
 	    			     
 	   	sesion = sessionFactory.getCurrentSession();
 	   	
-	   	return sesion.createQuery(sql).list();
+	   	return sesion.createQuery(sql).setParameter("fecInicio", filtro.getFechaFin())
+	   			                      .setParameter("fecFin", filtro.getFechaFin()).list();
 	}
 	
 	@Transactional

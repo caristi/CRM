@@ -38,8 +38,17 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/vista/compra/consultarCompra.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>/vista/compra/registroCompra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
-<navigation-rule>
+	<navigation-rule>
 		<description>Cliente</description>
 		<from-view-id>/vista/cliente/listadoCliente.xhtml</from-view-id>
 		<navigation-case>

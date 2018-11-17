@@ -11,6 +11,10 @@ border: none !important;
 border-collapse:collapse;
 }
 
+.ui-selectonemenu .ui-selectonemenu-trigger {
+    width: 19%;
+}
+
 .ui-paginator .ui-paginator-current, .ui-paginator .ui-paginator-rpp-options {
     margin-left: 1em;
     margin-right: 1em;

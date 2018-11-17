@@ -1,11 +1,13 @@
 package com.crm.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import com.crm.dto.CompraDto;
+import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.CompraSrv;
 
@@ -15,6 +17,7 @@ public class CompraBean {
 
 	private CompraDto compraDto;
 	private CompraDto compraSelecDto;
+	private FiltroBusquedaDto filtro;
 	
 	private List<CompraDto> listaCompras;
 	private List<ProductoDto> listaProductos;
@@ -22,7 +25,12 @@ public class CompraBean {
 	private boolean mcaEditar;
 
 	public CompraBean() {
+		
 		compraDto = new CompraDto();
+		compraDto.setFecha(new Date());
+		compraDto.setProductoDto(new ProductoDto());
+		
+		filtro = new FiltroBusquedaDto();
 	}
 	
 	public void guardarCompra(){
@@ -34,19 +42,23 @@ public class CompraBean {
 	
 	public void consultarCompra(){
 		
-		listaCompras = compraSrv.buscarCompra(compraDto);
+		listaCompras = compraSrv.buscarCompra(filtro);
 	}
 	
 	public String consultarUnCompra(){
-		this.mcaEditar = true;
+		this.mcaEditar = false;
 		this.compraDto = compraSelecDto;
 		
 		return "compra";
 	}
 	
 	public String nuevoCompra(){
-		this.mcaEditar = false;
-		this.compraDto = new CompraDto();
+		
+		mcaEditar = true;
+		
+		compraDto = new CompraDto();
+		compraDto.setFecha(new Date());
+		compraDto.setProductoDto(new ProductoDto());
 		
 		return "compra";
 	}
@@ -98,5 +110,9 @@ public class CompraBean {
 
 	public void setListaProductos(List<ProductoDto> listaProductos) {
 		this.listaProductos = listaProductos;
+	}
+
+	public FiltroBusquedaDto getFiltro() {
+		return filtro;
 	}
 }

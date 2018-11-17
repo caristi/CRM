@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.crm.dao.ProductoDao;
+import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 
 public class ProductoSrv{
@@ -21,8 +22,8 @@ public class ProductoSrv{
 		return productoDao.listarProductos();
 	}
 
-	public List<ProductoDto> buscarProducto(ProductoDto productoDto){
-		return productoDao.buscarProducto(productoDto);
+	public List<ProductoDto> buscarProducto(FiltroBusquedaDto filtro){
+		return productoDao.buscarProducto(filtro);
 	}
 	
 	public void actualizarProducto(ProductoDto productoDto){
