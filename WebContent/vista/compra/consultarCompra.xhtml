@@ -29,32 +29,33 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-3 col-lg-3">
+					<div class="col-sm-2 col-lg-2">
 						<div class="labelOut">
 						   <h:outputLabel value="Fecha inicio" />
 						</div>
-						 <p:calendar value="#{compraBean.filtro.fechaInicio}" showOn="button" pattern="dd/MM/yyyy">
- 				   	     </p:calendar>
+						 <p:calendar id="fecInicio" value="#{compraBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" 
+						             mask="true"/>
+ 				   	     <p:watermark for="fecInicio" value="dd/mm/aaaa"/>	
 					</div>	
 					
-					<div class="col-sm-3 col-lg-3">
+					<div class="col-sm-2 col-lg-2">
 						<div class="labelOut">
 						   <h:outputLabel value="Fecha fin" />
 						</div>
-						<p:calendar value="#{compraBean.filtro.fechaFin}" showOn="button"  pattern="dd/MM/yyyy">
-				   	    </p:calendar>
+						<p:calendar id="fecFin" value="#{compraBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true"/>
+						<p:watermark for="fecFin" value="dd/mm/aaaa"/>	
 					</div>		
 				</div>
 				<br/>
 				<div class="row">
 					<div class="col-sm-1">
 						<p:commandButton value="Buscar" action="#{compraBean.consultarCompra}" 
-						                 update="@form" icon="ui-icon-disk" styleClass="btnBuscar" />
+						                 update="@form" icon="ui-icon-search" styleClass="btnBuscar" />
 					</div>
 					
 					<div class="col-sm-2">
-						<p:commandButton value="Nuevo compra" action="#{compraBean.nuevoCompra}" 
-						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
+						<p:commandButton value="Nueva compra" action="#{compraBean.nuevoCompra}" 
+						                 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
 					</div>
 				</div>
 				
@@ -84,7 +85,7 @@
 					</p:column>
 					
 					<p:column style="text-align: center">
-					    <p:commandButton icon="ui-icon-pencil" title="Vista"  update="@form" action="#{compraBean.consultarUnCompra}">
+					    <p:commandButton icon="ui-icon-pencil" title="Vista"  update="@form" action="#{compraBean.consultarUnCompra}" styleClass="btnActualizar">
 				            <f:setPropertyActionListener value="#{p}" target="#{compraBean.compraSelecDto}" />
 				        </p:commandButton>
 					</p:column>	

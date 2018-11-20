@@ -5,17 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.crm.dao.CompraDao;
+import com.crm.dao.ProductoDao;
 import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
+import com.crm.dto.ProductoDto;
 
 public class CompraSrv{
 
 	@Autowired
 	private CompraDao compraDao;
+	private ProductoDao productoDao;
 
 	public int guardarCompra(CompraDto compraDto){
 
-		return	compraDao.guardarCompra(compraDto);
+		int id = compraDao.guardarCompra(compraDto);
+		
+		if(id > 0){
+			
+			ProductoDto productoDto = new ProductoDto();
+			productoDto.setId(compraDto.getProductoDto().getId());
+			productoDto.setCantidad(compraDto.getCantidad());
+			
+			productoDao.actualizarCantidadProducto(productoDto);
+		}
+		
+		return id;
 	}
 
 	public List<CompraDto> listarCompras(){
@@ -23,6 +37,7 @@ public class CompraSrv{
 	}
 
 	public List<CompraDto> buscarCompra(FiltroBusquedaDto filtro){
+		
 		return compraDao.buscarCompra(filtro);
 	}
 	
@@ -32,5 +47,9 @@ public class CompraSrv{
 	
 	public void setCompraDao(CompraDao compraDao) {
 		this.compraDao = compraDao;
+	}
+	
+	public void setProductoDao(ProductoDao productoDao) {
+		this.productoDao = productoDao;
 	}
 }

@@ -38,14 +38,14 @@
 				</div>
 				<br />
 				<div class="row">
-					<div class="col-sm-2 col-lg-2">
-						<p:commandButton value="Consultar" action="#{productoBean.consultarProducto}" 
-						                 update="@form" icon="ui-icon-disk" styleClass="btnBuscar" />
+					<div class="col-sm-1 col-lg-1">
+						<p:commandButton value="Buscar" action="#{productoBean.consultarProducto}" 
+						                 update="@form" icon="ui-icon-search" styleClass="btnBuscar" />
 					</div>
 					
-					<div class="col-sm-2">
+					<div class="col-sm-2 col-lg-2">
 						<p:commandButton value="Nuevo producto" action="#{productoBean.nuevoProducto}" 
-						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
+						                 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
 					</div>
 				</div>
 				
@@ -69,10 +69,18 @@
 					   <h:outputText value="#{p.nombre}" />
 					</p:column>	
 					
-					<p:column style="text-align: center">
-					    <p:commandButton icon="ui-icon-pencil" title="Vista"  update="@form" action="#{productoBean.consultarUnProducto}">
+					<p:column headerText="Cantidad">
+					   <h:outputText value="#{p.cantidad}"  />
+					</p:column>
+					
+					<p:column style="text-align: center" headerText="Ver">
+					    <p:commandButton icon="ui-icon-zoomin" title="Vista"  update="@form" action="#{productoBean.consultarUnProducto}" styleClass="btnActualizar">
 				            <f:setPropertyActionListener value="#{p}" target="#{productoBean.productoSelecDto}" />
 				        </p:commandButton>
+					</p:column>	
+					
+					<p:column style="text-align: center"  headerText="Comprar">
+					    <p:commandButton icon="ui-icon-cart" title="Comprar"  action="#{productoBean.irVistaCompras(p)}" styleClass="btnGuardar"/>
 					</p:column>	
 					
 				</p:dataTable>	

@@ -40,6 +40,15 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>/vista/producto/consultarProducto.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>compra</from-outcome>
+			<to-view-id>/vista/compra/registroCompra.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/vista/compra/consultarCompra.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>compra</from-outcome>

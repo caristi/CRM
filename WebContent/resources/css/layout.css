@@ -101,3 +101,7 @@ border-collapse:collapse;
 	min-height:4px;
 	margin:0 0 1px;	
 }
+
+.ui-state-default .ui-icon {
+    background-image: url(../images/ui-icons_ffffff_256x240.png);
+}

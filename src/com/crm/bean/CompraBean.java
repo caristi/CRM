@@ -23,6 +23,7 @@ public class CompraBean {
 	private List<ProductoDto> listaProductos;
 	
 	private boolean mcaEditar;
+	private boolean campoEditable;
 
 	public CompraBean() {
 		
@@ -31,22 +32,31 @@ public class CompraBean {
 		compraDto.setProductoDto(new ProductoDto());
 		
 		filtro = new FiltroBusquedaDto();
+		campoEditable = false;
 	}
 	
 	public void guardarCompra(){
 		
 		int id = compraSrv.guardarCompra(compraDto);
+		mcaEditar = true;
+		campoEditable = false;
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con código " + id));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con código " + id + " y se actualiza el invertario"));
 	}
 	
 	public void consultarCompra(){
 		
 		listaCompras = compraSrv.buscarCompra(filtro);
+		
+		if(listaCompras == null || listaCompras.size() == 0){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "", "No se encontraron registros con ese filtro"));
+		}else{
+			filtro = new FiltroBusquedaDto();
+		}
 	}
 	
 	public String consultarUnCompra(){
-		this.mcaEditar = false;
+		this.mcaEditar = true;
 		this.compraDto = compraSelecDto;
 		
 		return "compra";
@@ -54,7 +64,8 @@ public class CompraBean {
 	
 	public String nuevoCompra(){
 		
-		mcaEditar = true;
+		mcaEditar = false;
+		campoEditable = false;
 		
 		compraDto = new CompraDto();
 		compraDto.setFecha(new Date());
@@ -64,9 +75,20 @@ public class CompraBean {
 	}
 	
 	public void actualizar(){
+		
 		compraSrv.actualizarCompra(compraDto);
 		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se actualizo la compra con código"));
+	}
+	
+	public void inicializarCompra(ProductoDto productoDto){
+		
+		campoEditable = true;
+		mcaEditar = false;
+		
+		compraDto = new CompraDto();
+		compraDto.setFecha(new Date());
+		compraDto.setProductoDto(productoDto);
 	}
 
 	public void setCompraSrv(CompraSrv compraSrv) {
@@ -114,5 +136,9 @@ public class CompraBean {
 
 	public FiltroBusquedaDto getFiltro() {
 		return filtro;
+	}
+
+	public boolean isCampoEditable() {
+		return campoEditable;
 	}
 }

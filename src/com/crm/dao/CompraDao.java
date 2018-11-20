@@ -44,13 +44,13 @@ public class CompraDao{
     
 	@SuppressWarnings("unchecked")
 	@Transactional
-    public List<CompraDto> buscarCompra(FiltroBusquedaDto filtro){
+    public List<CompraDto> buscarCompra(FiltroBusquedaDto filtro) {
 		
 		String sql = "select p from CompraDto p where fecha between :fecInicio and :fecFin";
 	    			     
 	   	sesion = sessionFactory.getCurrentSession();
 	   	
-	   	return sesion.createQuery(sql).setParameter("fecInicio", filtro.getFechaFin())
+	   	return sesion.createQuery(sql).setParameter("fecInicio",filtro.getFechaInicio())
 	   			                      .setParameter("fecFin", filtro.getFechaFin()).list();
 	}
 	
@@ -61,7 +61,7 @@ public class CompraDao{
 		
 		sesion.update(CompraDto);
 	}
-    
+	
 	public void setSesion(Session sesion) {
 		this.sesion = sesion;
 	}  

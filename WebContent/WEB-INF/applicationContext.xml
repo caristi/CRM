@@ -62,6 +62,7 @@
 		
 		<bean id="compraSrv" class="com.crm.services.CompraSrv">
 			<property name="compraDao" ref="compraDao" />
+			<property name="productoDao" ref="productoDao" />
 		</bean>
 		
 		<bean id="listaValoresSrv" class="com.crm.services.ListaValoresSrv">

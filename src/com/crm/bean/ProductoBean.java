@@ -108,6 +108,16 @@ public class ProductoBean {
 		}
     }
 	
+	public String irVistaCompras(ProductoDto productoDto){
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		CompraBean compraBean = (CompraBean) context.getELContext().getELResolver().getValue(context.getELContext(), null, "compraBean");
+		compraBean.inicializarCompra(productoDto);
+		
+		return "compra";
+	}
+	
+	
 	public void setProductoSrv(ProductoSrv productoSrv) {
 		this.productoSrv = productoSrv;
 	}
