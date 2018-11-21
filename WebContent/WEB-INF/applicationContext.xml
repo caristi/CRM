@@ -75,7 +75,7 @@
 	
 		<bean id="proveedorSrv" class="com.crm.services.ProveedorSrv">
 			<property name="proveedorDao" ref="proveedorDao" />
-		</bea
+		</bean>
 		
 		<!-- Configuracion DAOs -->
 		
