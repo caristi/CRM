@@ -41,6 +41,10 @@
 		<bean id="listaValoresBean" class="com.crm.bean.ListaValoresBean">
 			<property name="listaValoresSrv" ref="listaValoresSrv" />
 		</bean>
+	
+		<bean id="proveedorBean" class="com.crm.bean.ProveedorBean">
+			<property name="proveedorSrv" ref="proveedorSrv" />
+		</bean>
 		
 		<!-- Configuracion Servicios -->
 		
@@ -68,6 +72,10 @@
 		<bean id="listaValoresSrv" class="com.crm.services.ListaValoresSrv">
 			<property name="listaValoresDao" ref="listaValoresDao" />
 		</bean>		
+	
+		<bean id="proveedorSrv" class="com.crm.services.ProveedorSrv">
+			<property name="proveedorDao" ref="proveedorDao" />
+		</bea
 		
 		<!-- Configuracion DAOs -->
 		
@@ -92,6 +100,10 @@
 		</bean>
 		
 		<bean id="listaValoresDao" class="com.crm.dao.ListaValoresDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		
+		<bean id="proveedorDao" class="com.crm.dao.ProveedorDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
 		
