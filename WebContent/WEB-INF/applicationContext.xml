@@ -38,6 +38,10 @@
 			<property name="compraSrv" ref="compraSrv" />
 		</bean>	
 		
+		<bean id="compraBean2" class="com.crm.bean.CompraBean">
+			<property name="compraSrv" ref="compraSrv" />
+		</bean>	
+		
 		<bean id="listaValoresBean" class="com.crm.bean.ListaValoresBean">
 			<property name="listaValoresSrv" ref="listaValoresSrv" />
 		</bean>
