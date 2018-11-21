@@ -33,6 +33,10 @@
 		<bean id="usuarioBean" class="com.crm.bean.UsuarioBean">
 			<property name="usuarioSrv" ref="usuarioSrv" />
 		</bean>	
+	
+	        <bean id="usuarioBean3" class="com.crm.bean.UsuarioBean">
+			<property name="usuarioSrv" ref="usuarioSrv" />
+		</bean>	
 		
 		<bean id="compraBean" class="com.crm.bean.CompraBean">
 			<property name="compraSrv" ref="compraSrv" />
