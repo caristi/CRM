@@ -33,19 +33,24 @@
 						<div class="labelOut">
 						   <h:outputLabel value="Buscar por Nombre" />
 						</div>
-						<h:inputText value="#{productoBean.filtro.nombre}" styleClass="inputText" />
-					</div>		
-				</div>
-				<br />
+					</div>	
+				</div>		
+				
+				
+				
 				<div class="row">
-					<div class="col-sm-1 col-lg-1">
+					<div class ="col-sm-1- col-lg-4">				
+						<h:inputText value="#{productoBean.filtro.nombre}" styleClass="inputText" />
+					</div>	
+				
+					<div class="col-sm-1 col-lg-4">
 						<p:commandButton value="Buscar" action="#{productoBean.consultarProducto}" 
 						                 update="@form" icon="ui-icon-search" styleClass="btnBuscar" />
 					</div>
 					
-					<div class="col-sm-2 col-lg-2">
+					<div class="col-sm-1 col-lg-4">
 						<p:commandButton value="Nuevo producto" action="#{productoBean.nuevoProducto}" 
-						                 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
+						 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
 					</div>
 				</div>
 				

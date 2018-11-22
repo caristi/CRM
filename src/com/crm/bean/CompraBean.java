@@ -41,7 +41,7 @@ public class CompraBean {
 		mcaEditar = true;
 		campoEditable = false;
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con cÃ³digo " + id + " y se actualiza el invertario"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con código " + id + " y se actualizó el invertario"));
 	}
 	
 	public void consultarCompra(){

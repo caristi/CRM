@@ -38,9 +38,9 @@ public class CompraDto implements java.io.Serializable{
 	@JoinColumn(name="pro_id")
 	private ProductoDto productoDto;
 	
-	@ManyToOne
-	@JoinColumn(name="prov_id")
-	private ProveedorDto proveedorDto;
+//	@ManyToOne
+//	@JoinColumn(name="prov_id")
+//	private ProveedorDto proveedorDto;
 	
 	@ManyToOne
 	@JoinColumn(name="usu_id")
@@ -97,13 +97,13 @@ public class CompraDto implements java.io.Serializable{
 		this.productoDto = productoDto;
 	}
 
-	public ProveedorDto getProveedorDto() {
-		return proveedorDto;
-	}
-
-	public void setProveedorDto(ProveedorDto proveedorDto) {
-		this.proveedorDto = proveedorDto;
-	}
+//	public ProveedorDto getProveedorDto() {
+//		return proveedorDto;
+//	}
+//
+//	public void setProveedorDto(ProveedorDto proveedorDto) {
+//		this.proveedorDto = proveedorDto;
+//	}
 
 	public UsuarioDto getUsuarioDto() {
 		return usuarioDto;

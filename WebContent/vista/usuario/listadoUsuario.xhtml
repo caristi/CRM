@@ -8,11 +8,32 @@
 	template="../../vista/template/layout.xhtml">
 
 	<ui:define name="content">				
-	<h:form id="form" enctype="multipart/form-data">   			
+	<h:form id="form" enctype="multipart/form-data">   	
+
 			<div class="row">
-				<p>Seleccione el <b>ITEM E INTRODUZCA EL VALOR</b> por el cual desea buscar al <b>USUARIO</b></p>
-			</div>	
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Consultar Usuario" />
+						</h3>
+					</div>
+				</div>
+				
+			<p class="lineForm" />
+				
 			<div class="row">
+					<div class="col-sm-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+					</div>
+				</div>
+				
+			<div class="row">
+					<div class="col-sm-4 col-lg-4">
+						<div class="labelOut">
+						   <h:outputLabel value="Buscar por Documento o Nombre" />
+						</div>
+					</div>
+			</div>			
+						
 				<div class="col-sm-1 col-lg-4">
 					<h:selectOneMenu id="opcion_busqueda" value="#{usuarioBean.opcion_busqueda}">
 				            <f:selectItem itemLabel="DOCUMENTO" itemValue="D"/>
@@ -20,21 +41,23 @@
 		        	</h:selectOneMenu>
 		        </div>
 		        <div class="col-sm-1 col-lg-4">		
-		        	<h:inputText id="valor_busqueda" value="#{usuarioBean.valor_busqueda}"/>	
+		        	<h:inputText id="valor_busqueda" value="#{usuarioBean.valor_busqueda}" styleClass="inputText"/>	
 				</div>
-
+				
+				<div class="row">
 				<div class="col-sm-1 col-lg-4">
-					<p:commandButton value="Filtrar" update="@form"
+					<p:commandButton value="Buscar" update="@form" styleClass="btnBuscar"
 						icon="ui-icon-search" action="#{usuarioBean.filtroUsuarios}" />
 						
-					<p:commandButton value="Agregar" 
+					<p:commandButton value="Nuevo Usuario" 
 	   				    update="form"
-	   				    icon="ui-icon-plus"
+	   				    icon="ui-icon-plus" styleClass="btnGuardar"
 	   				    action="#{usuarioBean.irVistaRegistroUsuario}"/>		
 	   				    <p></p>
 				</div>
-			</div>			
-
+				</div>
+					
+					<p:separator/>
 
 			<p:growl id="msgs" showDetail="true" />
 			<article class="module width_full">

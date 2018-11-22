@@ -10,7 +10,20 @@
 	<ui:define name="content">				
 	<h:form id="form" enctype="multipart/form-data">   			
 			<div class="row">
-				<p>Seleccione el <b>ITEM E INTRODUZCA EL VALOR</b> por el cual desea buscar al <b>CLIENTE</b></p>
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Consultar Cliente" />
+						</h3>
+					</div>
+				</div>
+				
+			<p class="lineForm" />
+			<div class="row">
+					<div class="col-sm-4 col-lg-4">
+						<div class="labelOut">
+						   <h:outputLabel value="Buscar por Documento, Nombre o Ciudad" />
+						</div>
+					</div>
 			</div>	
 			<div class="row">
 				<div class="col-sm-1 col-lg-4">
@@ -25,17 +38,18 @@
 				</div>
 
 				<div class="col-sm-1 col-lg-4">
-					<p:commandButton value="Filtrar" update="@form"
+					<p:commandButton value="Buscar" update="@form" styleClass="btnBuscar" 
 						icon="ui-icon-search" action="#{clienteBean.filtroClientes}" />
 						
 					<p:commandButton value="Agregar" 
 	   				    update="form"
-	   				    icon="ui-icon-plus"
+	   				    icon="ui-icon-plus" styleClass="btnGuardar"
 	   				    action="#{clienteBean.irVistaRegistroCliente}"/>
 	   				<p></p>    		
 				</div>
 			</div>			
 
+				<p:separator/>
 
 			<p:growl id="msgs" showDetail="true" />
 			<article class="module width_full">

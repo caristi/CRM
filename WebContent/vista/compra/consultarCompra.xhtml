@@ -33,27 +33,28 @@
 						<div class="labelOut">
 						   <h:outputLabel value="Fecha inicio" />
 						</div>
-						 <p:calendar id="fecInicio" value="#{compraBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" 
+				</div>	
+					
+				<div class="col-sm-2 col-lg-2">
+					<div class="labelOut">
+				 	   <h:outputLabel value="Fecha fin" />
+					</div>
+				</div>		
+				
+				</div>
+			
+				<div class="row">
+					<div class="col_sm-1 col_lg_3">
+						<p:calendar id="fecInicio" value="#{compraBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" 
 						             mask="true"/>
  				   	     <p:watermark for="fecInicio" value="dd/mm/aaaa"/>	
-					</div>	
 					
-					<div class="col-sm-2 col-lg-2">
-						<div class="labelOut">
-					 	   <h:outputLabel value="Fecha fin" />
-						</div>
 						<p:calendar id="fecFin" value="#{compraBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true"/>
 						<p:watermark for="fecFin" value="dd/mm/aaaa"/>	
-					</div>		
-				</div>
-				<br/>
-				<div class="row">
-					<div class="col-sm-1">
+					
 						<p:commandButton value="Buscar" action="#{compraBean.consultarCompra}" 
 						                 update="@form" icon="ui-icon-search" styleClass="btnBuscar" />
-					</div>
 					
-					<div class="col-sm-2">
 						<p:commandButton value="Nueva compra" action="#{compraBean.nuevoCompra}" 
 						                 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
 					</div>
