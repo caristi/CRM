@@ -15,7 +15,7 @@ public class ClienteSrv{
 		return id;
 	}
 	
-	public void actualizarCliente (ClienteDto clienteDto) {
+	public void actualizarCliente(ClienteDto clienteDto) {
 		clienteDao.actualizarCliente(clienteDto);
 	}
 	
