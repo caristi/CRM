@@ -44,7 +44,7 @@ public UsuarioDto consultarUsuario(UsuarioDto usuario){
 			
 		}else if(!contrasena.equals(usuario.getUsu_contrasena())){
 			usuario.setAcceso(false);
-			usuario.setMensajeAcceso("La contraseÃ±a es errada.");			
+			usuario.setMensajeAcceso("La contraseña es incorrecta.");			
 		}
 		
 		return usuario;

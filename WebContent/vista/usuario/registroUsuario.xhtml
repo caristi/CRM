@@ -66,7 +66,7 @@
 		<div class="row">	   
 				<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"><h:outputLabel value="Fecha de Nacimiento"/></div>
-<!-- 			       <h:inputText id="usu_fecha_nacimiento" value="#{usuarioBean.usuarioDto.usu_fecha_nacimiento}"/> -->
+					<p:calendar id="usu_fecha_nacimiento" value="#{usuarioBean.usuarioDto.usu_fecha_nacimiento}" pattern="dd/MM/yyyy" mask="true"/>
 				</div>		   
 			
 				<div class="col-sm-2 col-lg-4">
@@ -105,7 +105,8 @@
 			
 				<div class="col-sm-2 col-lg-4">
 					<div class="labelOut"><h:outputLabel value="Fecha ingreso"/></div>       
-<!-- 					<h:inputText id="usu_fecha_ingreso" value="#{usuarioBean.usuarioDto.usu_fecha_ingreso}"/> -->
+					<p:calendar id="usu_fecha_ingreso" value="#{usuarioBean.usuarioDto.usu_fecha_ingreso}" pattern="dd/MM/yyyy" mask="true"/>
+
 			   </div>
 			   
 				<div class="col-sm-2 col-lg-4">
@@ -121,7 +122,7 @@
 				<div class="col-sm-2 col-lg-4">
 			       <p:commandButton value="Guardar" 
 	   				    update="form"
-	   				    icon="ui-icon-plus" rendered="#{!usuarioBean.btnEditar}"
+	   				    icon="ui-icon-plus" rendered="#{!usuarioBean.btnEditar}" sytleClass="btnGuardar"
 	   				    action="#{usuarioBean.guardar}"/>
 			   </div>
      
@@ -129,7 +130,7 @@
 		       <div class="col-sm-2 col-lg-4">
 					       <p:commandButton value="Actualizar" 
 			   				    update="form"
-			   				    icon="ui-icon-plus" rendered="#{usuarioBean.btnEditar}"
+			   				    icon="ui-icon-plus" rendered="#{usuarioBean.btnEditar}" styleClass="btnGuardar"
 			   				    action="#{usuarioBean.actualizar}"/>
 				</div>   
 		</article>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="../../vista/template/layout.xhtml">
+
+	<ui:define name="content">				
+	<h:form id="form" enctype="multipart/form-data">   	
+
+			<div class="row">
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Consultar Consolidado de Ventas" />
+						</h3>
+					</div>
+				</div>
+				
+			<p class="lineForm" />
+				
+			<div class="row">
+					<div class="col-sm-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+					</div>
+				</div>
+
+			<div class="row">
+				<div class="col-sm-2 col-lg-3">
+					<div class="labelOut">
+					   <h:outputLabel value="Fecha inicial" />
+					   <br/>
+					   <p:calendar id="fecha_inicio" value="#{reportesBean.fecha_inicio}" pattern="dd/MM/yyyy" mask="true"/>
+	               	   <p:watermark for="fecha_inicio" value="dd/mm/aaaa"/>	
+					</div>
+				</div>	
+									
+				<div class="col-sm-2 col-lg-3">
+					<div class="labelOut">
+				 	   <h:outputLabel value="Fecha final" />
+				 	   <br/>
+						<p:calendar id="fecha_fin" value="#{reportesBean.fecha_fin}" pattern="dd/MM/yyyy" mask="true"/>
+						<p:watermark for="fecha_fin" value="dd/mm/aaaa"/>	
+					</div>
+				</div>		
+				
+				<div class="col-sm-2 col-lg-3">
+				<br/>				
+					<p:commandButton value="Buscar" update="@form" styleClass="btnBuscar"
+					icon="ui-icon-search" action="#{reportesBean.ventaTotalGeneral}" />						
+				</div>
+			</div>
+		<p:separator/>
+
+			<p:growl id="msgs" showDetail="true" />
+			
+			<article class="module width_full">
+				<p:dataTable id="tbVentas" value="#{reportesBean.listaVentas}"
+					var="ven" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+					<p:column headerText="CANTIDAD DE VENTAS">
+						<h:outputText value="#{ven.venId}" />
+					</p:column>
+					
+					<p:column headerText="ACUMULADO DE VENTAS">
+						<h:outputText value="#{ven.valorVentaTotal}" />
+					</p:column>
+
+				</p:dataTable>
+			</article>
+		</h:form>
+	</ui:define>
+</ui:composition>

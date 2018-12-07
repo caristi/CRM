@@ -149,19 +149,24 @@
 						
 			<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"><h:outputLabel value="Asesor Asignado"/></div>
-			       <div class="labelOut"><h:inputText id="usu_id" value="#{clienteBean.clienteDto.usu_id}"/></div>
+			       
+			       
+			<p:selectOneMenu value="#{clienteBean.clienteDto.usu_id}" styleClass="inputText" filter="true">
+			<f:selectItems value="#{listaValoresBean.listaUsuarios}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}" />
+			</p:selectOneMenu>
+			       
 			</div>	
 			
 				<div class="col-sm-2 col-lg-4">
 				   <div class="labelOut"><h:outputLabel value=""/></div>
 			       <p:commandButton value="Guardar" 
 	   				    update="form"
-	   				    icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
+	   				    icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}" sytleClass="btnGuardar"
 	   				    action="#{clienteBean.guardar}"/>
 	   				    
 		   			<p:commandButton value="Actualizar" 
 		   				    update="form"
-		   				    icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
+		   				    icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}" sytleClass="btnGuardar"
 		   				    action="#{clienteBean.actualizar}"/>	    
 			   </div>
 	   </div>

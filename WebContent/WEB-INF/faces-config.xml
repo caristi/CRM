@@ -77,4 +77,15 @@
 		</navigation-case>
 	</navigation-rule>
 
+<navigation-rule>
+		<description>Proveedor</description>
+		<from-view-id>/vista/proveedor/listadoProveedor.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>actualizarAgregarProveedor</from-outcome>
+			<to-view-id>/vista/proveedor/registroProveedor.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
 </faces-config>

@@ -12,12 +12,23 @@ public class ListaValoresBean implements Serializable {
 
 	private ListaValoresSrv listaValoresSrv;
 	
+
+	
+	
 	public List<ListaValoresDto> getListaProductos() {
 
 		return listaValoresSrv.listaProductos();
 	}
+	
+	public List<ListaValoresDto> getListaUsuarios() {
 
+		return listaValoresSrv.listaUsuarios();
+	}
+	
 	public void setListaValoresSrv(ListaValoresSrv listaValoresSrv) {
 		this.listaValoresSrv = listaValoresSrv;
 	}
+	
+
+	
 }

@@ -14,6 +14,10 @@ public class ListaValoresSrv{
 		return incluirCamposVacio(listaValoresDao.listaProductos());
 	}
 	
+	public List<ListaValoresDto> listaUsuarios(){
+		return incluirCamposVacio(listaValoresDao.listaUsuarios());
+	}
+	
 	private List<ListaValoresDto> incluirCamposVacio(List<ListaValoresDto> lista){
 		
 		List<ListaValoresDto> listaNueva = new ArrayList<ListaValoresDto>();
@@ -27,7 +31,12 @@ public class ListaValoresSrv{
 			listaNueva.add(item);
 		}
 		
+		
 		return listaNueva;
+		
+		
+			
+		
 	}
 	
 	public void setListaValoresDao(ListaValoresDao listaValoresDao) {

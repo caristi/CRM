@@ -159,12 +159,12 @@
 				   <div class="labelOut"><h:outputLabel value=""/></div>
 				       	<p:commandButton value="Guardar" 
 		   				    update="form"
-		   				    icon="ui-icon-plus" rendered="#{!proveedorBean.btnEditar}"
+		   				    icon="ui-icon-plus" rendered="#{!proveedorBean.btnEditar}" sytleClass="btnGuardar"
 		   				    action="#{proveedorBean.guardar}"/>
 		   				    
 		   				<p:commandButton value="Actualizar" 
 		   				    update="form"
-		   				    icon="ui-icon-plus" rendered="#{proveedorBean.btnEditar}"
+		   				    icon="ui-icon-plus" rendered="#{proveedorBean.btnEditar}" styleClass="btnGuardar"
 		   				    action="#{proveedorBean.actualizar}"/>	    
 			   	</div>
 	</article>

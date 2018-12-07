@@ -46,6 +46,10 @@
 			<property name="proveedorSrv" ref="proveedorSrv" />
 		</bean>
 		
+		<bean id="reportesBean" class="com.crm.bean.ReportesBean">
+			<property name="reportesSrv" ref="reportesSrv" />
+		</bean>
+				
 		<!-- Configuracion Servicios -->
 		
 		<bean id="usuarioSrv" class="com.crm.services.UsuarioSrv">
@@ -77,6 +81,10 @@
 			<property name="proveedorDao" ref="proveedorDao" />
 		</bean>
 		
+		<bean id="reportesSrv" class="com.crm.services.ReportesSrv">
+			<property name="reportesDao" ref="reportesDao" />
+		</bean>
+			
 		<!-- Configuracion DAOs -->
 		
 		<bean id="usuarioDao" class="com.crm.dao.UsuarioDao">
@@ -106,5 +114,8 @@
 		<bean id="proveedorDao" class="com.crm.dao.ProveedorDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
-		
+
+		<bean id="reportesDao" class="com.crm.dao.ReportesDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>		
 </beans>

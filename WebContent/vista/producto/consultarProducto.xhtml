@@ -62,10 +62,6 @@
 				   <p:column headerText="">
 					     <img src="/imagenesPro/#{p.rutaArchivo}"  width="80" height="70"/>
 					</p:column>
-				   <p:column headerText="Identificador">
-					   <h:outputText value="#{p.id}"  />
-					</p:column>
-					
 				   <p:column headerText="Referencia">
 					   <h:outputText value="#{p.codigo}" />
 					</p:column>	
@@ -74,8 +70,12 @@
 					   <h:outputText value="#{p.nombre}" />
 					</p:column>	
 					
-					<p:column headerText="Cantidad">
+					<p:column headerText="Cantidad Disponible">
 					   <h:outputText value="#{p.cantidad}"  />
+					</p:column>
+					
+					<p:column headerText="Precio Venta">
+					   <h:outputText value="#{p.vlrVenta}"  />
 					</p:column>
 					
 					<p:column style="text-align: center" headerText="Ver">

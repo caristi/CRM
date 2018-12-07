@@ -18,11 +18,14 @@ public class ClienteBean {
 	private String valor_busqueda;
 	
 	private boolean btnEditar;
+	private boolean mcaEditar;
+	private boolean campoEditable;
 	
 	
 	public ClienteBean() {
 		clienteDto = new ClienteDto();
 		btnEditar = false;
+		campoEditable = false;
 	}
 	
 	public void resetear(){
@@ -30,7 +33,10 @@ public class ClienteBean {
 		
     public void guardar(){
     	clienteSrv.guardarCliente(clienteDto);
+    	mcaEditar = true;
+		campoEditable = false;
     	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cliente Registrado �xitosamente"));
+
     }
     
     public String irVistaRegistroCliente(){
@@ -115,6 +121,22 @@ public class ClienteBean {
 
 	public void setBtnEditar(boolean btnEditar) {
 		this.btnEditar = btnEditar;
+	}
+
+	public boolean isMcaEditar() {
+		return mcaEditar;
+	}
+
+	public void setMcaEditar(boolean mcaEditar) {
+		this.mcaEditar = mcaEditar;
+	}
+
+	public boolean isCampoEditable() {
+		return campoEditable;
+	}
+
+	public void setCampoEditable(boolean campoEditable) {
+		this.campoEditable = campoEditable;
 	}
 
 

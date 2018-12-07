@@ -28,38 +28,34 @@
 					</div>
 				</div>
 				
-				<div class="row">
-					<div class="col-sm-2 col-lg-2">
+			<div class="row">
+				<div class="col-sm-2 col-lg-4">
 						<div class="labelOut">
 						   <h:outputLabel value="Fecha inicio" />
+						   <br/>
+					 	   <p:calendar id="fecInicio" value="#{compraBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" mask="true"/>
+	               		   <p:watermark for="fecInicio" value="dd/mm/aaaa"/>	
 						</div>
 				</div>	
-					
-				<div class="col-sm-2 col-lg-2">
+									
+				<div class="col-sm-2 col-lg-4">
 					<div class="labelOut">
 				 	   <h:outputLabel value="Fecha fin" />
+				 	   <br/>
+						<p:calendar id="fecFin" value="#{compraBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true"/>
+						<p:watermark for="fecFin" value="dd/mm/aaaa"/>	
 					</div>
 				</div>		
 				
-				</div>
-			
-				<div class="row">
-					<div class="col_sm-1 col_lg_3">
-						<p:calendar id="fecInicio" value="#{compraBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" 
-						             mask="true"/>
- 				   	     <p:watermark for="fecInicio" value="dd/mm/aaaa"/>	
-					
-						<p:calendar id="fecFin" value="#{compraBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true"/>
-						<p:watermark for="fecFin" value="dd/mm/aaaa"/>	
-					
+				<div class="col-sm-2 col-lg-4">
+				<br/>				
 						<p:commandButton value="Buscar" action="#{compraBean.consultarCompra}" 
 						                 update="@form" icon="ui-icon-search" styleClass="btnBuscar" />
 					
 						<p:commandButton value="Nueva compra" action="#{compraBean.nuevoCompra}" 
 						                 update="@form" icon="ui-icon-plusthick" styleClass="btnGuardar" />
-					</div>
 				</div>
-				
+			</div>
 				<p:separator/>
 				
 				 <p:dataTable id="tbl" value="#{compraBean.listaCompras}" var="p" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"  reflow="true"

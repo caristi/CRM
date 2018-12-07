@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
@@ -14,7 +13,6 @@ import com.crm.services.CompraSrv;
 public class CompraBean {
 
 	private CompraSrv compraSrv;
-
 	private CompraDto compraDto;
 	private CompraDto compraSelecDto;
 	private FiltroBusquedaDto filtro;
