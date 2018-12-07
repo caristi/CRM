@@ -136,5 +136,5 @@ public class ClienteBean {
 
 	public void setCampoEditable(boolean campoEditable) {
 		this.campoEditable = campoEditable;
-	}	
+	}
 }
