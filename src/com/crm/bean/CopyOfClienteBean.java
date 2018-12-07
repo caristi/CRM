@@ -5,7 +5,8 @@ import javax.faces.context.FacesContext;
 import com.crm.dto.ClienteDto;
 import com.crm.services.ClienteSrv;
 
-public class ClienteBean {
+
+public class CopyOfClienteBean {
 
 	private ClienteDto clienteDto;
 	private ClienteSrv clienteSrv;
@@ -21,7 +22,7 @@ public class ClienteBean {
 	private boolean campoEditable;
 	
 	
-	public ClienteBean() {
+	public CopyOfClienteBean() {
 		clienteDto = new ClienteDto();
 		btnEditar = false;
 		campoEditable = false;
@@ -136,5 +137,8 @@ public class ClienteBean {
 
 	public void setCampoEditable(boolean campoEditable) {
 		this.campoEditable = campoEditable;
-	}	
+	}
+
+
+	
 }
