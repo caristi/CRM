@@ -3,3 +3,5 @@ build/
 WebContent/WEB-INF/properties/database.properties
 .classpath
 .classpath
+.classpath
+.settings/org.eclipse.wst.common.project.facet.core.xml

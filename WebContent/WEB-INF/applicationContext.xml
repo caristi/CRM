@@ -49,7 +49,11 @@
 		<bean id="reportesBean" class="com.crm.bean.ReportesBean">
 			<property name="reportesSrv" ref="reportesSrv" />
 		</bean>
-				
+		
+		<bean id="cotizacionBean" class="com.crm.bean.CotizacionBean">
+			<property name="cotizacionSrv" ref="cotizacionSrv" />
+		</bean>
+		
 		<!-- Configuracion Servicios -->
 		
 		<bean id="usuarioSrv" class="com.crm.services.UsuarioSrv">
@@ -83,6 +87,11 @@
 		
 		<bean id="reportesSrv" class="com.crm.services.ReportesSrv">
 			<property name="reportesDao" ref="reportesDao" />
+		</bean>
+		
+		<bean id="cotizacionSrv" class="com.crm.services.CotizacionSrv">
+			<property name="productoSrv" ref="productoSrv" />
+			<property name="cotizacionDao" ref="cotizacionDao" />
 		</bean>
 			
 		<!-- Configuracion DAOs -->
@@ -118,4 +127,8 @@
 		<bean id="reportesDao" class="com.crm.dao.ReportesDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>		
+		
+		<bean id="cotizacionDao" class="com.crm.dao.CotizacionDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
 </beans>
