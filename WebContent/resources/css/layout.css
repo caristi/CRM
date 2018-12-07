@@ -1,4 +1,4 @@
-.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+	.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
     padding: 4px 10px;
     overflow: hidden;
     border-width: 1px;
@@ -104,4 +104,11 @@ border-collapse:collapse;
 
 .ui-state-default .ui-icon {
     background-image: url(../images/ui-icons_ffffff_256x240.png);
+}
+
+.labelFooter{
+  text-align: right !important;
+  background: white;
+  font-size: 12px !important;
+  font-weight: bold;	
 }
