@@ -1,7 +1,9 @@
 package com.crm.bean;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
 import com.crm.dto.ClienteDto;
 import com.crm.services.ClienteSrv;
 
@@ -12,17 +14,17 @@ public class ClienteBean {
 	private ClienteSrv clienteSrv;
 	private List<ClienteDto> listaClientes;
 	private ClienteDto selectClienteDto;
-		
-	
+
 	private String opcion_busqueda;
 	private String valor_busqueda;
 	
 	private boolean btnEditar;
-	
+	private boolean origenCotizacion;
 	
 	public ClienteBean() {
 		clienteDto = new ClienteDto();
 		btnEditar = false;
+		origenCotizacion = false;
 	}
 	
 	public void resetear(){
@@ -41,6 +43,27 @@ public class ClienteBean {
     public void actualizar(){
     	clienteSrv.actualizarCliente(clienteDto);
     	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cliente Actualizado �xitosamente"));
+    }
+    
+    public void guardarDesdeCotizacion(){
+    	
+    	clienteSrv.guardarCliente(clienteDto);
+    	FacesContext contextBean = FacesContext.getCurrentInstance();
+        CotizacionBean cotizacionBean = (CotizacionBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "cotizacionBean");
+        cotizacionBean.guardadoInformacionCliente();
+    }
+    
+    public void actualizarDesdeCotizacion(){
+    	clienteSrv.actualizarCliente(clienteDto);
+    	FacesContext contextBean = FacesContext.getCurrentInstance();
+        CotizacionBean cotizacionBean = (CotizacionBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "cotizacionBean");
+        cotizacionBean.guardadoInformacionCliente();
+    }
+    
+    public void cerrarVentanaCotizacion(){
+    	FacesContext contextBean = FacesContext.getCurrentInstance();
+        CotizacionBean cotizacionBean = (CotizacionBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "cotizacionBean");
+        cotizacionBean.cerrarVentaCliente();
     }
     
 	public void consultaClientes(){
@@ -117,6 +140,11 @@ public class ClienteBean {
 		this.btnEditar = btnEditar;
 	}
 
+	public boolean isOrigenCotizacion() {
+		return origenCotizacion;
+	}
 
-	
+	public void setOrigenCotizacion(boolean origenCotizacion) {
+		this.origenCotizacion = origenCotizacion;
+	}
 }
