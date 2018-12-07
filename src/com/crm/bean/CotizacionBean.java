@@ -3,6 +3,7 @@ package com.crm.bean;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
@@ -25,11 +26,14 @@ public class CotizacionBean {
 	private List<CotizacionCabeceraDto> listaCotizacionDto;
 	private List<ProductoDto> listaProductos;
 	
+	private boolean modificaCliente;
+	
 	public CotizacionBean() {
 		
 		cotizacionDto = new CotizacionCabeceraDto();
 		cotizacionDto.setFecha(new Date());
 		filtro = new FiltroBusquedaDto();
+		modificaCliente = false;
 	}
 	
 	public void buscarCliente(){
@@ -38,14 +42,47 @@ public class CotizacionBean {
 		
 		if(clienteDto.getCli_num_docum() != null && !clienteDto.getCli_num_docum().isEmpty()){
 			cotizacionDto.setClienteDto(clienteDto);
+			modificaCliente = true;
 		}else{
+			
+			modificaCliente = false;
 			
 			FacesContext contextBean = FacesContext.getCurrentInstance();
             ClienteBean clienteBean = (ClienteBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "clienteBean");
+            clienteBean.setOrigenCotizacion(true);
+            clienteBean.setBtnEditar(false);
         	
 			RequestContext context = RequestContext.getCurrentInstance();
 			context.execute("PF('dlgCliente').show();"); 
 		}
+	}
+	
+	public void guardadoInformacionCliente(){
+		
+		RequestContext context = RequestContext.getCurrentInstance();
+		context.execute("PF('dlgCliente').hide();");
+		modificaCliente = true;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cliente guardado éxitosamente"));
+	}
+	
+	public void cerrarVentaCliente(){
+		
+		RequestContext context = RequestContext.getCurrentInstance();
+		context.execute("PF('dlgCliente').hide();");
+	}
+	
+	public void modificarCliente(){
+		
+		FacesContext contextBean = FacesContext.getCurrentInstance();
+        ClienteBean clienteBean = (ClienteBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "clienteBean");
+        clienteBean.setOrigenCotizacion(true);
+        clienteBean.setBtnEditar(true);
+        clienteBean.setClienteDto(cotizacionDto.getClienteDto());
+        
+        modificaCliente = true;
+        
+		RequestContext context = RequestContext.getCurrentInstance();
+		context.execute("PF('dlgCliente').show();"); 
 	}
 	
 	public List<ProductoDto> completeProductos(String query) {
@@ -118,5 +155,9 @@ public class CotizacionBean {
 
 	public void setListaProductos(List<ProductoDto> listaProductos) {
 		this.listaProductos = listaProductos;
+	}
+
+	public boolean isModificaCliente() {
+		return modificaCliente;
 	}
 }

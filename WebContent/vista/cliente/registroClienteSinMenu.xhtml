@@ -130,9 +130,6 @@
 			       <h:inputText id="cli_tel_contacto" value="#{clienteBean.clienteDto.cli_tel_contacto}"/>			
 			</div>	
 	   </div>
-
-	   		
-         
        
       <div class="row">
 			<div class="col-sm-2 col-lg-4">
@@ -145,17 +142,30 @@
 			       <div class="labelOut"><h:inputText id="usu_id" value="#{clienteBean.clienteDto.usu_id}"/></div>
 			</div>	
 			
+			<h:panelGroup rendered="#{!clienteBean.origenCotizacion}">
 				<div class="col-sm-2 col-lg-4">
 				   <div class="labelOut"><h:outputLabel value=""/></div>
-			       <p:commandButton value="Guardar" 
-	   				    update="form"
-	   				    icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
-	   				    action="#{clienteBean.guardar}"/>
+			       <p:commandButton value="Guardar" update="form" icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
+	  								action="#{clienteBean.guardar}"/>
 	   				    
-		   			<p:commandButton value="Actualizar" 
-		   				    update="form"
-		   				    icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
-		   				    action="#{clienteBean.actualizar}"/>	    
+		   			<p:commandButton value="Actualizar" update="form" icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
+		   				             action="#{clienteBean.actualizar}"/>
 			   </div>
+		   </h:panelGroup>
+		   
+			<h:panelGroup rendered="#{clienteBean.origenCotizacion}">
+				<div class="col-sm-2 col-lg-4">
+				   <div class="labelOut"><h:outputLabel value=""/></div>
+			       <p:commandButton value="Guardar" update="form" icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
+	  								action="#{clienteBean.guardarDesdeCotizacion}"/>
+	   				    
+		   			<p:commandButton value="Actualizar" update="form" icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
+		   				             action="#{clienteBean.actualizarDesdeCotizacion}"/>
+		   				             
+					<p:commandButton value="Cerrar" update="form" icon="ui-icon-plus"
+		   				             action="#{clienteBean.cerrarVentanaCotizacion}"/>		   				             
+			   </div>
+		   </h:panelGroup>
+		   
 	   </div>
 </ui:composition>

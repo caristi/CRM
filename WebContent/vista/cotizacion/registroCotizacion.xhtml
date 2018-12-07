@@ -27,32 +27,35 @@
 						<p:messages showDetail="true" autoUpdate="true" closable="true" />
 					</div>
 				</div>
-
+				<h:panelGroup id="pnlCliente">
 				<div class="row">
 				 	<div class="col-sm-4">
 						<div class="labelOut">
 						  <h:outputLabel value="Número documento" />
 						</div>
 						<p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText">
-						  <f:ajax event="blur" listener="#{cotizacionBean.buscarCliente}"/>
+						  <f:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" render="pnlCliente"/>
 						</p:inputText>
+						
+						<p:commandButton id="btnModificaCLiente" value="Modificar" action="#{cotizacionBean.modificarCliente}" icon="ui-icon-person" styleClass="btnGuardar" 
+						                 rendered="#{cotizacionBean.modificaCliente}"/>
 					</div>
 					
 					<div class="col-sm-8">
 						<div class="labelOut">
 						  <h:outputLabel value="Nombres" />
 						</div>
-						<p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_nombre} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido1} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido2}" 
-									 styleClass="inputText" style="width:50%"  />
+						<p:inputText id="nombresCliente" value="#{cotizacionBean.cotizacionDto.clienteDto.cli_nombre} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido1} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido2}" 
+									 styleClass="inputText" style="width:50%" disabled="true"/>
 					</div>
 				</div>
-
+				</h:panelGroup>
 				<div class="row">	
 					<div class="col-sm-2">
 						<div class="labelOut">
 						   <h:outputLabel value="Número Cotizacion"/>
 						</div>
-						<p:inputText  value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText"/>
+						<p:inputText value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText"/>
 					</div>
 					
 					<div class="col-sm-3">
@@ -81,6 +84,9 @@
 					            <p:cellEditor>
 					                <f:facet name="output">
 					                  	<h:outputText value="#{det.productoDto.nombre}" />
+					                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+					                  	<h:outputText value="$#{det.productoDto.vlrCosto}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
+					                  	
 					                </f:facet>
 					                <f:facet name="input">
        			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="3" forceSelection="true"
