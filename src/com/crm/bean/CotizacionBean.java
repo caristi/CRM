@@ -30,10 +30,7 @@ public class CotizacionBean {
 	
 	public CotizacionBean() {
 		
-		cotizacionDto = new CotizacionCabeceraDto();
-		cotizacionDto.setFecha(new Date());
 		filtro = new FiltroBusquedaDto();
-		modificaCliente = false;
 	}
 	
 	public void buscarCliente(){
@@ -85,6 +82,10 @@ public class CotizacionBean {
 		context.execute("PF('dlgCliente').show();"); 
 	}
 	
+	public void limpiarDatosCliente() {
+		cotizacionDto.setClienteDto(new ClienteDto());
+	}
+	
 	public List<ProductoDto> completeProductos(String query) {
 		listaProductos = cotizacionSrv.completeProductos(query);
 		
@@ -114,6 +115,9 @@ public class CotizacionBean {
 	public String nuevaCotizacion(){
 		
 		cotizacionDto = new CotizacionCabeceraDto();
+		cotizacionDto.setFecha(new Date());
+		
+		modificaCliente = false;
 		
 		return "cotizacion";
 	}

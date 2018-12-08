@@ -91,6 +91,7 @@
 		
 		<bean id="cotizacionSrv" class="com.crm.services.CotizacionSrv">
 			<property name="productoSrv" ref="productoSrv" />
+			<property name="clienteSrv" ref="clienteSrv" />
 			<property name="cotizacionDao" ref="cotizacionDao" />
 		</bean>
 			

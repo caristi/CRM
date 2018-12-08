@@ -5,3 +5,9 @@ WebContent/WEB-INF/properties/database.properties
 .classpath
 .classpath
 .settings/org.eclipse.wst.common.project.facet.core.xml
+WebContent/vista/.DS_Store
+src/.DS_Store
+WebContent/.DS_Store
+WebContent/resources/.DS_Store
+WebContent/vista/.DS_Store
+WebContent/WEB-INF/properties/database.properties

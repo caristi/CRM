@@ -112,3 +112,12 @@ border-collapse:collapse;
   font-size: 12px !important;
   font-weight: bold;	
 }
+
+.widthFull{
+ width:100%;
+}
+
+.inputDisable{
+ opacity: .9 !important;
+ background-color: #f5f5f5 !important;
+}

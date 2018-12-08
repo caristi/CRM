@@ -23,60 +23,80 @@
 				<p class="lineForm" />
 				
 				<div class="row">
-					<div class="col-sm-12">
+					<div class="col-sm-10 col-lg-10">
 						<p:messages showDetail="true" autoUpdate="true" closable="true" />
 					</div>
 				</div>
-				<h:panelGroup id="pnlCliente">
-				<div class="row">
-				 	<div class="col-sm-4">
-						<div class="labelOut">
-						  <h:outputLabel value="Número documento" />
-						</div>
-						<p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText">
-						  <f:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" render="pnlCliente"/>
-						</p:inputText>
-						
-						<p:commandButton id="btnModificaCLiente" value="Modificar" action="#{cotizacionBean.modificarCliente}" icon="ui-icon-person" styleClass="btnGuardar" 
-						                 rendered="#{cotizacionBean.modificaCliente}"/>
-					</div>
-					
-					<div class="col-sm-8">
-						<div class="labelOut">
-						  <h:outputLabel value="Nombres" />
-						</div>
-						<p:inputText id="nombresCliente" value="#{cotizacionBean.cotizacionDto.clienteDto.cli_nombre} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido1} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido2}" 
-									 styleClass="inputText" style="width:50%" disabled="true"/>
-					</div>
-				</div>
-				</h:panelGroup>
-				<div class="row">	
-					<div class="col-sm-2">
-						<div class="labelOut">
-						   <h:outputLabel value="Número Cotizacion"/>
-						</div>
-						<p:inputText value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText"/>
-					</div>
-					
-					<div class="col-sm-3">
-					   <div class="labelOut">
-						   <h:outputLabel value="Fecha Registro" />
-						</div>
-				   	    <p:calendar value="#{cotizacionBean.cotizacionDto.fecha}" showOn="button" disabled="true" pattern="dd/MM/yyyy" />
-					 </div>	
-				</div>
 				
 				<div class="row">
-				   <div class="col-sm-12 col-lg-12">
+				 <div class="col-sm-10 col-lg-10">
+					 <p:panelGrid id="pnlCliente">
+						<f:facet name="header">
+						  <p:row>
+						    <p:column colspan="6">Detalle Cotizacion</p:column>
+						  </p:row>
+						</f:facet>
+						<p:row>
+						  <p:column><h:outputLabel value="Fecha Registro" /></p:column>
+						  <p:column>
+						    <p:calendar value="#{cotizacionBean.cotizacionDto.fecha}" disabled="true" styleClass="inputDisable" pattern="dd/MM/yyyy" />
+						  </p:column>
+						  
+						  <p:column colspan="2"><h:outputLabel value="Número Cotizacion"/></p:column>
+						  <p:column colspan="2">
+						    <p:inputText value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText widthFull"/>
+						  </p:column>
+						</p:row>
+						
+						<p:row>
+						  <p:column> <h:outputLabel value="Número documento" /></p:column>
+						  <p:column>
+							    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText">
+								  <f:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" render="pnlCliente"/>
+								</p:inputText>
+								<p:commandButton action="#{cotizacionBean.modificarCliente}" icon="ui-icon-search" styleClass="btnActualizar" 
+							                 rendered="#{cotizacionBean.modificaCliente}"/>
+							                 
+							    <p:commandButton action="#{cotizacionBean.limpiarDatosCliente}" icon="ui-icon-trash" styleClass="btnBuscar" 
+							                 rendered="#{cotizacionBean.modificaCliente}"/>             
+						  </p:column>
+						  <p:column><h:outputLabel value="Nombres" /></p:column>
+						  <p:column colspan="3">
+						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_nombre} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido1} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido2}" 
+										 styleClass="inputText widthFull inputDisable" disabled="true"/>
+						  </p:column>
+						</p:row>
+						
+						<p:row>
+						  <p:column><h:outputLabel value="Dirección"/></p:column>
+						  <p:column>
+						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_direccion}" styleClass="inputText widthFull inputDisable" disabled="true"/>
+						  </p:column>
+						  
+						  <p:column><h:outputLabel value="Telefono"/></p:column>
+						  <p:column>
+						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_telefono}" styleClass="inputText inputDisable" disabled="true"/>
+						  </p:column>
+						  
+						  <p:column><h:outputLabel value="Celular"/></p:column>
+						  <p:column>
+						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_celular}" styleClass="inputText inputDisable" disabled="true"/>
+						  </p:column>
+						</p:row>
+					 </p:panelGrid>				 
+				 </div>
+				</div>
+				<div class="row">
+				   <div class="col-sm-10 col-lg-10">
 				      <p:dataTable id="tablDetall" widgetVar="tablDetall" var="det" value="#{cotizacionBean.cotizacionDto.listaDetalles}" 
 				                   editable="true" editMode="cell" reflow="true">
 					        
 					        <f:facet name="header">
-					            Detalle factura
+					            Detalle Cotizacion
 					        </f:facet>
 					 		
 					      	<p:column style="width:5%">
-					             <p:commandButton immediate="true" update="@form" styleClass="btnGuardar"
+					             <p:commandButton immediate="true" update="@form" styleClass="btnBuscar"
 												  action="#{cotizacionBean.eliminarRegistroTabla(det)}" icon="ui-icon-trash" title="Eliminar"/>
 					        </p:column>  
 					      
@@ -86,7 +106,9 @@
 					                  	<h:outputText value="#{det.productoDto.nombre}" />
 					                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
 					                  	<h:outputText value="$#{det.productoDto.vlrCosto}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
-					                  	
+					                  	<h:panelGroup rendered="#{not empty det.productoDto.nombre}">
+					                  	  <img src="/imagenesPro/#{det.productoDto.rutaArchivo}"  width="80" height="70"/>
+					                  	</h:panelGroup>
 					                </f:facet>
 					                <f:facet name="input">
        			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="3" forceSelection="true"
@@ -207,11 +229,11 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-9 col-lg-9">
+					<div class="col-sm-10 col-lg-10">
 						<div class="labelOut">
-						   <h:outputLabel value="Descripcion" />
+						   <h:outputLabel value="Observacion" />
 						</div>
-						<h:inputTextarea value="#{cotizacionBean.cotizacionDto.observacion}" styleClass="inputText" style="width:90%"/>
+						<h:inputTextarea value="#{cotizacionBean.cotizacionDto.observacion}" styleClass="inputText" style="width:100%"/>
 					</div>	
 				</div>
 

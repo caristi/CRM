@@ -45,15 +45,20 @@
 						<p:calendar id="fecFin" value="#{cotizacionBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true" />
 						<p:watermark for="fecFin" value="dd/mm/aaaa" />
 					</div>
-				</div>
-
-				<div class="row">
-					<div class="col_sm-2 col-lg-2">
+					
+					<div class="col_sm-1 col-lg-1">
+						<div class="labelOut">
+						 <h:outputLabel/>
+						</div>
 						<p:commandButton value="Buscar" action="#{cotizacionBean.buscarCotizacion}" update="@form"
 										  icon="ui-icon-search" styleClass="btnBuscar" />
 					</div>
 					
 					<div class="col_sm-2 col-lg-2">
+						<div class="labelOut">
+						 <h:outputLabel/>
+						</div>
+					
 						<p:commandButton value="Nueva Cotizacion" action="#{cotizacionBean.nuevaCotizacion}" update="@form"
 										 icon="ui-icon-plusthick" styleClass="btnGuardar" />
 					</div>
