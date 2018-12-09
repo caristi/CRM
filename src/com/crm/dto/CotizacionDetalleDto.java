@@ -43,10 +43,6 @@ public class CotizacionDetalleDto implements java.io.Serializable  {
 	@JoinColumn(name="pro_id")
 	private ProductoDto productoDto;
 	
-	@ManyToOne
-	@JoinColumn(name="cot_id")
-	private CotizacionCabeceraDto cotizacionDto;
-	
 	@Transient
 	private boolean infoCompleta;
 	

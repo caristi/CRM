@@ -2,6 +2,7 @@ package com.crm.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -121,7 +122,11 @@ public class CotizacionSrv{
 	
 	public int guardarCotizacion(CotizacionCabeceraDto cotizacionDto){
 
-		int id = cotizacionDao.guardarCotizacion(cotizacionDto);
+		int id;
+		
+		cotizacionDto.setListaDetalles(cotizacionDto.getListaDetalles().stream().filter(det -> det.getVlrSubTotal() > 0).collect(Collectors.toList()));
+		
+		id = cotizacionDao.guardarCotizacion(cotizacionDto);
 
 		return id;
 	}

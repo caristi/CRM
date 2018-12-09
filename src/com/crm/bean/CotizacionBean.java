@@ -13,6 +13,7 @@ import com.crm.dto.CotizacionCabeceraDto;
 import com.crm.dto.CotizacionDetalleDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
+import com.crm.dto.UsuarioDto;
 import com.crm.services.CotizacionSrv;
 
 public class CotizacionBean {
@@ -21,6 +22,7 @@ public class CotizacionBean {
 	
 	private CotizacionCabeceraDto cotizacionDto;
 	private CotizacionCabeceraDto cotizacionSelecDto;
+	private UsuarioDto usuarioLogueado;
 	private FiltroBusquedaDto filtro;
 	
 	private List<CotizacionCabeceraDto> listaCotizacionDto;
@@ -104,12 +106,25 @@ public class CotizacionBean {
     }
     
 	public void guardarCotizacion(){
-		cotizacionSrv.guardarCotizacion(cotizacionDto);
+		
+		obtenerUsuario();
+
+		cotizacionDto.setUsuarioDto(new UsuarioDto());
+		cotizacionDto.getUsuarioDto().setUsu_id(usuarioLogueado.getUsu_id());
+		int id = cotizacionSrv.guardarCotizacion(cotizacionDto);
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cotización guardada éxitosamente con código " + id ));
 	}
 	
 	public void buscarCotizacion(){
 		
 		listaCotizacionDto = cotizacionSrv.buscarCotizacion(filtro);
+	}
+	
+	public void obtenerUsuario() {
+		FacesContext contextBean = FacesContext.getCurrentInstance();
+		LoginBean loginBean = (LoginBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "loginBean");
+		usuarioLogueado = loginBean.getUsuario();
 	}
 	
 	public String nuevaCotizacion(){

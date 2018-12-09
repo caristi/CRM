@@ -28,25 +28,25 @@ public class UsuarioSrv{
 		return usuarioDao.filtroUsuarios(opcion_busqueda, valor_busqueda);
 	}
 	
-public UsuarioDto consultarUsuario(UsuarioDto usuario){
-		
+	public UsuarioDto consultarUsuario(UsuarioDto usuario){
+
 		String login = usuario.getUsu_login();
 		String contrasena = usuario.getUsu_contrasena();
-		
+
 		usuario =  usuarioDao.consultarUsuario(usuario);
-		
+
 		usuario.setAcceso(true);
-		
+
 		if(!login.toUpperCase().equals(usuario.getUsu_login())){
-			
+
 			usuario.setAcceso(false);
 			usuario.setMensajeAcceso("El login no existe en el sistema.");
-			
+
 		}else if(!contrasena.equals(usuario.getUsu_contrasena())){
 			usuario.setAcceso(false);
-			usuario.setMensajeAcceso("La contraseña es incorrecta.");			
+			usuario.setMensajeAcceso("La contraseï¿½a es incorrecta.");			
 		}
-		
+
 		return usuario;
 	}
 	
