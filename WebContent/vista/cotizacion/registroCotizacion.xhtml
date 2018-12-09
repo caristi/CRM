@@ -47,18 +47,17 @@
 						    <p:inputText value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText widthFull"/>
 						  </p:column>
 						</p:row>
-						
 						<p:row>
 						  <p:column> <h:outputLabel value="Número documento" /></p:column>
 						  <p:column>
 							    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText">
-								  <f:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" render="pnlCliente"/>
+								  <p:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" update="@form" process="@form" />
 								</p:inputText>
 								<p:commandButton action="#{cotizacionBean.modificarCliente}" icon="ui-icon-search" styleClass="btnActualizar" 
-							                 rendered="#{cotizacionBean.modificaCliente}"/>
+							                     disabled="#{cotizacionBean.modificaCliente}"/>
 							                 
 							    <p:commandButton action="#{cotizacionBean.limpiarDatosCliente}" icon="ui-icon-trash" styleClass="btnBuscar" 
-							                 rendered="#{cotizacionBean.modificaCliente}"/>             
+							                     disabled ="#{cotizacionBean.modificaCliente}"/>             
 						  </p:column>
 						  <p:column><h:outputLabel value="Nombres" /></p:column>
 						  <p:column colspan="3">
@@ -83,7 +82,7 @@
 						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_celular}" styleClass="inputText inputDisable" disabled="true"/>
 						  </p:column>
 						</p:row>
-					 </p:panelGrid>				 
+					</p:panelGrid>
 				 </div>
 				</div>
 				<div class="row">
@@ -96,7 +95,7 @@
 					        </f:facet>
 					 		
 					      	<p:column style="width:5%">
-					             <p:commandButton immediate="true" update="@form" styleClass="btnBuscar"
+					             <p:commandButton immediate="true" update="tablDetall" styleClass="btnBuscar"
 												  action="#{cotizacionBean.eliminarRegistroTabla(det)}" icon="ui-icon-trash" title="Eliminar"/>
 					        </p:column>  
 					      
@@ -111,12 +110,12 @@
 					                  	</h:panelGroup>
 					                </f:facet>
 					                <f:facet name="input">
-       			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="3" forceSelection="true"
-								                        var="producto" itemLabel="#{producto.nombre}" itemValue="#{producto}" converter="productoConverter" style="width:100%">
+       			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="2" forceSelection="true" 
+       			 					                    var="producto" itemLabel="#{producto.nombre}" itemValue="#{producto}" converter="productoConverter" style="width:100%">
 								            <p:column>
 								                <h:outputText value="#{producto.nombre}"/>
 								            </p:column>
-								            <f:ajax event="itemSelect" render="@form" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
+								            <f:ajax event="itemSelect" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
 								        </p:autoComplete>
 									 </f:facet>
 					            </p:cellEditor>
@@ -129,7 +128,7 @@
 					                </f:facet>
 					                <f:facet name="input">
 					                  <p:inputText value="#{det.cantidad}">
-					                    <f:ajax event="blur" render="@form" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
+					                    <f:ajax event="blur" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
 					                  </p:inputText>
 					                </f:facet>
 					            </p:cellEditor>
@@ -158,7 +157,7 @@
 					                <f:facet name="input">
 					                  <p:inputNumber value="#{det.pctDescuento}" styleClass="inputText" minValue="0" maxValue="100"
 						               				 decimalSeparator="," thousandSeparator="." decimalPlaces="2"  symbol="%">
-						               	 <f:ajax event="blur" render="@form" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>			  
+						               	 <f:ajax event="blur" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>			  
 						              </p:inputNumber> 				 
 					                  
 					                </f:facet>
@@ -246,13 +245,12 @@
 					</div>
 				</div>
 				
-				<p:dialog header="Registro Cliente" widgetVar="dlgCliente" resizable="true" draggable="false" responsive="true" >
+				<p:dialog header="Registro Cliente" id="dlgCliente" widgetVar="dlgCliente" resizable="true" draggable="false" responsive="true" >
 		           
 		            <ui:include src="../cliente/registroClienteSinMenu.xhtml" />	     
 		                   
 		        </p:dialog>
  
-
 			</article>
 		</h:form>
 	</ui:define>
