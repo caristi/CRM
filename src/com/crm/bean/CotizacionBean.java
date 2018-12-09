@@ -50,7 +50,7 @@ public class CotizacionBean {
             ClienteBean clienteBean = (ClienteBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "clienteBean");
             clienteBean.setOrigenCotizacion(true);
             clienteBean.setBtnEditar(false);
-        	
+        	 
 			RequestContext context = RequestContext.getCurrentInstance();
 			context.execute("PF('dlgCliente').show();"); 
 		}
