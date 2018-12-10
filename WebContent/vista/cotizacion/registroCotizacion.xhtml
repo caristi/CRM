@@ -104,7 +104,7 @@
 					                <f:facet name="output">
 					                  	<h:outputText value="#{det.productoDto.nombre}" />
 					                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
-					                  	<h:outputText value="$#{det.productoDto.vlrCosto}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
+					                  	<h:outputText value="$#{det.productoDto.pro_vlr_venta}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
 					                  	<h:panelGroup rendered="#{not empty det.productoDto.nombre}">
 					                  	  <img src="/imagenesPro/#{det.productoDto.rutaArchivo}"  width="80" height="70"/>
 					                  	</h:panelGroup>

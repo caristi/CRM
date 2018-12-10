@@ -57,7 +57,7 @@ public class CotizacionSrv{
 			detalleDto.setVlrProducto(detalleDto.getProductoDto().getVlrVenta() * detalleDto.getCantidad());
 			
 			if(detalleDto.getPctDescuento() > 0){
-				detalleDto.setVlrDescuento(detalleDto.getVlrProducto() * (detalleDto.getPctDescuento() / 100) + 1 );
+				detalleDto.setVlrDescuento(detalleDto.getVlrProducto() * (detalleDto.getPctDescuento() / 100));
 			}else{
 				detalleDto.setVlrDescuento(0);
 			}
