@@ -87,8 +87,8 @@ public List<ReportesDto> ventasProductos(Date fecha_inicio, Date fecha_fin) {
 
 		sesion = sessionFactory.getCurrentSession();
 		
-		List<Object[]> rows = sesion.createSQLQuery	("SELECT cd.pro_id, p.pro_nombre, sum(cd.cotd_cantidad) from cotizacion_detalle cd, cotizacion c, producto p "
-													+ "where cd.cotd_id = c.cot_id and p.pro_id = cd.pro_id and c.coti_fecha "
+		List<Object[]> rows = sesion.createSQLQuery	("SELECT vd.pro_id, p.pro_nombre, sum(vd.vend_cantidad) from venta_detalle vd, venta_cabecera v, producto p "
+													+ "where vd.vend_id = v.ven_id and p.pro_id = vd.pro_id and v.ven_fecha "
 													+ "BETWEEN :fecha_inicio AND :fecha_fin group by pro_id")
 													.setParameter("fecha_inicio", fecha_inicio)
 													.setParameter("fecha_fin", fecha_fin).list();
