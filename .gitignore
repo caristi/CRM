@@ -11,3 +11,5 @@ WebContent/.DS_Store
 WebContent/resources/.DS_Store
 WebContent/vista/.DS_Store
 WebContent/WEB-INF/properties/database.properties
+.classpath
+WebContent/WEB-INF/properties/database.properties
