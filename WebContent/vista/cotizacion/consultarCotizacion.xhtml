@@ -71,7 +71,7 @@
 							 reflow="true" emptyMessage="No se encuentran registros">
 
 					<p:column headerText="Número">
-						<h:outputText value="#{p.numCotizacion}" />
+						<h:outputText value="#{p.id}" />
 					</p:column>
 
 					<p:column headerText="Fecha Cotizacion">
@@ -87,14 +87,13 @@
 						</h:outputText>
 					</p:column>
 
-					<p:column style="text-align: center">
+					<p:column headerText="Ver" style="text-align: center">
 						<p:commandButton icon="ui-icon-pencil" title="Vista" update="@form" styleClass="btnActualizar"
 										 action="#{cotizacionBean.consultarUnaCotizacion}">
-							<f:setPropertyActionListener value="#{p}"
-								target="#{cotizacionBean.cotizacionSelecDto}" />
+							<f:setPropertyActionListener value="#{p}" target="#{cotizacionBean.cotizacionSelecDto}" />
 						</p:commandButton>
 					</p:column>
-
+					
 				</p:dataTable>
 
 			</article>

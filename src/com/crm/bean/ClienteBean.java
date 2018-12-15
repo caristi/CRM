@@ -37,10 +37,12 @@ public class ClienteBean {
     
     public String irVistaRegistroCliente(){
     	btnEditar = false;
+    	origenCotizacion = false;
     	return "actualizarAgregarCliente";
     }
     
     public void actualizar(){
+    	origenCotizacion = false;
     	clienteSrv.actualizarCliente(clienteDto);
     	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cliente Actualizado �xitosamente"));
     }
@@ -50,6 +52,7 @@ public class ClienteBean {
     	clienteSrv.guardarCliente(clienteDto);
     	FacesContext contextBean = FacesContext.getCurrentInstance();
         CotizacionBean cotizacionBean = (CotizacionBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "cotizacionBean");
+        cotizacionBean.getCotizacionDto().setClienteDto(clienteDto);
         cotizacionBean.guardadoInformacionCliente();
     }
     
@@ -60,7 +63,7 @@ public class ClienteBean {
         cotizacionBean.guardadoInformacionCliente();
     }
     
-    public void cerrarVentana(){
+    public void cerrarVentanaCotizacion(){
     	FacesContext contextBean = FacesContext.getCurrentInstance();
         CotizacionBean cotizacionBean = (CotizacionBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "cotizacionBean");
         cotizacionBean.cerrarVentaCliente();

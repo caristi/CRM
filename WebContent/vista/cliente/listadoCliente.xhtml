@@ -26,20 +26,20 @@
 					</div>
 			</div>	
 			<div class="row">
-				<div class="col-sm-1 col-lg-4">
-					<h:selectOneMenu id="opcion_busqueda" value="#{clienteBean.opcion_busqueda}">
-				            <f:selectItem itemLabel="DOCUMENTO" itemValue="D"/>
-				            <f:selectItem itemLabel="NOMBRE" itemValue="N"/>
-				            <f:selectItem itemLabel="CIUDAD" itemValue="C"/>
-		        	</h:selectOneMenu>
+				<div class="col-sm-3 col-lg-3">
+					<p:selectOneMenu id="opcion_busqueda" value="#{clienteBean.opcion_busqueda}" style="width:50%">
+				            <f:selectItem itemLabel="Documento" itemValue="D"/>
+				            <f:selectItem itemLabel="Nombre" itemValue="N"/>
+				            <f:selectItem itemLabel="Ciudad" itemValue="C"/>
+		        	</p:selectOneMenu>
 		        </div>
-		        <div class="col-sm-1 col-lg-4">		
+		        <div class="col-sm-2 col-lg-2">		
 		        	<h:inputText id="valor_busqueda" value="#{clienteBean.valor_busqueda}"/>	
 				</div>
 
 				<div class="col-sm-1 col-lg-4">
 					<p:commandButton value="Buscar" update="@form" styleClass="btnBuscar" 
-						icon="ui-icon-search" action="#{clienteBean.filtroClientes}" />
+									 icon="ui-icon-search" action="#{clienteBean.filtroClientes}" />
 						
 					<p:commandButton value="Nuevo Cliente" 
 	   				    update="form"

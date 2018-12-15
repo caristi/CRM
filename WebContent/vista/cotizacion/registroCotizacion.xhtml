@@ -33,31 +33,26 @@
 					 <p:panelGrid id="pnlCliente">
 						<f:facet name="header">
 						  <p:row>
-						    <p:column colspan="6">Detalle Cotizacion</p:column>
+						    <p:column colspan="6">Cotizacion</p:column>
 						  </p:row>
 						</f:facet>
 						<p:row>
 						  <p:column><h:outputLabel value="Fecha Registro" /></p:column>
-						  <p:column>
+						  <p:column colspan="5">
 						    <p:calendar value="#{cotizacionBean.cotizacionDto.fecha}" disabled="true" styleClass="inputDisable" pattern="dd/MM/yyyy" />
-						  </p:column>
-						  
-						  <p:column colspan="2"><h:outputLabel value="Número Cotizacion"/></p:column>
-						  <p:column colspan="2">
-						    <p:inputText value="#{cotizacionBean.cotizacionDto.numCotizacion}" styleClass="inputText widthFull"/>
 						  </p:column>
 						</p:row>
 						<p:row>
 						  <p:column> <h:outputLabel value="Número documento" /></p:column>
 						  <p:column>
-							    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText">
-								  <p:ajax event="blur" listener="#{cotizacionBean.buscarCliente}" update="@form" process="@form" />
+							    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText" disabled="#{cotizacionBean.mcaEditar}">
+								  <p:ajax listener="#{cotizacionBean.buscarCliente}" update="@form" process="@form" />
 								</p:inputText>
 								<p:commandButton action="#{cotizacionBean.modificarCliente}" icon="ui-icon-search" styleClass="btnActualizar" 
-							                     disabled="#{cotizacionBean.modificaCliente}"/>
+							                     disabled="#{cotizacionBean.modificaCliente}" update="@form" process="@form" />
 							                 
 							    <p:commandButton action="#{cotizacionBean.limpiarDatosCliente}" icon="ui-icon-trash" styleClass="btnBuscar" 
-							                     disabled ="#{cotizacionBean.modificaCliente}"/>             
+							                     disabled ="#{cotizacionBean.modificaCliente}" update="@form" process="@form" />             
 						  </p:column>
 						  <p:column><h:outputLabel value="Nombres" /></p:column>
 						  <p:column colspan="3">
@@ -94,7 +89,7 @@
 					            Detalle Cotizacion
 					        </f:facet>
 					 		
-					      	<p:column style="width:5%">
+					      	<p:column style="width:5%;text-align: center;">
 					             <p:commandButton immediate="true" update="tablDetall" styleClass="btnBuscar"
 												  action="#{cotizacionBean.eliminarRegistroTabla(det)}" icon="ui-icon-trash" title="Eliminar"/>
 					        </p:column>  
@@ -102,7 +97,7 @@
 					        <p:column headerText="Producto">
 					            <p:cellEditor>
 					                <f:facet name="output">
-					                  	<h:outputText value="#{det.productoDto.nombre}" />
+					                  	<h:outputText value="#{det.productoDto.nombre}" styleClass="inputText"/>
 					                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
 					                  	<h:outputText value="$#{det.productoDto.vlrVenta}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
 					                  	<h:panelGroup rendered="#{not empty det.productoDto.nombre}">
@@ -111,7 +106,8 @@
 					                </f:facet>
 					                <f:facet name="input">
        			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="2" forceSelection="true" 
-       			 					                    var="producto" itemLabel="#{producto.nombre}" itemValue="#{producto}" converter="productoConverter" style="width:100%">
+       			 					                    var="producto" itemLabel="#{producto.nombre}" itemValue="#{producto}" converter="productoConverter" style="width:100%"
+       			 					                    disabled="#{cotizacionBean.mcaEditar}">
 								            <p:column>
 								                <h:outputText value="#{producto.nombre}"/>
 								            </p:column>
@@ -121,20 +117,20 @@
 					            </p:cellEditor>
 					        </p:column>
 					 
-					       <p:column headerText="Cantidad" style="width:10%">
+					       <p:column headerText="Cantidad" style="width:10%;text-align: center;">
 					            <p:cellEditor>
 					                <f:facet name="output">
 					                   <h:outputText value="#{det.cantidad}" />
 					                </f:facet>
 					                <f:facet name="input">
-					                  <p:inputText value="#{det.cantidad}">
+					                  <p:inputText value="#{det.cantidad}" disabled="#{cotizacionBean.mcaEditar}">
 					                    <f:ajax event="blur" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
 					                  </p:inputText>
 					                </f:facet>
 					            </p:cellEditor>
 					       </p:column>
 					        
-					       <p:column headerText="Valor sin Descuento" style="width:20%">
+					       <p:column headerText="Valor sin Descuento" style="width:20%;text-align: center;">
 					            <p:cellEditor>
 					                <f:facet name="output">
 					                    <h:outputText value="#{det.vlrProducto}">
@@ -149,22 +145,22 @@
 					            </p:cellEditor>
 					       </p:column>
 					        
-					       <p:column headerText="% Descuento" style="width:10%">
+					       <p:column headerText="% Des." style="width:10%;text-align: center;">
 					            <p:cellEditor>
 					                <f:facet name="output">
 					                   <h:outputText value="#{det.pctDescuento}%" />
 					                </f:facet>
 					                <f:facet name="input">
 					                  <p:inputNumber value="#{det.pctDescuento}" styleClass="inputText" minValue="0" maxValue="100"
-						               				 decimalSeparator="," thousandSeparator="." decimalPlaces="2"  symbol="%">
-						               	 <f:ajax event="blur" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>			  
+						               				 decimalSeparator="," thousandSeparator="." decimalPlaces="2"  symbol="%" disabled="#{cotizacionBean.mcaEditar}">
+						               	 <p:ajax render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>			  
 						              </p:inputNumber> 				 
 					                  
 					                </f:facet>
 					            </p:cellEditor>
 					        </p:column>
 					        
-					        <p:column headerText="Valor con Descuento" style="width:20%">
+					        <p:column headerText="Valor con Descuento" style="width:20%;text-align: center;">
 					            <p:cellEditor>
 					                <f:facet name="output">
 					                    <h:outputText value="#{det.vlrSubTotal}">
@@ -232,7 +228,8 @@
 						<div class="labelOut">
 						   <h:outputLabel value="Observacion" />
 						</div>
-						<h:inputTextarea value="#{cotizacionBean.cotizacionDto.observacion}" styleClass="inputText" style="width:100%"/>
+						<h:inputTextarea value="#{cotizacionBean.cotizacionDto.observacion}" styleClass="inputText" style="width:100%"
+										 disabled="#{cotizacionBean.mcaEditar}"/>
 					</div>	
 				</div>
 
@@ -240,15 +237,13 @@
 
 				<div class="row">
 					<div class="col-sm-1">
-						<p:commandButton value="Guardar" action="#{cotizacionBean.guardarCotizacion}"
+						<p:commandButton value="Guardar" action="#{cotizacionBean.guardarCotizacion}" rendered="#{!cotizacionBean.mcaEditar}"
 						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
 					</div>
 				</div>
 				
-				<p:dialog header="Registro Cliente" id="dlgCliente" widgetVar="dlgCliente" resizable="true" draggable="false" responsive="true" >
-		           
+				<p:dialog id="dlgCliente" widgetVar="dlgCliente" resizable="true" draggable="false" responsive="true" showHeader="false" closable="true">
 		            <ui:include src="../cliente/registroClienteSinMenu.xhtml" />	     
-		                   
 		        </p:dialog>
  
 			</article>

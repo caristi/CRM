@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.CotizacionCabeceraDto;
+import com.crm.dto.CotizacionDetalleDto;
 import com.crm.dto.FiltroBusquedaDto;
 
 public class CotizacionDao{
@@ -46,13 +47,28 @@ public class CotizacionDao{
 	@Transactional
     public List<CotizacionCabeceraDto> buscarCotizacion(FiltroBusquedaDto filtro) {
 		
-		String sql = "select p from CotizacionCabeceraDto p where fecha between :fecInicio and :fecFin";
-	    			     
 	   	sesion = sessionFactory.getCurrentSession();
 	   	
-	   	return sesion.createQuery(sql).setParameter("fecInicio",filtro.getFechaInicio())
-	   			                      .setParameter("fecFin", filtro.getFechaFin()).list();
+	   	return sesion.createQuery("select p from CotizacionCabeceraDto p where fecha between :fecInicio and :fecFin")
+	   			                 .setParameter("fecInicio",filtro.getFechaInicio())
+	   			                 .setParameter("fecFin", filtro.getFechaFin())
+	   			                 .list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<CotizacionDetalleDto> listarDetalleCotizaci(int idCotizacion){
+    	
+    	sesion = sessionFactory.getCurrentSession();
+		
+		List<CotizacionDetalleDto> lista = null;
+    	
+		lista = sesion.createQuery("select d from CotizacionDetalleDto d where d.cotizacionDto.id = :idCoti")
+								  .setParameter("idCoti", idCotizacion)
+								  .list();
+    	
+    	return lista;
+    }
 	
 	@Transactional
 	public void actualizarCotizacion(CotizacionCabeceraDto cotizacionDto){

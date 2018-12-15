@@ -1,169 +1,184 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:c="http://java.sun.com/jsp/jstl/core"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://java.sun.com/jsf/core">
-   
+			    xmlns:h="http://java.sun.com/jsf/html"
+			    xmlns:ui="http://java.sun.com/jsf/facelets"
+			    xmlns:c="http://java.sun.com/jsp/jstl/core"
+			    xmlns:p="http://primefaces.org/ui"
+			    xmlns:f="http://java.sun.com/jsf/core">
         <div class="row">
-			   <div class="col-sm-12">
-			        <h1 class="site_title"><h:outputText value="Registro de Cliente" /></h1>
-			   </div>
-		</div>	
-		Por favor diligenciar todos los campos de la empresa
-         <div class="row">
-			   <div class="col-sm-4 col-lg-6">
-			       <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-			   </div>
+		   <div class="col-sm-12 col-lg-12">
+		        <h3 class="tituloH1">
+		          <h:outputText value="Registro de Cliente" />
+		        </h3>
+		   </div>
+		   
+		   <div class="col-sm-12 col-lg-12">
+		      <h:outputText value=" Por favor diligenciar todos los campos de la empresa" />
+		   </div>
 		</div>	
 		
-	    <div class="row">
-			   <div class="col-sm-1 col-lg-4">
-				   	<h:outputLabel value="Tipo de Documento"/> 	
-			   <br/>		      	
-					  	<h:selectOneMenu id="cli_tip_docum" value="#{clienteBean.clienteDto.cli_tip_docum}">
+		 
+         <div class="row">
+		   <div class="col-sm-12 col-lg-12">
+		       <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		   </div>
+		</div>	
+		
+		<div class="row">
+		   <div class="col-sm-12 col-lg-12">
+		        <div class="row">
+			        <div class="col-sm-1 col-lg-4">
+					     <div class="labelOut">
+						   	<h:outputLabel value="Tipo de Documento"/> 	
+						 </div>  	
+					  	<p:selectOneMenu id="cli_tip_docum" value="#{clienteBean.clienteDto.cli_tip_docum}" styleClass="inputText">
 				            <f:selectItem itemLabel="NIT" itemValue="N"/>
 				            <f:selectItem itemLabel="RUT" itemValue="R"/>
-				            <f:selectItem itemLabel="Cedula Ciudadanía" itemValue="CC"/>
-				            <f:selectItem itemLabel="Cedula Extrangería" itemValue="CE"/>
-		        		</h:selectOneMenu>
-	   			</div>
+				            <f:selectItem itemLabel="CEDULA CIUDADANÍA" itemValue="CC"/>
+				            <f:selectItem itemLabel="CEDULA EXTRANGERÍA" itemValue="CE"/>
+		        		</p:selectOneMenu>
+		   			</div>
 		
-			  <div class="col-sm-1 col-lg-4">   	
-					<h:outputLabel value="Número de Documento"/>
-			  
-			  <br/>
-			  		<h:inputText id="cli_num_docum" value="#{clienteBean.clienteDto.cli_num_docum}"/>
-			  </div>
-		 </div>
-		 	
-			   	  
+				  <div class="col-sm-1 col-lg-4">   	
+					<div class="labelOut">
+					  	<h:outputLabel value="Número de Documento"/>
+					</div>  	
+				  		<h:inputText id="cli_num_docum" value="#{clienteBean.clienteDto.cli_num_docum}" styleClass="inputText" />
+				  </div>
+				</div>
+		   </div>
+		</div>	   
+		
 		<div class="row">	   
 			   <div class="col-sm-2 col-lg-4">
-			       <h:outputLabel value="Nombre o Razón social"/>
-				<br/>
-				   <h:inputText id="cli_nombre" value="#{clienteBean.clienteDto.cli_nombre}"/>
+			       <div class="labelOut">
+			         <h:outputLabel value="Nombre o Razón social"/>
+			       </div> 
+				   <h:inputText id="cli_nombre" value="#{clienteBean.clienteDto.cli_nombre}" styleClass="inputText" />
 			   </div>	
 			   			       
 			   <div class="col-sm-2 col-lg-4">    
-			       <h:outputLabel value="Primer apellido"/>
-			       <br/>
-			       <h:inputText id="cli_apellido1" value="#{clienteBean.clienteDto.cli_apellido1}"/>
+			       <div class="labelOut">
+			        <h:outputLabel value="Primer apellido"/>
+			       </div>
+			       <h:inputText id="cli_apellido1" value="#{clienteBean.clienteDto.cli_apellido1}" styleClass="inputText" />
 			   </div>	
 			   			       
 			   	<div class="col-sm-2 col-lg-4">
-					<h:outputLabel value="País"/>
-					<br/>
-					<h:inputText id="cli_pais" value="#{clienteBean.clienteDto.cli_pais}"/>
+					<div class="labelOut">
+					  <h:outputLabel value="País"/>
+					</div>
+					<h:inputText id="cli_pais" value="#{clienteBean.clienteDto.cli_pais}" styleClass="inputText" />
 				</div>
 		</div>	   
 		
 		<div class="row">	   
 				<div class="col-sm-2 col-lg-4">
-			       <h:outputLabel value="Ciudad"/>
-					<br/>
-				<h:inputText id="cli_ciudad" value="#{clienteBean.clienteDto.cli_ciudad}"/>					
+			        <div class="labelOut"> 
+			         <h:outputLabel value="Ciudad"/>
+					</div>
+					<h:inputText id="cli_ciudad" value="#{clienteBean.clienteDto.cli_ciudad}" styleClass="inputText" />					
 				</div>
 				
 				<div class="col-sm-2 col-lg-4">
-					<h:outputLabel value="Dirección"/>
-					<br/>
-					<h:inputText id="cli_direccion" value="#{clienteBean.clienteDto.cli_direccion}"/>
+					<div class="labelOut">
+					  <h:outputLabel value="Dirección"/>
+					</div>
+					<h:inputText id="cli_direccion" value="#{clienteBean.clienteDto.cli_direccion}" styleClass="inputText" />
 				</div>
 				
 				<div class="col-sm-2 col-lg-4">
-			       <h:outputLabel value="Teléfono"/>
-					<br/>
-					<h:inputText id="cli_telefono" value="#{clienteBean.clienteDto.cli_telefono}"/>
+			        <div class="labelOut">
+			         <h:outputLabel value="Teléfono"/>
+					</div>
+					<h:inputText id="cli_telefono" value="#{clienteBean.clienteDto.cli_telefono}" styleClass="inputText" />
 				</div>
 		</div>
 		
-		
-		
-		
 		<div class="row">
 				<div class="col-sm-2 col-lg-4">
-					<h:outputLabel value="Celular"/>
-					<br/>
-					<h:inputText id="cli_celular" value="#{clienteBean.clienteDto.cli_celular}"/>
+					<div class="labelOut">
+					  <h:outputLabel value="Celular"/>
+					</div>
+					<h:inputText id="cli_celular" value="#{clienteBean.clienteDto.cli_celular}" styleClass="inputText" />
 				</div>
 				
 				<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"> <h:outputLabel value="E-mail"/></div>
-			       <h:inputText id="cli_email" value="#{clienteBean.clienteDto.cli_email}"/>
+			       <h:inputText id="cli_email" value="#{clienteBean.clienteDto.cli_email}" styleClass="inputText" />
 				</div>	
 				
 				<div class="col-sm-2 col-lg-4">
-			       <h:outputLabel value="Estado"/>
-			       <br/>
-					<h:selectOneMenu id="cli_estado" value="#{clienteBean.clienteDto.cli_estado}">
-				            <f:selectItem itemLabel="Activo" itemValue="A"/>
-				            <f:selectItem itemLabel="Inactivo" itemValue="I"/>
-		        	</h:selectOneMenu>			       
+			       <div class="labelOut"><h:outputLabel value="Estado"/></div>
+					<p:selectOneMenu id="cli_estado" value="#{clienteBean.clienteDto.cli_estado}" styleClass="inputText" style="width:50%">
+				            <f:selectItem itemLabel="ACTIVO" itemValue="A"/>
+				            <f:selectItem itemLabel="INACTIVO" itemValue="I"/>
+		        	</p:selectOneMenu>			       
 				</div>			
 		</div>
-		
-		
 		
 		<p:separator />
 		<div class="row">
 			   <div class="col-sm-12">
-			        <h1 class="site_title subtitle"><h:outputText value="Información de la persona de contacto" /></h1>
+			         <h3 class="tituloH1">
+			          <h:outputText value="Información de la persona de contacto" />
+			   		 </h3>
+			   </div>
+			   <div class="col-sm-12 col-lg-12">
+			      <h:outputText value="Para garantizar una excelente comunicaación es necesario conocer los datos de la pesona de contacto dentro de la empresa" />
 			   </div>
 		</div>	
-		Para garantizar una excelente comunicaación es necesario conocer los datos de la pesona de contacto dentro de la empresa:
-	    
+		
 	   <div class="row">
 			<div class="col-sm-2 col-lg-4">
 			   <div class="labelOut"> <h:outputLabel value="Persona de contacto"/> </div>
-		       <h:inputText id="cli_contacto" value="#{clienteBean.clienteDto.cli_contacto}"/>	
+		       <h:inputText id="cli_contacto" value="#{clienteBean.clienteDto.cli_contacto}" styleClass="inputText"/>	
 			</div>	
 			
 			<div class="col-sm-2 col-lg-4"> 
 			       <div class="labelOut"> <h:outputLabel value="Cargo del contacto"/> </div>
-					<h:inputText id="cli_cargo_contacto" value="#{clienteBean.clienteDto.cli_cargo_contacto}"/>
+					<h:inputText id="cli_cargo_contacto" value="#{clienteBean.clienteDto.cli_cargo_contacto}" styleClass="inputText"/>
 			</div>	
 			
 			<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"> <h:outputLabel value="Teléfono del contacto"/></div>
-			       <h:inputText id="cli_tel_contacto" value="#{clienteBean.clienteDto.cli_tel_contacto}"/>			
+			       <h:inputText id="cli_tel_contacto" value="#{clienteBean.clienteDto.cli_tel_contacto}" styleClass="inputText"/>			
 			</div>	
 	   </div>
-       
       <div class="row">
 			<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"><h:outputLabel value="E-mail del contacto"/></div>
-			       <h:inputText id="cli_email_contacto" value="#{clienteBean.clienteDto.cli_email_contacto}"/>
+			       <h:inputText id="cli_email_contacto" value="#{clienteBean.clienteDto.cli_email_contacto}" styleClass="inputText"/>
 			</div>	
 						
 			<div class="col-sm-2 col-lg-4">
 			       <div class="labelOut"><h:outputLabel value="Asesor Asignado"/></div>
-			       <div class="labelOut"><h:inputText id="usu_id" value="#{clienteBean.clienteDto.usu_id}"/></div>
+				<p:selectOneMenu value="#{compraBean.compraDto.productoDto.id}" styleClass="inputText" filter="true">
+				   <f:selectItems value="#{listaValoresBean.listaUsuarios}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}" />
+				</p:selectOneMenu>
 			</div>	
-			
+	  </div>
+	  <div class="row">	
 			<h:panelGroup rendered="#{!clienteBean.origenCotizacion}">
 				<div class="col-sm-2 col-lg-4">
-				   <div class="labelOut"><h:outputLabel value=""/></div>
-			       <p:commandButton value="Guardar" update="form" icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
-	  								action="#{clienteBean.guardar}"/>
+				   <p:commandButton value="Guardar" styleClass="btnGuardar" update="form"
+				   				    icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
+				   				    action="#{clienteBean.guardar}"/>
 	   				    
-		   			<p:commandButton value="Actualizar" update="form" icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
-		   				             action="#{clienteBean.actualizar}"/>
+		   			<p:commandButton value="Actualizar"  styleClass="btnGuardar"  update="form"
+				   				     icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
+				   				     action="#{clienteBean.actualizar}"/>	
 			   </div>
-		   </h:panelGroup>
+		    </h:panelGroup>
 		   
 			<h:panelGroup rendered="#{clienteBean.origenCotizacion}">
 				<div class="col-sm-2 col-lg-4">
-				   <div class="labelOut"><h:outputLabel value=""/></div>
-			       <p:commandButton value="Guardar" update="form" icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}"
-	  								action="#{clienteBean.guardarDesdeCotizacion}"/>
+			        <p:commandButton value="Guardar" styleClass="btnGuardar" icon="ui-icon-plus" rendered="#{!clienteBean.btnEditar}" 
+	  								action="#{clienteBean.guardarDesdeCotizacion}" update="form" />
 	   				    
-		   			<p:commandButton value="Actualizar" update="form" icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"
-		   				             action="#{clienteBean.actualizarDesdeCotizacion}"/>
+		   			<p:commandButton value="Actualizar" styleClass="btnGuardar" icon="ui-icon-plus" rendered="#{clienteBean.btnEditar}"  action="#{clienteBean.actualizarDesdeCotizacion}" update="form"/>
 		   				             
-					<p:commandButton value="Cerrar" update="form" icon="ui-icon-plus"
-		   				             action="#{clienteBean.cerrarVentanaCotizacion}"/>		   				             
+					<p:commandButton value="Cerrar" styleClass="btnBuscar" action="#{clienteBean.cerrarVentanaCotizacion}" update="form" icon="ui-icon-plus" />		   				             
 			   </div>
 		   </h:panelGroup>
 		   

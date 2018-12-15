@@ -140,6 +140,10 @@ public class CotizacionSrv{
 		return cotizacionDao.buscarCotizacion(filtro);
 	}
 	
+	public List<CotizacionDetalleDto> listarDetalleCotizaci(int idCotizacion){
+		return cotizacionDao.listarDetalleCotizaci(idCotizacion);
+	}
+	
 	public void actualizarCotizacion(CotizacionCabeceraDto cotizacionDto){
 		cotizacionDao.actualizarCotizacion(cotizacionDto);
 	}

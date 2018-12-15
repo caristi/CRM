@@ -29,6 +29,7 @@ public class CotizacionBean {
 	private List<ProductoDto> listaProductos;
 	
 	private boolean modificaCliente;
+	private boolean mcaEditar;
 	
 	public CotizacionBean() {
 		
@@ -41,15 +42,17 @@ public class CotizacionBean {
 		
 		if(clienteDto.getCli_num_docum() != null && !clienteDto.getCli_num_docum().isEmpty()){
 			cotizacionDto.setClienteDto(clienteDto);
-			modificaCliente = true;
+			modificaCliente = false;
 		}else{
 			
-			modificaCliente = false;
+			modificaCliente = true;
 			
 			FacesContext contextBean = FacesContext.getCurrentInstance();
             ClienteBean clienteBean = (ClienteBean) contextBean.getELContext().getELResolver().getValue(contextBean.getELContext(), null, "clienteBean");
             clienteBean.setOrigenCotizacion(true);
             clienteBean.setBtnEditar(false);
+            clienteDto.setCli_num_docum(cotizacionDto.getClienteDto().getCli_num_docum());
+            clienteBean.setClienteDto(clienteDto);
         	 
 			RequestContext context = RequestContext.getCurrentInstance();
 			context.execute("PF('dlgCliente').show();"); 
@@ -60,7 +63,7 @@ public class CotizacionBean {
 		
 		RequestContext context = RequestContext.getCurrentInstance();
 		context.execute("PF('dlgCliente').hide();");
-		modificaCliente = true;
+		modificaCliente = false;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cliente guardado éxitosamente"));
 	}
 	
@@ -78,7 +81,7 @@ public class CotizacionBean {
         clienteBean.setBtnEditar(true);
         clienteBean.setClienteDto(cotizacionDto.getClienteDto());
         
-        modificaCliente = true;
+        modificaCliente = false;
         
 		RequestContext context = RequestContext.getCurrentInstance();
 		context.execute("PF('dlgCliente').show();"); 
@@ -112,6 +115,7 @@ public class CotizacionBean {
 		cotizacionDto.setUsuarioDto(new UsuarioDto());
 		cotizacionDto.getUsuarioDto().setUsu_id(usuarioLogueado.getUsu_id());
 		int id = cotizacionSrv.guardarCotizacion(cotizacionDto);
+		mcaEditar = true;
 		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Cotización guardada éxitosamente con código " + id ));
 	}
@@ -132,7 +136,8 @@ public class CotizacionBean {
 		cotizacionDto = new CotizacionCabeceraDto();
 		cotizacionDto.setFecha(new Date());
 		
-		modificaCliente = false;
+		modificaCliente = true;
+		mcaEditar = false;
 		
 		return "cotizacion";
 	}
@@ -140,6 +145,10 @@ public class CotizacionBean {
 	public String consultarUnaCotizacion(){
 		
 		cotizacionDto = cotizacionSelecDto;
+		
+		cotizacionDto.setListaDetalles(cotizacionSrv.listarDetalleCotizaci(cotizacionDto.getId()));
+		
+		mcaEditar = true;
 		
 		return "cotizacion";
 	}
@@ -150,6 +159,10 @@ public class CotizacionBean {
 
 	public CotizacionCabeceraDto getCotizacionDto() {
 		return cotizacionDto;
+	}
+	
+	public void setCotizacionDto(CotizacionCabeceraDto cotizacionDto) {
+		this.cotizacionDto = cotizacionDto;
 	}
 
 	public List<CotizacionCabeceraDto> getListaCotizacionDto() {
@@ -178,5 +191,9 @@ public class CotizacionBean {
 
 	public boolean isModificaCliente() {
 		return modificaCliente;
+	}
+
+	public boolean isMcaEditar() {
+		return mcaEditar;
 	}
 }
