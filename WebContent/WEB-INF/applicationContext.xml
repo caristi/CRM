@@ -54,6 +54,10 @@
 			<property name="cotizacionSrv" ref="cotizacionSrv" />
 		</bean>
 		
+		<bean id="ventaBean" class="com.crm.bean.VentaBean">
+			<property name="ventaSrv" ref="ventaSrv" />
+		</bean>
+		
 		<!-- Configuracion Servicios -->
 		
 		<bean id="usuarioSrv" class="com.crm.services.UsuarioSrv">
@@ -92,8 +96,13 @@
 		<bean id="cotizacionSrv" class="com.crm.services.CotizacionSrv">
 			<property name="productoSrv" ref="productoSrv" />
 			<property name="clienteSrv" ref="clienteSrv" />
+			<property name="ventaSrv" ref="ventaSrv" />
 			<property name="cotizacionDao" ref="cotizacionDao" />
 		</bean>
+		
+		<bean id="ventaSrv" class="com.crm.services.VentaSrv">
+			<property name="ventaDao" ref="ventaDao" />
+		</bean>		
 			
 		<!-- Configuracion DAOs -->
 		
@@ -132,4 +141,8 @@
 		<bean id="cotizacionDao" class="com.crm.dao.CotizacionDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
+		
+		<bean id="ventaDao" class="com.crm.dao.VentaDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>		
 </beans>

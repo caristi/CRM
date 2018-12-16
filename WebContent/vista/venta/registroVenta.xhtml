@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<h3 class="tituloH1">
-							<h:outputText value="Registro Cotizacion" />
+							<h:outputText value="Consulta venta" />
 						</h3>
 					</div>
 				</div>
@@ -33,30 +33,23 @@
 					 <p:panelGrid id="pnlCliente">
 						<f:facet name="header">
 						  <p:row>
-						    <p:column colspan="6">Cotizacion</p:column>
+						    <p:column colspan="6">Venta</p:column>
 						  </p:row>
 						</f:facet>
 						<p:row>
 						  <p:column><h:outputLabel value="Fecha Registro" /></p:column>
 						  <p:column colspan="5">
-						    <p:calendar value="#{cotizacionBean.cotizacionDto.fecha}" disabled="true" styleClass="inputDisable" pattern="dd/MM/yyyy" />
+						    <p:calendar value="#{ventaBean.ventaDto.fecha}" disabled="true" styleClass="inputDisable" pattern="dd/MM/yyyy" />
 						  </p:column>
 						</p:row>
 						<p:row>
 						  <p:column> <h:outputLabel value="Número documento" /></p:column>
 						  <p:column>
-							    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_num_docum}" styleClass="inputText" disabled="#{cotizacionBean.mcaEditar}">
-								  <p:ajax listener="#{cotizacionBean.buscarCliente}" update="@form" process="@form" />
-								</p:inputText>
-								<p:commandButton action="#{cotizacionBean.modificarCliente}" icon="ui-icon-search" styleClass="btnActualizar" 
-							                     disabled="#{cotizacionBean.modificaCliente}" update="@form" process="@form" />
-							                 
-							    <p:commandButton action="#{cotizacionBean.limpiarDatosCliente}" icon="ui-icon-trash" styleClass="btnBuscar" 
-							                     disabled ="#{cotizacionBean.modificaCliente}" update="@form" process="@form" />             
+							    <p:inputText value="#{ventaBean.ventaDto.clienteDto.cli_num_docum}" styleClass="inputText" disabled="true"/>
 						  </p:column>
 						  <p:column><h:outputLabel value="Nombres" /></p:column>
 						  <p:column colspan="3">
-						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_nombre} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido1} #{cotizacionBean.cotizacionDto.clienteDto.cli_apellido2}" 
+						    <p:inputText value="#{ventaBean.ventaDto.clienteDto.cli_nombre} #{ventaBean.ventaDto.clienteDto.cli_apellido1} #{ventaBean.ventaDto.clienteDto.cli_apellido2}" 
 										 styleClass="inputText widthFull inputDisable" disabled="true"/>
 						  </p:column>
 						</p:row>
@@ -64,17 +57,17 @@
 						<p:row>
 						  <p:column><h:outputLabel value="Dirección"/></p:column>
 						  <p:column>
-						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_direccion}" styleClass="inputText widthFull inputDisable" disabled="true"/>
+						    <p:inputText value="#{ventaBean.ventaDto.clienteDto.cli_direccion}" styleClass="inputText widthFull inputDisable" disabled="true"/>
 						  </p:column>
 						  
 						  <p:column><h:outputLabel value="Telefono"/></p:column>
 						  <p:column>
-						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_telefono}" styleClass="inputText inputDisable" disabled="true"/>
+						    <p:inputText value="#{ventaBean.ventaDto.clienteDto.cli_telefono}" styleClass="inputText inputDisable" disabled="true"/>
 						  </p:column>
 						  
 						  <p:column><h:outputLabel value="Celular"/></p:column>
 						  <p:column>
-						    <p:inputText value="#{cotizacionBean.cotizacionDto.clienteDto.cli_celular}" styleClass="inputText inputDisable" disabled="true"/>
+						    <p:inputText value="#{ventaBean.ventaDto.clienteDto.cli_celular}" styleClass="inputText inputDisable" disabled="true"/>
 						  </p:column>
 						</p:row>
 					</p:panelGrid>
@@ -82,18 +75,13 @@
 				</div>
 				<div class="row">
 				   <div class="col-sm-10 col-lg-10">
-				      <p:dataTable id="tablDetall" widgetVar="tablDetall" var="det" value="#{cotizacionBean.cotizacionDto.listaDetalles}" 
+				      <p:dataTable id="tablDetall" widgetVar="tablDetall" var="det" value="#{ventaBean.ventaDto.listaDetalles}" 
 				                   editable="true" editMode="cell" reflow="true">
 					        
 					        <f:facet name="header">
-					            Detalle Cotizacion
+					            Detalle Venta
 					        </f:facet>
 					 		
-					      	<p:column style="width:5%;text-align: center;">
-					             <p:commandButton immediate="true" update="tablDetall" styleClass="btnBuscar"
-												  action="#{cotizacionBean.eliminarRegistroTabla(det)}" icon="ui-icon-trash" title="Eliminar"/>
-					        </p:column>  
-					      
 					        <p:column headerText="Producto">
 					            <p:cellEditor>
 					                <f:facet name="output">
@@ -105,14 +93,6 @@
 					                  	</h:panelGroup>
 					                </f:facet>
 					                <f:facet name="input">
-       			 					    <p:autoComplete value="#{det.productoDto}" completeMethod="#{cotizacionBean.completeProductos}" minQueryLength="2" forceSelection="true" 
-       			 					                    var="producto" itemLabel="#{producto.nombre}" itemValue="#{producto}" converter="productoConverter" style="width:100%"
-       			 					                    disabled="#{cotizacionBean.mcaEditar}">
-								            <p:column>
-								                <h:outputText value="#{producto.nombre}"/>
-								            </p:column>
-								            <f:ajax event="itemSelect" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
-								        </p:autoComplete>
 									 </f:facet>
 					            </p:cellEditor>
 					        </p:column>
@@ -123,9 +103,6 @@
 					                   <h:outputText value="#{det.cantidad}" />
 					                </f:facet>
 					                <f:facet name="input">
-					                  <p:inputText value="#{det.cantidad}" disabled="#{cotizacionBean.mcaEditar}">
-					                    <f:ajax event="blur" render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>
-					                  </p:inputText>
 					                </f:facet>
 					            </p:cellEditor>
 					       </p:column>
@@ -138,9 +115,6 @@
 					                    </h:outputText>
 					                 </f:facet>
 					                <f:facet name="input">
-					                   <h:outputText value="#{det.vlrProducto}">
-					                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
-					                   </h:outputText>
 					                </f:facet>
 					            </p:cellEditor>
 					       </p:column>
@@ -151,11 +125,6 @@
 					                   <h:outputText value="#{det.pctDescuento}%" />
 					                </f:facet>
 					                <f:facet name="input">
-					                  <p:inputNumber value="#{det.pctDescuento}" styleClass="inputText" minValue="0" maxValue="100"
-						               				 decimalSeparator="," thousandSeparator="." decimalPlaces="2"  symbol="%" disabled="#{cotizacionBean.mcaEditar}">
-						               	 <p:ajax render="tablDetall" listener="#{cotizacionBean.realizarCalculosDetalle(det)}"/>			  
-						              </p:inputNumber> 				 
-					                  
 					                </f:facet>
 					            </p:cellEditor>
 					        </p:column>
@@ -168,9 +137,6 @@
 					                    </h:outputText>
 					                 </f:facet>
 					                <f:facet name="input">
-					                   <h:outputText value="#{det.vlrSubTotal}">
-					                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
-					                   </h:outputText>
 					                </f:facet>
 					            </p:cellEditor>
 					        </p:column>
@@ -180,7 +146,7 @@
 					                <p:column colspan="5" styleClass="labelFooter" footerText="Descuento" />
 					                <p:column>
 							            <f:facet name="footer">
-							                <h:outputText value="#{cotizacionBean.cotizacionDto.vlrTotalDescuento}">
+							                <h:outputText value="#{ventaBean.ventaDto.vlrTotalDescuento}">
 							                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
 							                </h:outputText>
 							            </f:facet>
@@ -191,7 +157,7 @@
 					                <p:column colspan="5" styleClass="labelFooter" footerText="SubTotal" />
 					                <p:column>
 							            <f:facet name="footer">
-							                <h:outputText value="#{cotizacionBean.cotizacionDto.vlrSubTotal}">
+							                <h:outputText value="#{ventaBean.ventaDto.vlrSubTotal}">
 							                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
 							                </h:outputText>
 							            </f:facet>
@@ -202,7 +168,7 @@
 					                <p:column colspan="5" styleClass="labelFooter" footerText="Iva" />
 					                <p:column>
 							            <f:facet name="footer">
-							                <h:outputText value="#{cotizacionBean.cotizacionDto.vlrIvaTotal}">
+							                <h:outputText value="#{ventaBean.ventaDto.vlrIvaTotal}">
 							                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
 							                </h:outputText>
 							            </f:facet>
@@ -212,7 +178,7 @@
 					                <p:column colspan="5" styleClass="labelFooter" footerText="Total" />
 					                 <p:column>
 							            <f:facet name="footer">
-							                <h:outputText value="#{cotizacionBean.cotizacionDto.vlrTotal}">
+							                <h:outputText value="#{ventaBean.ventaDto.vlrTotal}">
 							                     <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
 							                </h:outputText>
 							            </f:facet>
@@ -228,26 +194,10 @@
 						<div class="labelOut">
 						   <h:outputLabel value="Observacion" />
 						</div>
-						<h:inputTextarea value="#{cotizacionBean.cotizacionDto.observacion}" styleClass="inputText" style="width:100%"
-										 disabled="#{cotizacionBean.mcaEditar}"/>
+						<h:inputTextarea value="#{ventaBean.ventaDto.observacion}" styleClass="inputText" style="width:100%"
+										 disabled="#{ventaBean.mcaEditar}"/>
 					</div>	
 				</div>
-
-				<p:separator/>
-
-				<div class="row">
-					<div class="col-sm-3">
-						<p:commandButton value="Guardar" action="#{cotizacionBean.guardarCotizacion}" rendered="#{!cotizacionBean.mcaEditar}"
-						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />
-						 <p:commandButton value="Generar orden venta" action="#{cotizacionBean.generarOrdenVenta}" rendered="#{cotizacionBean.mcaEditar}"
-						                 update="@form" icon="ui-icon-disk" styleClass="btnGuardar" />                
-					</div>
-				</div>
-				
-				<p:dialog id="dlgCliente" widgetVar="dlgCliente" resizable="true" draggable="false" responsive="true" showHeader="false" closable="true">
-		            <ui:include src="../cliente/registroClienteSinMenu.xhtml" />	     
-		        </p:dialog>
- 
 			</article>
 		</h:form>
 	</ui:define>

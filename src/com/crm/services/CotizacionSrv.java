@@ -1,6 +1,7 @@
 package com.crm.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,8 @@ import com.crm.dto.CotizacionCabeceraDto;
 import com.crm.dto.CotizacionDetalleDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
+import com.crm.dto.VentaCabeceraDto;
+import com.crm.dto.VentaDetalleDto;
 
 public class CotizacionSrv{
 
@@ -19,6 +22,7 @@ public class CotizacionSrv{
 	private CotizacionDao cotizacionDao;
 	private ProductoSrv productoSrv;
 	private ClienteSrv clienteSrv;
+	private VentaSrv ventaSrv;
 
 	public List<ProductoDto> completeProductos(String query) {
         
@@ -130,6 +134,42 @@ public class CotizacionSrv{
 
 		return id;
 	}
+	
+	public int generarOrdenVenta(CotizacionCabeceraDto cotizacionDto,int usuario) {
+		
+		VentaCabeceraDto ventaDto = new VentaCabeceraDto();
+		ventaDto.setClienteDto(cotizacionDto.getClienteDto());
+		ventaDto.setObservacion(cotizacionDto.getObservacion());
+		ventaDto.setVlrIvaTotal(cotizacionDto.getVlrIvaTotal());
+		ventaDto.setVlrSubTotal(cotizacionDto.getVlrSubTotal());
+		ventaDto.setVlrTotalDescuento(cotizacionDto.getVlrTotalDescuento());
+		ventaDto.setVlrTotal(cotizacionDto.getVlrTotal());
+		ventaDto.setIdCotizacion(cotizacionDto.getId());
+		ventaDto.getUsuarioDto().setUsu_id(usuario);
+		ventaDto.setFecha(new Date());
+
+		List<VentaDetalleDto> listaVentaDetalle = new ArrayList<VentaDetalleDto>();
+		ventaDto.setListaDetalles(listaVentaDetalle);
+		
+		VentaDetalleDto ventaDetalle;
+		
+		for(CotizacionDetalleDto det:cotizacionDto.getListaDetalles()) {
+			
+			ventaDetalle = new VentaDetalleDto();
+			ventaDetalle.setCantidad(det.getCantidad());
+			ventaDetalle.setProductoDto(det.getProductoDto());
+			ventaDetalle.setVlrDescuento(det.getVlrDescuento());
+			ventaDetalle.setVlrIva(det.getVlrIva());
+			ventaDetalle.setVlrProducto(det.getVlrProducto());
+			ventaDetalle.setVlrSubTotal(det.getVlrSubTotal());
+			
+			listaVentaDetalle.add(ventaDetalle);
+		}
+		
+		int idVenta = ventaSrv.guardarVenta(ventaDto);
+		
+		return idVenta;
+	}
 
 	public List<CotizacionCabeceraDto> listarCotizacions(){
 		return cotizacionDao.listarCotizacions();
@@ -158,5 +198,9 @@ public class CotizacionSrv{
 	
 	public void setClienteSrv(ClienteSrv clienteSrv) {
 		this.clienteSrv = clienteSrv;
+	}
+	
+	public void setVentaSrv(VentaSrv ventaSrv) {
+		this.ventaSrv = ventaSrv;
 	}
 }

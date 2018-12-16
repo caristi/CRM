@@ -153,6 +153,15 @@ public class CotizacionBean {
 		return "cotizacion";
 	}
 	
+	public void generarOrdenVenta(){
+		
+		obtenerUsuario();
+		
+		int idVenta = cotizacionSrv.generarOrdenVenta(cotizacionDto, usuarioLogueado.getUsu_id());
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se genero orden de compra " + idVenta ));
+	}
+	
 	public void setCotizacionSrv(CotizacionSrv cotizacionSrv) {
 		this.cotizacionSrv = cotizacionSrv;
 	}
