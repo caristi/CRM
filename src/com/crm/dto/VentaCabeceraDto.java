@@ -55,7 +55,8 @@ public class VentaCabeceraDto implements java.io.Serializable  {
     @JoinColumn(name="usu_id")
     private UsuarioDto usuarioDto;
     
-    @OneToMany(mappedBy="ventaDto",cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="ven_id")
     private List<VentaDetalleDto> listaDetalles;
     
     @Column(name="cot_id")

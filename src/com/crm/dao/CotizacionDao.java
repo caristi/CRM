@@ -61,11 +61,9 @@ public class CotizacionDao{
     	
     	sesion = sessionFactory.getCurrentSession();
 		
-		List<CotizacionDetalleDto> lista = null;
-    	
-		lista = sesion.createQuery("select d from CotizacionDetalleDto d where d.cotizacionDto.id = :idCoti")
-								  .setParameter("idCoti", idCotizacion)
-								  .list();
+		List<CotizacionDetalleDto> lista = sesion.createQuery("select d from CotizacionDetalleDto d where codId = :idCoti")
+								  		   .setParameter("idCoti", idCotizacion)
+								  		   .list();
     	
     	return lista;
     }

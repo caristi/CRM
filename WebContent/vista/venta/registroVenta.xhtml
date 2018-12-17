@@ -75,75 +75,43 @@
 				</div>
 				<div class="row">
 				   <div class="col-sm-10 col-lg-10">
-				      <p:dataTable id="tablDetall" widgetVar="tablDetall" var="det" value="#{ventaBean.ventaDto.listaDetalles}" 
-				                   editable="true" editMode="cell" reflow="true">
-					        
+				      <p:dataTable id="tablDetall" widgetVar="tablDetall" var="det" value="#{ventaBean.ventaDto.listaDetalles}"  reflow="true">
 					        <f:facet name="header">
 					            Detalle Venta
 					        </f:facet>
 					 		
-					        <p:column headerText="Producto">
-					            <p:cellEditor>
-					                <f:facet name="output">
-					                  	<h:outputText value="#{det.productoDto.nombre}" styleClass="inputText"/>
-					                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
-					                  	<h:outputText value="$#{det.productoDto.vlrVenta}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
-					                  	<h:panelGroup rendered="#{not empty det.productoDto.nombre}">
-					                  	  <img src="/imagenesPro/#{det.productoDto.rutaArchivo}"  width="80" height="70"/>
-					                  	</h:panelGroup>
-					                </f:facet>
-					                <f:facet name="input">
-									 </f:facet>
-					            </p:cellEditor>
+					        <p:column headerText="Producto" style="width:40%">
+			                  	<h:outputText value="#{det.productoDto.nombre}" styleClass="inputText"/>
+			                  	<h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+			                  	<h:outputText value="$#{det.productoDto.vlrVenta}" rendered="#{not empty det.productoDto.nombre}" style="font-weight: bold;"/>
+			                  	<h:panelGroup rendered="#{not empty det.productoDto.nombre}">
+			                  	  <img src="/imagenesPro/#{det.productoDto.rutaArchivo}"  width="80" height="70"/>
+			                  	</h:panelGroup>
 					        </p:column>
 					 
 					       <p:column headerText="Cantidad" style="width:10%;text-align: center;">
-					            <p:cellEditor>
-					                <f:facet name="output">
-					                   <h:outputText value="#{det.cantidad}" />
-					                </f:facet>
-					                <f:facet name="input">
-					                </f:facet>
-					            </p:cellEditor>
+					            <h:outputText value="#{det.cantidad}" />
 					       </p:column>
 					        
 					       <p:column headerText="Valor sin Descuento" style="width:20%;text-align: center;">
-					            <p:cellEditor>
-					                <f:facet name="output">
-					                    <h:outputText value="#{det.vlrProducto}">
-					                      <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
-					                    </h:outputText>
-					                 </f:facet>
-					                <f:facet name="input">
-					                </f:facet>
-					            </p:cellEditor>
+			                    <h:outputText value="#{det.vlrProducto}">
+			                      <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
+			                    </h:outputText>
 					       </p:column>
 					        
 					       <p:column headerText="% Des." style="width:10%;text-align: center;">
-					            <p:cellEditor>
-					                <f:facet name="output">
-					                   <h:outputText value="#{det.pctDescuento}%" />
-					                </f:facet>
-					                <f:facet name="input">
-					                </f:facet>
-					            </p:cellEditor>
+					             <h:outputText value="#{det.pctDescuento}%" />
 					        </p:column>
 					        
 					        <p:column headerText="Valor con Descuento" style="width:20%;text-align: center;">
-					            <p:cellEditor>
-					                <f:facet name="output">
-					                    <h:outputText value="#{det.vlrSubTotal}">
-					                      <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
-					                    </h:outputText>
-					                 </f:facet>
-					                <f:facet name="input">
-					                </f:facet>
-					            </p:cellEditor>
+			                    <h:outputText value="#{det.vlrSubTotal}">
+			                      <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
+			                    </h:outputText>
 					        </p:column>
 					        
 					        <p:columnGroup type="footer">
 					            <p:row>
-					                <p:column colspan="5" styleClass="labelFooter" footerText="Descuento" />
+					                <p:column colspan="4" styleClass="labelFooter" footerText="Descuento" />
 					                <p:column>
 							            <f:facet name="footer">
 							                <h:outputText value="#{ventaBean.ventaDto.vlrTotalDescuento}">
@@ -154,7 +122,7 @@
 					                
 					            </p:row>
 					            <p:row>
-					                <p:column colspan="5" styleClass="labelFooter" footerText="SubTotal" />
+					                <p:column colspan="4" styleClass="labelFooter" footerText="SubTotal" />
 					                <p:column>
 							            <f:facet name="footer">
 							                <h:outputText value="#{ventaBean.ventaDto.vlrSubTotal}">
@@ -165,7 +133,7 @@
 					                
 					            </p:row>
 					            <p:row>
-					                <p:column colspan="5" styleClass="labelFooter" footerText="Iva" />
+					                <p:column colspan="4" styleClass="labelFooter" footerText="Iva" />
 					                <p:column>
 							            <f:facet name="footer">
 							                <h:outputText value="#{ventaBean.ventaDto.vlrIvaTotal}">
@@ -175,7 +143,7 @@
 							        </p:column>
 					            </p:row>
 					            <p:row>
-					                <p:column colspan="5" styleClass="labelFooter" footerText="Total" />
+					                <p:column colspan="4" styleClass="labelFooter" footerText="Total" />
 					                 <p:column>
 							            <f:facet name="footer">
 							                <h:outputText value="#{ventaBean.ventaDto.vlrTotal}">
@@ -195,7 +163,7 @@
 						   <h:outputLabel value="Observacion" />
 						</div>
 						<h:inputTextarea value="#{ventaBean.ventaDto.observacion}" styleClass="inputText" style="width:100%"
-										 disabled="#{ventaBean.mcaEditar}"/>
+										 disabled="true"/>
 					</div>	
 				</div>
 			</article>

@@ -48,7 +48,7 @@ public class VentaDao{
     	
     	sesion = sessionFactory.getCurrentSession();
 		
-		List<VentaDetalleDto> lista = sesion.createQuery("select d from VentaDetalleDto d where d.ventaDto.id = :idVenta")
+		List<VentaDetalleDto> lista = sesion.createQuery("select d from VentaDetalleDto d where venId = :idVenta")
 								  				         .setParameter("idVenta", idVenta)
 								  				         .list();
     	

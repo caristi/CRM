@@ -56,7 +56,8 @@ public class CotizacionCabeceraDto implements java.io.Serializable  {
     @JoinColumn(name="usu_id")
     private UsuarioDto usuarioDto;
     
-    @OneToMany(mappedBy="cotizacionDto",cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="cot_id")
     private List<CotizacionDetalleDto> listaDetalles;
     
     public CotizacionCabeceraDto() {

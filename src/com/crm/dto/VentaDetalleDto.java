@@ -1,6 +1,5 @@
 package com.crm.dto;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,9 +43,8 @@ public class VentaDetalleDto implements java.io.Serializable  {
 	@JoinColumn(name="pro_id")
 	private ProductoDto productoDto;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="ven_id")
-	private VentaCabeceraDto ventaDto;
+	@Column(name="ven_id")
+	private int venId;
 	
 	public VentaDetalleDto() {
 		
@@ -116,12 +114,11 @@ public class VentaDetalleDto implements java.io.Serializable  {
 		this.productoDto = productoDto;
 	}
 
-	public VentaCabeceraDto getVentaDto() {
-		return ventaDto;
+	public int getVenId() {
+		return venId;
 	}
 
-	public void setVentaDto(VentaCabeceraDto ventaDto) {
-		this.ventaDto = ventaDto;
+	public void setVenId(int venId) {
+		this.venId = venId;
 	}
-	
 }
