@@ -136,7 +136,7 @@ public class CotizacionSrv{
 	}
 	
 	public int generarOrdenVenta(CotizacionCabeceraDto cotizacionDto,int usuario) {
-		
+		 
 		VentaCabeceraDto ventaDto = new VentaCabeceraDto();
 		ventaDto.setClienteDto(cotizacionDto.getClienteDto());
 		ventaDto.setObservacion(cotizacionDto.getObservacion());
