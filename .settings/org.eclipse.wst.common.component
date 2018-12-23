@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="CRM">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF/lib"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <dependent-module archiveName="hibernate-core-4.3.10.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CRM/WebContent/WEB-INF/lib/hibernate-core-4.3.10.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>

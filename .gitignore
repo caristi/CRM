@@ -5,3 +5,4 @@ WebContent/WEB-INF/properties/
 WebContent/WEB-INF/properties/database.properties
 .classpath
 .classpath
+/bin/

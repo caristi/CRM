@@ -68,6 +68,16 @@
 	</navigation-rule>
 
 	<navigation-rule>
+		<description>ClienteHistorico</description>
+		<from-view-id>/vista/cliente_historico/listadoHistorico.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>actualizarAgregarHistorico</from-outcome>
+			<to-view-id>/vista/cliente_historico/registroHistorico.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
 		<description>Usuario</description>
 		<from-view-id>/vista/usuario/listadoUsuario.xhtml</from-view-id>
 		<navigation-case>

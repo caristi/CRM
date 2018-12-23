@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crm.dto.ClienteDto;
 import com.crm.dto.ListaValoresDto;
 import com.crm.dto.ProductoDto;
 import com.crm.dto.UsuarioDto;
@@ -47,7 +48,24 @@ public class ListaValoresDao{
         	
     	return listaValores;
     }
-    
+
+    	@SuppressWarnings("unchecked")
+    	@Transactional
+    	public List<ListaValoresDto> listaClientes(){
+        	
+        	List<ListaValoresDto> listaValores = new ArrayList<ListaValoresDto>();
+        	sesion = sessionFactory.getCurrentSession();
+        	List<ClienteDto> listaCliente = sesion.createQuery("select p from ClienteDto p").list();
+        	for(ClienteDto p: listaCliente){
+        		ListaValoresDto lista = new ListaValoresDto();
+        		lista.setCodItem(p.getCli_id()+"");
+        		lista.setNomItem(p.getCli_nombre());
+        		listaValores.add(lista);
+        	}
+        	
+    	return listaValores;
+    }	
+    	
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

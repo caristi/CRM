@@ -30,6 +30,10 @@
 			<property name="clienteSrv" ref="clienteSrv" />
 		</bean>
 		
+		<bean id="clientehistoricoBean" class="com.crm.bean.ClienteHistoricoBean">
+			<property name="clientehistoricoSrv" ref="clientehistoricoSrv" />
+		</bean>
+
 		<bean id="usuarioBean" class="com.crm.bean.UsuarioBean">
 			<property name="usuarioSrv" ref="usuarioSrv" />
 		</bean>	
@@ -74,6 +78,10 @@
 		
 		<bean id="clienteSrv" class="com.crm.services.ClienteSrv">
 			<property name="clienteDao" ref="clienteDao" />
+		</bean>
+		
+		<bean id="clientehistoricoSrv" class="com.crm.services.ClienteHistoricoSrv">
+			<property name="clientehistoricoDao" ref="clientehistoricoDao" />
 		</bean>	
 		
 		<bean id="compraSrv" class="com.crm.services.CompraSrv">
@@ -122,6 +130,10 @@
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>
 		
+		<bean id="clientehistoricoDao" class="com.crm.dao.ClienteHistoricoDao">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+
 		<bean id="compraDao" class="com.crm.dao.CompraDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>

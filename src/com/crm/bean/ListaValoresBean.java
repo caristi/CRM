@@ -11,10 +11,7 @@ public class ListaValoresBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private ListaValoresSrv listaValoresSrv;
-	
-
-	
-	
+		
 	public List<ListaValoresDto> getListaProductos() {
 
 		return listaValoresSrv.listaProductos();
@@ -25,10 +22,12 @@ public class ListaValoresBean implements Serializable {
 		return listaValoresSrv.listaUsuarios();
 	}
 	
+	public List<ListaValoresDto> getListaClientes() {
+
+		return listaValoresSrv.listaClientes();
+	}
+
 	public void setListaValoresSrv(ListaValoresSrv listaValoresSrv) {
 		this.listaValoresSrv = listaValoresSrv;
 	}
-	
-
-	
 }
