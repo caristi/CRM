@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="../../vista/template/layout.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form" enctype="multipart/form-data">
+
+			<article class="module width_full">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="tituloH1">
+							<h:outputText value="Consultar salida" />
+						</h3>
+					</div>
+				</div>
+
+				<p class="lineForm" />
+
+				<div class="row">
+					<div class="col-sm-12">
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-2 col-lg-2">
+						<div class="labelOut">
+							<h:outputLabel value="Fecha inicio" />
+						</div>
+						<p:calendar id="fecInicio" value="#{salidaBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" mask="true" />
+						<p:watermark for="fecInicio" value="dd/mm/aaaa" />
+					</div>
+
+					<div class="col-sm-2 col-lg-2">
+						<div class="labelOut">
+							<h:outputLabel value="Fecha fin" />
+						</div>
+						<p:calendar id="fecFin" value="#{salidaBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true" />
+						<p:watermark for="fecFin" value="dd/mm/aaaa" />
+					</div>
+					
+					<div class="col_sm-1 col-lg-1">
+						<div class="labelOut">
+						 <h:outputLabel/>
+						</div>
+						<p:commandButton value="Buscar" action="#{salidaBean.buscarSalida}" update="@form"
+										  icon="ui-icon-search" styleClass="btnBuscar" />
+					</div>
+				</div>
+
+				<p:separator />
+
+				<p:dataTable id="tbl" value="#{salidaBean.listaSalidaDto}"
+							 var="p" rows="10" paginator="true" rowsPerPageTemplate="5,10,15"
+							 reflow="true" emptyMessage="No se encuentran registros">
+
+					<p:column headerText="Número" style="text-align: center">
+						<h:outputText value="#{p.id}" />
+					</p:column>
+
+					<p:column headerText="Fecha orden de compra" style="text-align: center">
+						<h:outputText value="#{p.fecha}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					
+					<p:column headerText="Avance de enviado" style="text-align:center;">
+						<p:progressBar value="#{p.pctEnviado}" labelTemplate="#{p.pctEnviado}%" />
+					</p:column>
+					
+					<p:column headerText="Usuario último envio" style="text-align: center">
+						<h:outputText value="#{p.usuarioDto.usu_login}"/>
+					</p:column>
+					
+					<p:column headerText="Ver" style="text-align: center">
+						<p:commandButton icon="ui-icon-pencil" title="Vista" update="@form" styleClass="btnActualizar"
+										 action="#{salidaBean.consultarUnaSalida}">
+							<f:setPropertyActionListener value="#{p}" target="#{salidaBean.salidaSelecDto}" />
+						</p:commandButton>
+					</p:column>
+					
+				</p:dataTable>
+
+			</article>
+		</h:form>
+	</ui:define>
+</ui:composition>
