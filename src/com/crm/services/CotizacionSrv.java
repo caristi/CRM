@@ -13,6 +13,9 @@ import com.crm.dto.CotizacionCabeceraDto;
 import com.crm.dto.CotizacionDetalleDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
+import com.crm.dto.SalidaCabeceraDto;
+import com.crm.dto.SalidaDetalleDto;
+import com.crm.dto.UsuarioDto;
 import com.crm.dto.VentaCabeceraDto;
 import com.crm.dto.VentaDetalleDto;
 
@@ -23,6 +26,7 @@ public class CotizacionSrv{
 	private ProductoSrv productoSrv;
 	private ClienteSrv clienteSrv;
 	private VentaSrv ventaSrv;
+	private SalidaSrv salidaSrv;
 
 	public List<ProductoDto> completeProductos(String query) {
         
@@ -151,7 +155,10 @@ public class CotizacionSrv{
 		List<VentaDetalleDto> listaVentaDetalle = new ArrayList<VentaDetalleDto>();
 		ventaDto.setListaDetalles(listaVentaDetalle);
 		
+		List<SalidaDetalleDto> listaSalidaDetalle = new ArrayList<SalidaDetalleDto>();
+		
 		VentaDetalleDto ventaDetalle;
+		SalidaDetalleDto salidaDetalle;
 		
 		for(CotizacionDetalleDto det:cotizacionDto.getListaDetalles()) {
 			
@@ -164,9 +171,37 @@ public class CotizacionSrv{
 			ventaDetalle.setVlrSubTotal(det.getVlrSubTotal());
 			
 			listaVentaDetalle.add(ventaDetalle);
+			
+			salidaDetalle = new SalidaDetalleDto();
+			salidaDetalle.setCantidadEnviada(0);
+			salidaDetalle.setCantidadVendida(ventaDetalle.getCantidad());
+			salidaDetalle.setFechaActu(new Date());
+			salidaDetalle.setMcaEnviada('N');
+			salidaDetalle.setPctEnviado(0);
+			salidaDetalle.getUsuarioDto().setUsu_id(usuario);
+			salidaDetalle.setProductoDto(ventaDetalle.getProductoDto());
+			listaSalidaDetalle.add(salidaDetalle);
 		}
 		
 		int idVenta = ventaSrv.guardarVenta(ventaDto);
+		
+		if(idVenta > 0) {
+			
+		  SalidaCabeceraDto salidaDto = new SalidaCabeceraDto();
+		  salidaDto.setClienteDto(ventaDto.getClienteDto());
+		  salidaDto.setFecha(ventaDto.getFecha());
+		  
+		  salidaDto.setMcaCompletada('N');
+		  salidaDto.setObservacion(ventaDto.getObservacion());
+		  salidaDto.setPctEnviado(0);
+		  salidaDto.setUsuarioDto(new UsuarioDto());
+		  salidaDto.getUsuarioDto().setUsu_id(usuario);
+		  salidaDto.setVentaId(idVenta);
+		  
+		  salidaDto.setListaDetalles(listaSalidaDetalle);	
+		  
+		  salidaSrv.guardarSalida(salidaDto);
+		}
 		
 		return idVenta;
 	}
@@ -202,5 +237,9 @@ public class CotizacionSrv{
 	
 	public void setVentaSrv(VentaSrv ventaSrv) {
 		this.ventaSrv = ventaSrv;
+	}
+	
+	public void setSalidaSrv(SalidaSrv salidaSrv) {
+		this.salidaSrv = salidaSrv;
 	}
 }
