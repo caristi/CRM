@@ -19,10 +19,10 @@ public class ProveedorDto implements java.io.Serializable {
 	@Column(name="pro_id")
 	private int pro_id;
 	
-	@Column(name="pro_tip_docum")
+	@Column(name="pro_tip_docum",nullable = false)
 	private String pro_tip_docum;
 	
-	@Column(name="pro_num_docum")
+	@Column(name="pro_num_docum",nullable = false,unique = true)
 	private String pro_num_docum;
 	
 	@Column(name="pro_nombre")
@@ -46,7 +46,8 @@ public class ProveedorDto implements java.io.Serializable {
 	@Column(name="pro_telefono")
 	private String pro_telefono;
 	
-	@Column(name="pro_celular")
+	
+	@Column(name="pro_celular",length=10)
 	private String pro_celular;
 	
 	@Column(name="pro_email")
@@ -141,8 +142,6 @@ public class ProveedorDto implements java.io.Serializable {
 	public void setPro_direccion(String pro_direccion) {
 		this.pro_direccion = pro_direccion;
 	}
-
-	
 
 	public String getPro_telefono() {
 		return pro_telefono;

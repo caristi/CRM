@@ -42,17 +42,17 @@ public class SalidaCabeceraDto implements java.io.Serializable  {
 	private float pctEnviado;
 
     @ManyToOne
-    @JoinColumn(name="cli_id")
+    @JoinColumn(name="cli_id",nullable = false)
     private ClienteDto clienteDto;
     
     @ManyToOne
-    @JoinColumn(name="usu_id")
+    @JoinColumn(name="usu_id",nullable = false)
     private UsuarioDto usuarioDto;
     
     @Column(name="bod_id")
     private int bodegaId;
     
-    @Column(name="ven_id")
+    @Column(name="ven_id",nullable = false)
     private int ventaId;
     
     @OneToMany(cascade= CascadeType.ALL)
