@@ -107,10 +107,10 @@
 				        <h:outputLabel value="Imagen:"/>	
 				      </div>  	   
 				           <p:fileUpload value="#{productoBean.file}" 
-				                       mode="simple" rendered="#{empty productoBean.productoDto.rutaArchivo}"
-				                       sizeLimit="90000" invalidSizeMessage="El archivo es muy pesado"
-					  					invalidFileMessage="EL archivo debe ser de las extensiones gif, jpg, jpeg o png"
-				                	   allowTypes="/(\.|\/)(gif|jpe?g|png)$/" update="@form"/>  
+				                         mode="simple" rendered="#{empty productoBean.productoDto.rutaArchivo}"
+				                       	 sizeLimit="90000" invalidSizeMessage="El archivo es muy pesado"
+					  					 invalidFileMessage="EL archivo debe ser de las extensiones gif, jpg, jpeg o png"
+				                	     allowTypes="/(\.|\/)(gif|jpe?g|png)$/" update="@form"/>  
 
 						    <p:commandButton value="Cargar archivo" ajax="false"  update="@form" rendered="#{empty productoBean.productoDto.rutaArchivo}"
 						                    actionListener="#{productoBean.cargarImagen}"/>         			

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -56,6 +57,9 @@ public class SalidaDetalleDto implements java.io.Serializable  {
 	@ManyToOne
 	@JoinColumn(name="usu_id")
 	private UsuarioDto usuarioDto;
+	
+	@Transient
+	private int cantidadAEnviar;
 	
 	public SalidaDetalleDto() {
 		
@@ -147,5 +151,13 @@ public class SalidaDetalleDto implements java.io.Serializable  {
 
 	public void setUsuarioDto(UsuarioDto usuarioDto) {
 		this.usuarioDto = usuarioDto;
+	}
+
+	public int getCantidadAEnviar() {
+		return cantidadAEnviar;
+	}
+
+	public void setCantidadAEnviar(int cantidadAEnviar) {
+		this.cantidadAEnviar = cantidadAEnviar;
 	}
 }

@@ -32,10 +32,18 @@ public class SalidaDao{
 		
 	   	sesion = sessionFactory.getCurrentSession();
 	   	
-	   	return sesion.createQuery("select p from SalidaCabeceraDto p where fecha between :fecInicio and :fecFin")
-	   			                 .setParameter("fecInicio",filtro.getFechaInicio())
-	   			                 .setParameter("fecFin", filtro.getFechaFin())
-	   			                 .list();
+	   	String sql = "select p from SalidaCabeceraDto p where 1 = 1 ";
+	   	
+	   	if(filtro.getEstado() != null && !filtro.getEstado().isEmpty()) {
+	   		
+	   		sql = sql + " and estado = '" + filtro.getEstado() + "'";
+	   	}
+	   	
+	   	if(filtro.getFechaInicio() != null && filtro.getFechaFin() != null) {
+	   		sql = sql + " and fecha between " + filtro.getFechaInicio() +  " and " + filtro.getFechaFin();
+	   	}
+	   	
+	   	return sesion.createQuery(sql).list();
 	}
 	
 	@Transactional

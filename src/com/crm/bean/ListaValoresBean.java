@@ -26,6 +26,10 @@ public class ListaValoresBean implements Serializable {
 
 		return listaValoresSrv.listaClientes();
 	}
+	
+	public List<ListaValoresDto> getListaEstadoDeSalida(){
+		return listaValoresSrv.listaEstadosDeSalida();
+	}
 
 	public void setListaValoresSrv(ListaValoresSrv listaValoresSrv) {
 		this.listaValoresSrv = listaValoresSrv;

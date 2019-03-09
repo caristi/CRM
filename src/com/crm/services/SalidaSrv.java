@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.crm.dao.ProductoDao;
 import com.crm.dao.SalidaDao;
 import com.crm.dto.FiltroBusquedaDto;
+import com.crm.dto.ProductoDto;
 import com.crm.dto.SalidaCabeceraDto;
 import com.crm.dto.SalidaDetalleDto;
 
@@ -14,6 +16,7 @@ public class SalidaSrv{
 
 	@Autowired
 	private SalidaDao salidaDao;
+	private ProductoDao productoDao;
 
 	public int guardarSalida(SalidaCabeceraDto salidaDto){
 
@@ -32,6 +35,8 @@ public class SalidaSrv{
 		
 		for(SalidaDetalleDto salidaDetalle:salidaDto.getListaDetalles()){
 			
+			salidaDetalle.setCantidadEnviada(salidaDetalle.getCantidadEnviada() + salidaDetalle.getCantidadAEnviar());
+			
 			if(salidaDetalle.getCantidadEnviada() > 0) {
 				pctEnviado = (float)(salidaDetalle.getCantidadEnviada() * 100) / salidaDetalle.getCantidadVendida() ;
 			}else {
@@ -47,7 +52,15 @@ public class SalidaSrv{
 			salidaDetalle.getUsuarioDto().setUsu_id(usuarioId);
 			salidaDetalle.setPctEnviado(pctEnviado);
 			
-			pctTotalEnviado = pctTotalEnviado + pctEnviado ;
+			pctTotalEnviado = pctTotalEnviado + pctEnviado;
+			
+			ProductoDto productoDto = new ProductoDto();
+			productoDto.setId(salidaDetalle.getProductoDto().getId());
+			productoDto.setCantidad(salidaDetalle.getCantidadAEnviar());
+			
+			productoDao.restarCantidadProducto(productoDto);
+			salidaDetalle.setCantidadAEnviar(0);
+			
 		}
 		
 		pctTotalEnviado = pctTotalEnviado / salidaDto.getListaDetalles().size();
@@ -57,6 +70,7 @@ public class SalidaSrv{
 		
 		if(salidaDto.getPctEnviado() >= 100) {
 			salidaDto.setMcaCompletada('S');
+			salidaDto.setEstado("C");
 		}else {
 			salidaDto.setMcaCompletada('N');
 		}
@@ -73,10 +87,10 @@ public class SalidaSrv{
 		
 		for(SalidaDetalleDto det:listaDetalle) {
 			if(valor) {
-				det.setCantidadEnviada(det.getCantidadVendida());
+				det.setCantidadAEnviar(det.getCantidadVendida() - det.getCantidadEnviada());
 			}else {
 				if(det.getMcaEnviada()== 'N') {
-					det.setCantidadEnviada(0);				
+					det.setCantidadAEnviar(0);				
 				}
 			}
 		}
@@ -86,5 +100,9 @@ public class SalidaSrv{
 	
 	public void setSalidaDao(SalidaDao salidaDao) {
 		this.salidaDao = salidaDao;
+	}
+	
+	public void setProductoDao(ProductoDao productoDao) {
+		this.productoDao = productoDao;
 	}
 }

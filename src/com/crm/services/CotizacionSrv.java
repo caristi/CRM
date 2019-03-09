@@ -178,7 +178,11 @@ public class CotizacionSrv{
 			salidaDetalle.setFechaActu(new Date());
 			salidaDetalle.setMcaEnviada('N');
 			salidaDetalle.setPctEnviado(0);
+			
+			salidaDetalle.setUsuarioDto(new UsuarioDto());
 			salidaDetalle.getUsuarioDto().setUsu_id(usuario);
+			
+			salidaDetalle.setProductoDto(new ProductoDto());
 			salidaDetalle.setProductoDto(ventaDetalle.getProductoDto());
 			listaSalidaDetalle.add(salidaDetalle);
 		}
@@ -197,6 +201,7 @@ public class CotizacionSrv{
 		  salidaDto.setUsuarioDto(new UsuarioDto());
 		  salidaDto.getUsuarioDto().setUsu_id(usuario);
 		  salidaDto.setVentaId(idVenta);
+		  salidaDto.setEstado("P");
 		  
 		  salidaDto.setListaDetalles(listaSalidaDetalle);	
 		  

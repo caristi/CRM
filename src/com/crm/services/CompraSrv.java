@@ -26,7 +26,7 @@ public class CompraSrv{
 			productoDto.setId(compraDto.getProductoDto().getId());
 			productoDto.setCantidad(compraDto.getCantidad());
 			
-			productoDao.actualizarCantidadProducto(productoDto);
+			productoDao.sumarCantidadProducto(productoDto);
 		}
 		
 		return id;

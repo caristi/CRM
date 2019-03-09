@@ -27,6 +27,16 @@ public class SalidaBean {
 		filtro = new FiltroBusquedaDto();
 	}
 	
+	public void consultaEstadosPendientes(){
+		
+		filtro = new FiltroBusquedaDto();
+		filtro.setEstado("P");
+
+		listaSalidaDto = salidaSrv.buscarSalida(filtro);
+		
+		filtro = new FiltroBusquedaDto();
+	}
+	
 	public void buscarSalida(){
 		
 		listaSalidaDto = salidaSrv.buscarSalida(filtro);

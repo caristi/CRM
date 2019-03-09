@@ -68,12 +68,26 @@ public class ProductoDao{
 	}
 	
 	@Transactional
-	public int actualizarCantidadProducto(ProductoDto productoDto){
+	public int sumarCantidadProducto(ProductoDto productoDto){
 		
 		sesion = sessionFactory.getCurrentSession();
 		
 		Query sql = sesion.createQuery("update ProductoDto "
 					                 + "set cantidad = cantidad + :cantidad" +
+						              " where id = :idPro")
+						             .setParameter("cantidad", productoDto.getCantidad())
+						             .setParameter("idPro", productoDto.getId());
+		
+		return sql.executeUpdate();
+	}
+	
+	@Transactional
+	public int restarCantidadProducto(ProductoDto productoDto){
+		
+		sesion = sessionFactory.getCurrentSession();
+		
+		Query sql = sesion.createQuery("update ProductoDto "
+					                 + "set cantidad = cantidad - :cantidad" +
 						              " where id = :idPro")
 						             .setParameter("cantidad", productoDto.getCantidad())
 						             .setParameter("idPro", productoDto.getId());

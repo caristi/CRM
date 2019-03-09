@@ -8,7 +8,7 @@
 	template="../../vista/template/layout.xhtml">
 
 	<ui:define name="content">
-		<h:form id="form" enctype="multipart/form-data">
+		<h:form id="formSalida" enctype="multipart/form-data">
 
 			<article class="module width_full">
 
@@ -44,6 +44,15 @@
 						</div>
 						<p:calendar id="fecFin" value="#{salidaBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true" />
 						<p:watermark for="fecFin" value="dd/mm/aaaa" />
+					</div>
+					
+					<div class="col-sm-2 col-lg-2">
+					   <div class="labelOut">
+					       <h:outputLabel value="Estado"/>
+					   </div>
+					   <p:selectOneMenu value="#{salidaBean.filtro.estado}">
+					      <f:selectItems value="#{listaValoresBean.listaEstadoDeSalida}" var="t" itemValue="#{t.codItem}" itemLabel="#{t.nomItem}"/>
+					   </p:selectOneMenu>
 					</div>
 					
 					<div class="col_sm-1 col-lg-1">
@@ -89,6 +98,10 @@
 				</p:dataTable>
 
 			</article>
+		</h:form>
+
+		<h:form>
+			<p:remoteCommand autoRun="true" update=":formSalida" action="#{salidaBean.consultaEstadosPendientes}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

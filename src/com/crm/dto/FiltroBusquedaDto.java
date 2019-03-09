@@ -8,6 +8,7 @@ public class FiltroBusquedaDto{
 	private Date fechaFin;
 	
 	private String nombre;
+	private String estado;
 	
 	public Date getFechaInicio() {
 		return fechaInicio;
@@ -26,5 +27,11 @@ public class FiltroBusquedaDto{
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

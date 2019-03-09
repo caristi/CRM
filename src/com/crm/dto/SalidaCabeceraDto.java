@@ -40,6 +40,9 @@ public class SalidaCabeceraDto implements java.io.Serializable  {
     
 	@Column(name="sal_pct_avance")
 	private float pctEnviado;
+	
+	@Column(name="sal_estado")
+	private String estado;
 
     @ManyToOne
     @JoinColumn(name="cli_id",nullable = false)
@@ -152,5 +155,13 @@ public class SalidaCabeceraDto implements java.io.Serializable  {
 
 	public void setSeleccionTodos(boolean isSeleccionTodos) {
 		this.isSeleccionTodos = isSeleccionTodos;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

@@ -119,6 +119,7 @@
 		
 		<bean id="salidaSrv" class="com.crm.services.SalidaSrv">
 			<property name="salidaDao" ref="salidaDao" />
+			<property name="productoDao" ref="productoDao" />
 		</bean>					
 			
 		<!-- Configuracion DAOs -->
