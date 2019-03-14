@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.crm.dao.ProductoDao;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
+import com.crm.validacion.ValidacionesProducto;
 
 public class ProductoSrv{
 
 	@Autowired
 	private ProductoDao productoDao;
+	private ValidacionesProducto validacionesProducto;
 
 	public int guardarProducto(ProductoDto productoDto){
+		
+		validacionesProducto.validacionDatosProducto(productoDto);
 
 		return	productoDao.guardarProducto(productoDto);
 	}
@@ -34,4 +38,7 @@ public class ProductoSrv{
 		this.productoDao = productoDao;
 	}
 
+	public void setValidacionesProducto(ValidacionesProducto validacionesProducto) {
+		this.validacionesProducto = validacionesProducto;
+	}
 }

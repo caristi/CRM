@@ -78,7 +78,10 @@
 		
 		 <bean id="productoSrv" class="com.crm.services.ProductoSrv">
 			<property name="productoDao" ref="productoDao" />
+			<property name="validacionesProducto" ref="validacionesProducto" />
 		</bean>
+		
+		<bean id="validacionesProducto" class="com.crm.validacion.ValidacionesProducto"/>
 		
 		<bean id="clienteSrv" class="com.crm.services.ClienteSrv">
 			<property name="clienteDao" ref="clienteDao" />
