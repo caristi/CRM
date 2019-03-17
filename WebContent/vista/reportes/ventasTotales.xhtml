@@ -31,7 +31,7 @@
 					<div class="labelOut">
 					   <h:outputLabel value="Fecha inicial" />
 					   <br/>
-					   <p:calendar id="fecha_inicio" value="#{reportesBean.fecha_inicio}" pattern="dd/MM/yyyy" mask="true"/>
+					   <p:calendar id="fecha_inicio" value="#{reportesBean.fecha_inicio}" pattern="dd/MM/yyyy" mask="true" locale="co"/>
 	               	   <p:watermark for="fecha_inicio" value="dd/mm/aaaa"/>	
 					</div>
 				</div>	
@@ -40,7 +40,7 @@
 					<div class="labelOut">
 				 	   <h:outputLabel value="Fecha final" />
 				 	   <br/>
-						<p:calendar id="fecha_fin" value="#{reportesBean.fecha_fin}" pattern="dd/MM/yyyy" mask="true"/>
+						<p:calendar id="fecha_fin" value="#{reportesBean.fecha_fin}" pattern="dd/MM/yyyy" mask="true" locale="co"/>
 						<p:watermark for="fecha_fin" value="dd/mm/aaaa"/>	
 					</div>
 				</div>		

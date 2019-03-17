@@ -19,10 +19,8 @@ public class UsuarioDao{
 	
     @Transactional
 	public int guardarUsuario(UsuarioDto usuarioDto){
-    	int id;
 		sesion = sessionFactory.getCurrentSession();
-	    id = (Integer) sesion.save(usuarioDto);
-		return id;
+		return (Integer) sesion.save(usuarioDto);
 	}
     @Transactional		
 	public void actualizarUsuario(UsuarioDto usuarioDto){

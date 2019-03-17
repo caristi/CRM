@@ -4,19 +4,26 @@ import java.util.List;
 
 import com.crm.dao.UsuarioDao;
 import com.crm.dto.UsuarioDto;
+import com.crm.validacion.ValidacionLogin;
+import com.crm.validacion.ValidacionUsuario;
 
 public class UsuarioSrv{
 	
+	private ValidacionLogin validacionLogin;
+	private ValidacionUsuario validacionUsuario;
 	private UsuarioDao usuarioDao;
 	
 	public int guardarUsuario(UsuarioDto usuarioDto){
 		
-		int id = usuarioDao.guardarUsuario(usuarioDto);
+		validacionUsuario.validarDatosOblogatorios(usuarioDto);
 		
-		return id;
+		return usuarioDao.guardarUsuario(usuarioDto);
 	}
 	
 	public void actualizarUsuario (UsuarioDto usuarioDto) {
+		
+		validacionUsuario.validarDatosOblogatorios(usuarioDto);
+		
 		usuarioDao.actualizarUsuario(usuarioDto);
 	}
 	
@@ -32,22 +39,24 @@ public class UsuarioSrv{
 
 		String login = usuario.getUsu_login();
 		String contrasena = usuario.getUsu_contrasena();
+		
+		validacionLogin.validarDatosObligatorios(login, contrasena);
 
 		usuario =  usuarioDao.consultarUsuario(usuario);
 
 		usuario.setAcceso(true);
-
-		if(!login.toUpperCase().equals(usuario.getUsu_login())){
-
-			usuario.setAcceso(false);
-			usuario.setMensajeAcceso("El login no existe en el sistema.");
-
-		}else if(!contrasena.equals(usuario.getUsu_contrasena())){
-			usuario.setAcceso(false);
-			usuario.setMensajeAcceso("La contrase�a es incorrecta.");			
-		}
+		
+		validacionLogin.validacionAcceso(usuario,login,contrasena);
 
 		return usuario;
+	}
+	
+	public void setValidacionLogin(ValidacionLogin validacionLogin) {
+		this.validacionLogin = validacionLogin;
+	}
+	
+	public void setValidacionUsuario(ValidacionUsuario validacionUsuario) {
+		this.validacionUsuario = validacionUsuario;
 	}
 	
 	public void setUsuarioDao(UsuarioDao usuarioDao) {

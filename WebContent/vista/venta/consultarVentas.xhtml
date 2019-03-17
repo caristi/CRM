@@ -34,7 +34,7 @@
 						<div class="labelOut">
 							<h:outputLabel value="Fecha inicio" />
 						</div>
-						<p:calendar id="fecInicio" value="#{ventaBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" mask="true" />
+						<p:calendar id="fecInicio" value="#{ventaBean.filtro.fechaInicio}" pattern="dd/MM/yyyy" mask="true" locale="co"/>
 						<p:watermark for="fecInicio" value="dd/mm/aaaa" />
 					</div>
 
@@ -42,7 +42,7 @@
 						<div class="labelOut">
 							<h:outputLabel value="Fecha fin" />
 						</div>
-						<p:calendar id="fecFin" value="#{ventaBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true" />
+						<p:calendar id="fecFin" value="#{ventaBean.filtro.fechaFin}" pattern="dd/MM/yyyy" mask="true" locale="co"/>
 						<p:watermark for="fecFin" value="dd/mm/aaaa" />
 					</div>
 					

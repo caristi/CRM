@@ -14,7 +14,13 @@ public class MenuSrv implements Serializable{
 
 	public List<OpcionDto> consultarOpciones() {
 		
-		return menuDao.consultarOpciones();
+		List<OpcionDto> lista = menuDao.consultarOpciones();
+		
+		if(lista == null || lista.size() <= 0) {
+			new NegocioException("Ocurrio un error, no existen opciones parametrizadas", BaseException.SEVERITY_WARNNIN);
+		}
+		
+		return lista;
 	}
 	
 	public void setMenuDao(MenuDao menuDao) {

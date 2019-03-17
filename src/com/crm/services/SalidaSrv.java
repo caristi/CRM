@@ -11,10 +11,12 @@ import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.dto.SalidaCabeceraDto;
 import com.crm.dto.SalidaDetalleDto;
+import com.crm.validacion.ValidacionSalida;
 
 public class SalidaSrv{
 
 	@Autowired
+	private ValidacionSalida validacionSalida;
 	private SalidaDao salidaDao;
 	private ProductoDao productoDao;
 
@@ -35,6 +37,8 @@ public class SalidaSrv{
 		
 		for(SalidaDetalleDto salidaDetalle:salidaDto.getListaDetalles()){
 			
+			validacionSalida.validarDatosNegocio(salidaDetalle.getCantidadVendida(),salidaDetalle.getCantidadEnviada(),salidaDetalle.getCantidadAEnviar());
+
 			salidaDetalle.setCantidadEnviada(salidaDetalle.getCantidadEnviada() + salidaDetalle.getCantidadAEnviar());
 			
 			if(salidaDetalle.getCantidadEnviada() > 0) {
@@ -48,6 +52,7 @@ public class SalidaSrv{
 			}else {
 				salidaDetalle.setMcaEnviada('N');
 			}
+			
 			salidaDetalle.setFechaEnviado(new Date());
 			salidaDetalle.getUsuarioDto().setUsu_id(usuarioId);
 			salidaDetalle.setPctEnviado(pctEnviado);
@@ -96,6 +101,10 @@ public class SalidaSrv{
 		}
 		
 		return listaDetalle;
+	}
+	
+	public void setValidacionSalida(ValidacionSalida validacionSalida) {
+		this.validacionSalida = validacionSalida;
 	}
 	
 	public void setSalidaDao(SalidaDao salidaDao) {

@@ -69,8 +69,13 @@
 		<!-- Configuracion Servicios -->
 		
 		<bean id="usuarioSrv" class="com.crm.services.UsuarioSrv">
+		    <property name="validacionLogin" ref="validacionLogin" />
+		    <property name="validacionUsuario" ref="validacionUsuario"/>
 			<property name="usuarioDao" ref="usuarioDao" />
 		</bean>
+		
+		<bean id="validacionLogin" class="com.crm.validacion.ValidacionLogin"/>
+		<bean id="validacionUsuario" class="com.crm.validacion.ValidacionUsuario"/>
 		
 		<bean id="menuSrv" class="com.crm.services.MenuSrv">
 			<property name="menuDao" ref="menuDao" />
@@ -78,10 +83,10 @@
 		
 		 <bean id="productoSrv" class="com.crm.services.ProductoSrv">
 			<property name="productoDao" ref="productoDao" />
-			<property name="validacionesProducto" ref="validacionesProducto" />
+			<property name="validacionProducto" ref="validacionProducto" />
 		</bean>
 		
-		<bean id="validacionesProducto" class="com.crm.validacion.ValidacionesProducto"/>
+		<bean id="validacionProducto" class="com.crm.validacion.ValidacionProducto"/>
 		
 		<bean id="clienteSrv" class="com.crm.services.ClienteSrv">
 			<property name="clienteDao" ref="clienteDao" />
@@ -121,9 +126,13 @@
 		</bean>	
 		
 		<bean id="salidaSrv" class="com.crm.services.SalidaSrv">
+			<property name="validacionSalida" ref="validacionSalida"/>
 			<property name="salidaDao" ref="salidaDao" />
 			<property name="productoDao" ref="productoDao" />
-		</bean>					
+		</bean>				
+		
+		
+		<bean id="validacionSalida" class="com.crm.validacion.ValidacionSalida"/>	
 			
 		<!-- Configuracion DAOs -->
 		

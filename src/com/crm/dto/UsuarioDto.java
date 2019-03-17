@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="usuario")
@@ -65,10 +66,10 @@ public class UsuarioDto implements java.io.Serializable  {
 	@Column(name="usu_perfil")
 	private String usu_perfil;
 	
-	@javax.persistence.Transient
+	@Transient
 	private boolean acceso;
 	
-	@javax.persistence.Transient
+	@Transient
 	private String mensajeAcceso;
 	
 	public UsuarioDto() {

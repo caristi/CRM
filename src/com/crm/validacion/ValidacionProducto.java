@@ -6,7 +6,7 @@ import com.crm.dto.ProductoDto;
 import com.crm.services.BaseException;
 import com.crm.services.NegocioException;
 
-public class ValidacionesProducto {
+public class ValidacionProducto {
 	
 	public void validacionDatosProducto(ProductoDto productoDto){
 		
