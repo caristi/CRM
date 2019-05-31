@@ -9,21 +9,17 @@
           				   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
           				   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	
-	<context:annotation-config/>
-	
-	<!-- Configuracion de Database y Hibernate -->
+		<!-- Configuracion de Database y Hibernate -->
 		<import resource="/hibernate/DataSource.xml"/>
 		<import resource="/hibernate/Hibernate.xml"/>
  
+    	<context:component-scan base-package="com.crm" />
+       
         <!-- Configuracion Bean -->
 
 		<bean id="loginBean" scope="session" class="com.crm.bean.LoginBean">
 		   <property name="usuarioSrv" ref="usuarioSrv" />
 		   <property name="menuSrv" ref="menuSrv" />
-		</bean>
-		
-		<bean id="productoBean" scope="session" class="com.crm.bean.ProductoBean">
-		   <property name="productoSrv" ref="productoSrv" />
 		</bean>
 		
 		<bean id="clienteBean" class="com.crm.bean.ClienteBean">
@@ -81,13 +77,6 @@
 			<property name="menuDao" ref="menuDao" />
 		</bean>	
 		
-		 <bean id="productoSrv" class="com.crm.services.ProductoSrv">
-			<property name="productoDao" ref="productoDao" />
-			<property name="validacionProducto" ref="validacionProducto" />
-		</bean>
-		
-		<bean id="validacionProducto" class="com.crm.validacion.ValidacionProducto"/>
-		
 		<bean id="clienteSrv" class="com.crm.services.ClienteSrv">
 			<property name="clienteDao" ref="clienteDao" />
 		</bean>
@@ -98,7 +87,6 @@
 		
 		<bean id="compraSrv" class="com.crm.services.CompraSrv">
 			<property name="compraDao" ref="compraDao" />
-			<property name="productoDao" ref="productoDao" />
 		</bean>
 		
 		<bean id="listaValoresSrv" class="com.crm.services.ListaValoresSrv">
@@ -114,7 +102,6 @@
 		</bean>
 		
 		<bean id="cotizacionSrv" class="com.crm.services.CotizacionSrv">
-			<property name="productoSrv" ref="productoSrv" />
 			<property name="clienteSrv" ref="clienteSrv" />
 			<property name="ventaSrv" ref="ventaSrv" />
 			<property name="salidaSrv" ref="salidaSrv" />
@@ -128,7 +115,6 @@
 		<bean id="salidaSrv" class="com.crm.services.SalidaSrv">
 			<property name="validacionSalida" ref="validacionSalida"/>
 			<property name="salidaDao" ref="salidaDao" />
-			<property name="productoDao" ref="productoDao" />
 		</bean>				
 		
 		
@@ -143,10 +129,6 @@
 		<bean id="menuDao" class="com.crm.dao.MenuDao">
 			<property name="sessionFactory" ref="sessionFactory" />
 		</bean>	
-		
-		<bean id="productoDao" class="com.crm.dao.ProductoDao">
-			<property name="sessionFactory" ref="sessionFactory" />
-		</bean>
 		
 		<bean id="clienteDao" class="com.crm.dao.ClienteDao">
 			<property name="sessionFactory" ref="sessionFactory" />

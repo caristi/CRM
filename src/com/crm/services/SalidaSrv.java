@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dao.ProductoDao;
 import com.crm.dao.SalidaDao;
@@ -13,11 +14,13 @@ import com.crm.dto.SalidaCabeceraDto;
 import com.crm.dto.SalidaDetalleDto;
 import com.crm.validacion.ValidacionSalida;
 
+@Component
 public class SalidaSrv{
 
 	@Autowired
 	private ValidacionSalida validacionSalida;
 	private SalidaDao salidaDao;
+	@Autowired
 	private ProductoDao productoDao;
 
 	public int guardarSalida(SalidaCabeceraDto salidaDto){

@@ -6,11 +6,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 
+@Component
 public class ProductoDao{
 	
 	private Session sesion;				    							

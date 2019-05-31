@@ -2,10 +2,13 @@ package com.crm.validacion;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 import com.crm.dto.ProductoDto;
 import com.crm.services.BaseException;
 import com.crm.services.NegocioException;
 
+@Component
 public class ValidacionProducto {
 	
 	public void validacionDatosProducto(ProductoDto productoDto){

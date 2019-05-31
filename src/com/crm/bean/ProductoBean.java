@@ -8,16 +8,21 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.ProductoSrv;
 import com.crm.util.BundleUtils;
 
+@Component
+@ManagedBean
 public class ProductoBean {
 
 	private ProductoDto productoDto;
@@ -26,6 +31,7 @@ public class ProductoBean {
 	
 	private List<ProductoDto> listaProductos;
 	
+	@Autowired
 	private ProductoSrv productoSrv;
 	
 	private boolean mostrarImaggen;

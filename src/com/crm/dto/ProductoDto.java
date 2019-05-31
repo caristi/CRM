@@ -10,6 +10,11 @@ import javax.persistence.Transient;
 
 import org.primefaces.model.UploadedFile;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="producto")
 public class ProductoDto implements java.io.Serializable{
@@ -54,102 +59,6 @@ public class ProductoDto implements java.io.Serializable{
 	@Transient
 	private UploadedFile imagenProducto;
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public String getRutaArchivo() {
-		return rutaArchivo;
-	}
-
-	public void setRutaArchivo(String rutaArchivo) {
-		this.rutaArchivo = rutaArchivo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public double getVlrCosto() {
-		return vlrCosto;
-	}
-
-	public void setVlrCosto(double vlrCosto) {
-		this.vlrCosto = vlrCosto;
-	}
-
-	public double getPct_iva() {
-		return pct_iva;
-	}
-
-	public void setPct_iva(double pct_iva) {
-		this.pct_iva = pct_iva;
-	}
-
-	public double getVlrVenta() {
-		return vlrVenta;
-	}
-
-	public void setVlrVenta(double vlrVenta) {
-		this.vlrVenta = vlrVenta;
-	}
-
-	public String getUnidadMedida() {
-		return unidadMedida;
-	}
-
-	public void setUnidadMedida(String unidadMedida) {
-		this.unidadMedida = unidadMedida;
-	}
-
-	public String getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(String material) {
-		this.material = material;
-	}
-
-	public UploadedFile getImagenProducto() {
-		return imagenProducto;
-	}
-
-	public void setImagenProducto(UploadedFile imagenProducto) {
-		this.imagenProducto = imagenProducto;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

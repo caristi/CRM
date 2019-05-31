@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dao.CotizacionDao;
 import com.crm.dto.ClienteDto;
@@ -19,10 +20,12 @@ import com.crm.dto.UsuarioDto;
 import com.crm.dto.VentaCabeceraDto;
 import com.crm.dto.VentaDetalleDto;
 
+@Component
 public class CotizacionSrv{
 
 	@Autowired
 	private CotizacionDao cotizacionDao;
+	@Autowired
 	private ProductoSrv productoSrv;
 	private ClienteSrv clienteSrv;
 	private VentaSrv ventaSrv;
