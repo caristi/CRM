@@ -3,14 +3,21 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.ProveedorDto;
 import com.crm.services.ProveedorSrv;
 
-
+@Component
+@Named
 public class ProveedorBean {
 
 	private ProveedorDto proveedorDto;
+	
+	@Autowired
 	private ProveedorSrv proveedorSrv;
 	private List<ProveedorDto> listaProveedores;
 	private ProveedorDto selectProveedorDto;
@@ -32,7 +39,7 @@ public class ProveedorBean {
 		
     public void guardar(){
   		proveedorSrv.guardarProveedor(proveedorDto);
-    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Proveedor Registrado éxitosamente"));
+    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Proveedor Registrado ï¿½xitosamente"));
     }
     
     public String irVistaRegistroProveedor(){
@@ -43,7 +50,7 @@ public class ProveedorBean {
     
     public void actualizar(){
     	proveedorSrv.actualizarProveedor(proveedorDto);
-    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Proveedor Actualizado éxitosamente"));
+    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Proveedor Actualizado ï¿½xitosamente"));
     }
     
 	public void consultaProveedores(){

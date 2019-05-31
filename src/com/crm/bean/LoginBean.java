@@ -5,23 +5,30 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.OpcionDto;
 import com.crm.dto.UsuarioDto;
 import com.crm.services.MenuSrv;
 import com.crm.services.UsuarioSrv;
 
+@Component
+@Named
 public class LoginBean implements java.io.Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Autowired
 	private UsuarioSrv usuarioSrv;
+	@Autowired
 	private MenuSrv menuSrv;
 	
 	private UsuarioDto usuario;

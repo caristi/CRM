@@ -16,6 +16,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="cotizacion")
 public class CotizacionCabeceraDto implements java.io.Serializable  {
@@ -68,93 +73,5 @@ public class CotizacionCabeceraDto implements java.io.Serializable  {
 		CotizacionDetalleDto detalle = new CotizacionDetalleDto();
 		listaDetalles = new ArrayList<CotizacionDetalleDto>();
 		listaDetalles.add(detalle);
-	}
-    
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNumCotizacion() {
-		return numCotizacion;
-	}
-
-	public void setNumCotizacion(String numCotizacion) {
-		this.numCotizacion = numCotizacion;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public double getVlrIvaTotal() {
-		return vlrIvaTotal;
-	}
-
-	public void setVlrIvaTotal(double vlrIvaTotal) {
-		this.vlrIvaTotal = vlrIvaTotal;
-	}
-
-	public double getVlrSubTotal() {
-		return vlrSubTotal;
-	}
-
-	public void setVlrSubTotal(double vlrSubTotal) {
-		this.vlrSubTotal = vlrSubTotal;
-	}
-
-	public double getVlrTotal() {
-		return vlrTotal;
-	}
-
-	public void setVlrTotal(double vlrTotal) {
-		this.vlrTotal = vlrTotal;
-	}
-
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
-
-	public ClienteDto getClienteDto() {
-		return clienteDto;
-	}
-
-	public void setClienteDto(ClienteDto clienteDto) {
-		this.clienteDto = clienteDto;
-	}
-
-	public UsuarioDto getUsuarioDto() {
-		return usuarioDto;
-	}
-
-	public void setUsuarioDto(UsuarioDto usuarioDto) {
-		this.usuarioDto = usuarioDto;
-	}
-
-	public List<CotizacionDetalleDto> getListaDetalles() {
-		return listaDetalles;
-	}
-
-	public void setListaDetalles(List<CotizacionDetalleDto> listaDetalles) {
-		this.listaDetalles = listaDetalles;
-	}
-
-	public double getVlrTotalDescuento() {
-		return vlrTotalDescuento;
-	}
-
-	public void setVlrTotalDescuento(double vlrTotalDescuento) {
-		this.vlrTotalDescuento = vlrTotalDescuento;
 	}
 }

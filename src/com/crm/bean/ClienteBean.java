@@ -3,15 +3,21 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.crm.dto.ClienteDto;
 import com.crm.services.ClienteSrv;
 
-
+@Named
 public class ClienteBean {
 
-	private ClienteDto clienteDto;
+	@Autowired
 	private ClienteSrv clienteSrv;
+	
+	private ClienteDto clienteDto;
+
 	private List<ClienteDto> listaClientes;
 	private ClienteDto selectClienteDto;
 

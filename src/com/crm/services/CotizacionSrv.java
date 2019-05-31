@@ -27,8 +27,11 @@ public class CotizacionSrv{
 	private CotizacionDao cotizacionDao;
 	@Autowired
 	private ProductoSrv productoSrv;
+	@Autowired
 	private ClienteSrv clienteSrv;
+	@Autowired
 	private VentaSrv ventaSrv;
+	@Autowired
 	private SalidaSrv salidaSrv;
 
 	public List<ProductoDto> completeProductos(String query) {

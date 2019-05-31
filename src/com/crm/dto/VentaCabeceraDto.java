@@ -15,6 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="venta_cabecera")
 public class VentaCabeceraDto implements java.io.Serializable  {
@@ -72,99 +77,4 @@ public class VentaCabeceraDto implements java.io.Serializable  {
 		listaDetalles.add(detalle);
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNumVenta() {
-		return numVenta;
-	}
-
-	public void setNumVenta(String numVenta) {
-		this.numVenta = numVenta;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public double getVlrIvaTotal() {
-		return vlrIvaTotal;
-	}
-
-	public void setVlrIvaTotal(double vlrIvaTotal) {
-		this.vlrIvaTotal = vlrIvaTotal;
-	}
-
-	public double getVlrSubTotal() {
-		return vlrSubTotal;
-	}
-
-	public void setVlrSubTotal(double vlrSubTotal) {
-		this.vlrSubTotal = vlrSubTotal;
-	}
-
-	public double getVlrTotal() {
-		return vlrTotal;
-	}
-
-	public void setVlrTotal(double vlrTotal) {
-		this.vlrTotal = vlrTotal;
-	}
-
-	public double getVlrTotalDescuento() {
-		return vlrTotalDescuento;
-	}
-
-	public void setVlrTotalDescuento(double vlrTotalDescuento) {
-		this.vlrTotalDescuento = vlrTotalDescuento;
-	}
-
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
-
-	public ClienteDto getClienteDto() {
-		return clienteDto;
-	}
-
-	public void setClienteDto(ClienteDto clienteDto) {
-		this.clienteDto = clienteDto;
-	}
-
-	public UsuarioDto getUsuarioDto() {
-		return usuarioDto;
-	}
-
-	public void setUsuarioDto(UsuarioDto usuarioDto) {
-		this.usuarioDto = usuarioDto;
-	}
-
-	public List<VentaDetalleDto> getListaDetalles() {
-		return listaDetalles;
-	}
-
-	public void setListaDetalles(List<VentaDetalleDto> listaDetalles) {
-		this.listaDetalles = listaDetalles;
-	}
-
-	public int getIdCotizacion() {
-		return idCotizacion;
-	}
-
-	public void setIdCotizacion(int idCotizacion) {
-		this.idCotizacion = idCotizacion;
-	}
 }

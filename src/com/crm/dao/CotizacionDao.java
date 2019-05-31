@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.CotizacionCabeceraDto;
 import com.crm.dto.CotizacionDetalleDto;
 import com.crm.dto.FiltroBusquedaDto;
 
+@Component
 public class CotizacionDao{
 	
 	private Session sesion;				    							

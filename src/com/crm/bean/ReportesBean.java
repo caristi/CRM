@@ -1,16 +1,22 @@
 package com.crm.bean;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
+
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.ReportesDto;
 import com.crm.services.ReportesSrv;
 
-
+@Component
+@Named
 public class ReportesBean {
 	
-	
-
 	private ReportesDto reportesDto;
+	
+	@Autowired
 	private ReportesSrv reportesSrv;
 	private List<ReportesDto> listaReportes;
 	private List<ReportesDto> listaVentas;

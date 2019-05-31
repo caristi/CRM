@@ -3,18 +3,25 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.UsuarioDto;
 import com.crm.services.UsuarioSrv;
 
-
+@Component
+@Named
 public class UsuarioBean {
 
-	private UsuarioDto usuarioDto;
+	@Autowired
 	private UsuarioSrv usuarioSrv;
-	private List<UsuarioDto> listaUsuarios;
+	
+	private UsuarioDto usuarioDto;
 	private UsuarioDto selectUsuarioDto;
 		
+	private List<UsuarioDto> listaUsuarios;
 	
 	private String opcion_busqueda;
 	private String valor_busqueda;
@@ -63,10 +70,6 @@ public class UsuarioBean {
 		return listaUsuarios;
 	}
     
-	public UsuarioSrv getUsuarioSrv() {
-		return usuarioSrv;
-	}
-
 	public UsuarioDto getUsuarioDto() {
 		return usuarioDto;
 	}

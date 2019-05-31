@@ -10,6 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="venta_detalle")
 public class VentaDetalleDto implements java.io.Serializable  {
@@ -50,75 +55,4 @@ public class VentaDetalleDto implements java.io.Serializable  {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public double getVlrProducto() {
-		return vlrProducto;
-	}
-
-	public void setVlrProducto(double vlrProducto) {
-		this.vlrProducto = vlrProducto;
-	}
-
-	public double getVlrDescuento() {
-		return vlrDescuento;
-	}
-
-	public void setVlrDescuento(double vlrDescuento) {
-		this.vlrDescuento = vlrDescuento;
-	}
-
-	public double getVlrIva() {
-		return vlrIva;
-	}
-
-	public void setVlrIva(double vlrIva) {
-		this.vlrIva = vlrIva;
-	}
-
-	public double getVlrSubTotal() {
-		return vlrSubTotal;
-	}
-
-	public void setVlrSubTotal(double vlrSubTotal) {
-		this.vlrSubTotal = vlrSubTotal;
-	}
-
-	public float getPctDescuento() {
-		return pctDescuento;
-	}
-
-	public void setPctDescuento(float pctDescuento) {
-		this.pctDescuento = pctDescuento;
-	}
-
-	public ProductoDto getProductoDto() {
-		return productoDto;
-	}
-
-	public void setProductoDto(ProductoDto productoDto) {
-		this.productoDto = productoDto;
-	}
-
-	public int getVenId() {
-		return venId;
-	}
-
-	public void setVenId(int venId) {
-		this.venId = venId;
-	}
 }

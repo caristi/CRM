@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="cabecera_factura")
 public class FacturaDetalleDto implements java.io.Serializable  {
@@ -33,43 +38,4 @@ public class FacturaDetalleDto implements java.io.Serializable  {
 	@JoinColumn(name="pro_id")
 	private ProductoDto productoDto;
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public double getVlrProducto() {
-		return vlrProducto;
-	}
-
-	public void setVlrProducto(double vlrProducto) {
-		this.vlrProducto = vlrProducto;
-	}
-
-	public double getVlrIva() {
-		return vlrIva;
-	}
-
-	public void setVlrIva(double vlrIva) {
-		this.vlrIva = vlrIva;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public ProductoDto getProductoDto() {
-		return productoDto;
-	}
-
-	public void setProductoDto(ProductoDto productoDto) {
-		this.productoDto = productoDto;
-	}
 }

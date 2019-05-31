@@ -1,11 +1,17 @@
 package com.crm.services;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.crm.dao.ClienteDao;
 import com.crm.dto.ClienteDto;
 
+@Component
 public class ClienteSrv{
 	
+	@Autowired
 	private ClienteDao clienteDao;
 	
 	public int guardarCliente(ClienteDto clienteDto){

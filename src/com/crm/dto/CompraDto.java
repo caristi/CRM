@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="compra")
 public class CompraDto implements java.io.Serializable{
@@ -49,67 +54,4 @@ public class CompraDto implements java.io.Serializable{
 	public CompraDto() {
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
-
-	public double getVlrTotal() {
-		return vlrTotal;
-	}
-
-	public void setVlrTotal(double vlrTotal) {
-		this.vlrTotal = vlrTotal;
-	}
-
-	public ProductoDto getProductoDto() {
-		return productoDto;
-	}
-
-	public void setProductoDto(ProductoDto productoDto) {
-		this.productoDto = productoDto;
-	}
-
-//	public ProveedorDto getProveedorDto() {
-//		return proveedorDto;
-//	}
-//
-//	public void setProveedorDto(ProveedorDto proveedorDto) {
-//		this.proveedorDto = proveedorDto;
-//	}
-
-	public UsuarioDto getUsuarioDto() {
-		return usuarioDto;
-	}
-
-	public void setUsuarioDto(UsuarioDto usuarioDto) {
-		this.usuarioDto = usuarioDto;
-	}
 }

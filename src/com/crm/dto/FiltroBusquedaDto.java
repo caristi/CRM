@@ -2,6 +2,11 @@ package com.crm.dto;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class FiltroBusquedaDto{
 	
 	private Date fechaInicio;
@@ -9,29 +14,5 @@ public class FiltroBusquedaDto{
 	
 	private String nombre;
 	private String estado;
-	
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+
 }

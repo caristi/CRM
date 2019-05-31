@@ -3,9 +3,12 @@ package com.crm.validacion;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.crm.dto.UsuarioDto;
 import com.crm.services.NegocioException;
 
+@Component
 public class ValidacionUsuario {
 	
 	public void validarDatosOblogatorios(UsuarioDto usuarioDto) {

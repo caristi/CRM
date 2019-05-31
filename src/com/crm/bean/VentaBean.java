@@ -2,13 +2,21 @@ package com.crm.bean;
 
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.VentaCabeceraDto;
 import com.crm.services.VentaSrv;
 import com.crm.util.Constantes;
 
+@Component
+@Named
 public class VentaBean {
 
+	@Autowired
 	private VentaSrv ventaSrv;
 	
 	private VentaCabeceraDto ventaDto;

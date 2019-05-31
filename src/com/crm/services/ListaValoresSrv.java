@@ -3,11 +3,16 @@ package com.crm.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.crm.dao.ListaValoresDao;
 import com.crm.dto.ListaValoresDto;
 
+@Component
 public class ListaValoresSrv{
 	
+	@Autowired
 	ListaValoresDao listaValoresDao;
 	
 	public List<ListaValoresDto> listaProductos(){

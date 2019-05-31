@@ -14,6 +14,11 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="salida_detalle")
 @DynamicUpdate
@@ -65,99 +70,4 @@ public class SalidaDetalleDto implements java.io.Serializable  {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getCantidadEnviada() {
-		return cantidadEnviada;
-	}
-
-	public void setCantidadEnviada(int cantidadEnviada) {
-		this.cantidadEnviada = cantidadEnviada;
-	}
-
-	public int getCantidadVendida() {
-		return cantidadVendida;
-	}
-
-	public void setCantidadVendida(int cantidadVendida) {
-		this.cantidadVendida = cantidadVendida;
-	}
-
-	public char getMcaEnviada() {
-		return mcaEnviada;
-	}
-
-	public void setMcaEnviada(char mcaEnviada) {
-		this.mcaEnviada = mcaEnviada;
-	}
-
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
-
-	public Date getFechaActu() {
-		return fechaActu;
-	}
-
-	public void setFechaActu(Date fechaActu) {
-		this.fechaActu = fechaActu;
-	}
-
-	public Date getFechaEnviado() {
-		return fechaEnviado;
-	}
-
-	public void setFechaEnviado(Date fechaEnviado) {
-		this.fechaEnviado = fechaEnviado;
-	}
-
-	public float getPctEnviado() {
-		return pctEnviado;
-	}
-
-	public void setPctEnviado(float pctEnviado) {
-		this.pctEnviado = pctEnviado;
-	}
-
-	public ProductoDto getProductoDto() {
-		return productoDto;
-	}
-
-	public void setProductoDto(ProductoDto productoDto) {
-		this.productoDto = productoDto;
-	}
-
-	public int getSalId() {
-		return salId;
-	}
-
-	public void setSalId(int salId) {
-		this.salId = salId;
-	}
-
-	public UsuarioDto getUsuarioDto() {
-		return usuarioDto;
-	}
-
-	public void setUsuarioDto(UsuarioDto usuarioDto) {
-		this.usuarioDto = usuarioDto;
-	}
-
-	public int getCantidadAEnviar() {
-		return cantidadAEnviar;
-	}
-
-	public void setCantidadAEnviar(int cantidadAEnviar) {
-		this.cantidadAEnviar = cantidadAEnviar;
-	}
 }

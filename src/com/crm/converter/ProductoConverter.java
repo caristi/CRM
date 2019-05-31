@@ -10,6 +10,7 @@ import javax.faces.convert.FacesConverter;
 import com.crm.bean.CotizacionBean;
 import com.crm.dto.ProductoDto;
 
+@SuppressWarnings("rawtypes")
 @FacesConverter("productoConverter")
 public class ProductoConverter implements Converter{
 	

@@ -3,16 +3,25 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dto.ClienteHistoricoDto;
 import com.crm.services.ClienteHistoricoSrv;
 
+@Component
+@Named
 public class ClienteHistoricoBean {
 
-	private ClienteHistoricoDto clientehistoricoDto;
+	@Autowired
 	private ClienteHistoricoSrv clientehistoricoSrv;
-	private List<ClienteHistoricoDto> listaHistoricos;
+	
+	private ClienteHistoricoDto clientehistoricoDto;
 	private ClienteHistoricoDto selectClientehistoricoDto;
+	
+	private List<ClienteHistoricoDto> listaHistoricos;
 
 	private String opcion_busqueda;
 	private String valor_busqueda;

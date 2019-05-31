@@ -1,7 +1,10 @@
 package com.crm.validacion;
 
+import org.springframework.stereotype.Component;
+
 import com.crm.services.NegocioException;
 
+@Component 
 public class ValidacionSalida {
 	
 	public void validarDatosNegocio(int cantidadVendida, int cantidadEnviada,int cantidadAEnviar) {

@@ -11,11 +11,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
 import com.crm.bean.LoginBean;
 
 /**
  * Servlet Filter implementation class LoginFilter
  */
+@Component
 public class LoginFilter implements Filter {
 
 	/**
@@ -41,7 +44,7 @@ public class LoginFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		// Obtengo el bean que representa el usuario desde el scope sesion
 		LoginBean loginBean = (LoginBean) req.getSession().getAttribute("loginBean");
-
+		
 		//Proceso la URL que esta requiriendo el cliente
 		String urlStr = req.getRequestURL().toString().toLowerCase();
 

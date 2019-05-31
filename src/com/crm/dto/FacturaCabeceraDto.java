@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="cabecera_factura")
 public class FacturaCabeceraDto implements java.io.Serializable  {
@@ -46,59 +51,4 @@ public class FacturaCabeceraDto implements java.io.Serializable  {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNumFactura() {
-		return numFactura;
-	}
-
-	public void setNumFactura(String numFactura) {
-		this.numFactura = numFactura;
-	}
-
-	public Date getFechaFactura() {
-		return fechaFactura;
-	}
-
-	public void setFechaFactura(Date fechaFactura) {
-		this.fechaFactura = fechaFactura;
-	}
-
-	public double getVlrIva() {
-		return vlrIva;
-	}
-
-	public void setVlrIva(double vlrIva) {
-		this.vlrIva = vlrIva;
-	}
-
-	public double getVlrSubTotal() {
-		return vlrSubTotal;
-	}
-
-	public void setVlrSubTotal(double vlrSubTotal) {
-		this.vlrSubTotal = vlrSubTotal;
-	}
-
-	public double getVlrTotal() {
-		return vlrTotal;
-	}
-
-	public void setVlrTotal(double vlrTotal) {
-		this.vlrTotal = vlrTotal;
-	}
-
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
 }

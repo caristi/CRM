@@ -1,19 +1,20 @@
 package com.crm.services;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 import com.crm.dao.ReportesDao;
 import com.crm.dto.ReportesDto;
 
-
-
-
+@Component
 public class ReportesSrv{
 
-	
+	@Autowired
 	private ReportesDao reportesDao;
-
 	
 	public List<ReportesDto> ventasUsuarioEspecifico(int codigo_vendedor, Date fecha_inicio, Date fecha_fin){
 		return reportesDao.ventasUsuarioEspecifico(codigo_vendedor, fecha_inicio, fecha_fin);

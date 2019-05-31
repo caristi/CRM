@@ -8,8 +8,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -22,17 +22,17 @@ import com.crm.services.ProductoSrv;
 import com.crm.util.BundleUtils;
 
 @Component
-@ManagedBean
+@Named
 public class ProductoBean {
 
+	@Autowired
+	private ProductoSrv productoSrv;
+	
 	private ProductoDto productoDto;
 	private ProductoDto productoSelecDto;
 	private FiltroBusquedaDto filtro;
 	
 	private List<ProductoDto> listaProductos;
-	
-	@Autowired
-	private ProductoSrv productoSrv;
 	
 	private boolean mostrarImaggen;
 	private boolean mcaEditar;

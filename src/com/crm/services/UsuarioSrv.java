@@ -2,15 +2,22 @@ package com.crm.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.crm.dao.UsuarioDao;
 import com.crm.dto.UsuarioDto;
 import com.crm.validacion.ValidacionLogin;
 import com.crm.validacion.ValidacionUsuario;
 
+@Component
 public class UsuarioSrv{
 	
+	@Autowired
 	private ValidacionLogin validacionLogin;
+	@Autowired
 	private ValidacionUsuario validacionUsuario;
+	@Autowired
 	private UsuarioDao usuarioDao;
 	
 	public int guardarUsuario(UsuarioDto usuarioDto){

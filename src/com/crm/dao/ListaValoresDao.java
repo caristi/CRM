@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.ClienteDto;
@@ -12,9 +14,12 @@ import com.crm.dto.ListaValoresDto;
 import com.crm.dto.ProductoDto;
 import com.crm.dto.UsuarioDto;
 
+@Component
 public class ListaValoresDao{
 
 	private Session sesion;
+	
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	@SuppressWarnings("unchecked")

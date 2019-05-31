@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.crm.dao.VentaDao;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.VentaCabeceraDto;
 import com.crm.dto.VentaDetalleDto;
 
+@Component
 public class VentaSrv{
 
 	@Autowired

@@ -10,6 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="cotizacion_detalle")
 public class CotizacionDetalleDto implements java.io.Serializable  {
@@ -51,85 +56,5 @@ public class CotizacionDetalleDto implements java.io.Serializable  {
 	
 	public CotizacionDetalleDto() {
 		
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public double getVlrProducto() {
-		return vlrProducto;
-	}
-
-	public void setVlrProducto(double vlrProducto) {
-		this.vlrProducto = vlrProducto;
-	}
-
-	public double getVlrIva() {
-		return vlrIva;
-	}
-
-	public void setVlrIva(double vlrIva) {
-		this.vlrIva = vlrIva;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public ProductoDto getProductoDto() {
-		return productoDto;
-	}
-
-	public void setProductoDto(ProductoDto productoDto) {
-		this.productoDto = productoDto;
-	}
-
-	public double getVlrSubTotal() {
-		return vlrSubTotal;
-	}
-
-	public void setVlrSubTotal(double vlrSubTotal) {
-		this.vlrSubTotal = vlrSubTotal;
-	}
-
-	public double getVlrDescuento() {
-		return vlrDescuento;
-	}
-
-	public void setVlrDescuento(double vlrDescuento) {
-		this.vlrDescuento = vlrDescuento;
-	}
-
-	public float getPctDescuento() {
-		return pctDescuento;
-	}
-
-	public void setPctDescuento(float pctDescuento) {
-		this.pctDescuento = pctDescuento;
-	}
-
-	public boolean isInfoCompleta() {
-		return infoCompleta;
-	}
-
-	public void setInfoCompleta(boolean infoCompleta) {
-		this.infoCompleta = infoCompleta;
-	}
-
-	public int getCodId() {
-		return codId;
-	}
-
-	public void setCodId(int codId) {
-		this.codId = codId;
 	}
 }

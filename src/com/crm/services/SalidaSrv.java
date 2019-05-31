@@ -19,6 +19,7 @@ public class SalidaSrv{
 
 	@Autowired
 	private ValidacionSalida validacionSalida;
+	@Autowired
 	private SalidaDao salidaDao;
 	@Autowired
 	private ProductoDao productoDao;

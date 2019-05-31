@@ -5,14 +5,23 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.CompraSrv;
 
+@Component
+@Named
 public class CompraBean {
 
+	@Autowired
 	private CompraSrv compraSrv;
+	
 	private CompraDto compraDto;
 	private CompraDto compraSelecDto;
 	private FiltroBusquedaDto filtro;
@@ -39,7 +48,7 @@ public class CompraBean {
 		mcaEditar = true;
 		campoEditable = false;
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con código " + id + " y se actualizó el invertario"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se guardo la compra con cï¿½digo " + id + " y se actualizï¿½ el invertario"));
 	}
 	
 	public void consultarCompra(){
