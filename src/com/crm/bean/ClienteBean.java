@@ -3,14 +3,14 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.ClienteDto;
 import com.crm.services.ClienteSrv;
 
-@Named
+@Controller
 public class ClienteBean {
 
 	@Autowired

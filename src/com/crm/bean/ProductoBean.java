@@ -9,20 +9,18 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.ProductoSrv;
 import com.crm.util.BundleUtils;
 
-@Component
-@Named
+@Controller
 public class ProductoBean {
 
 	@Autowired

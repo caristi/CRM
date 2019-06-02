@@ -3,14 +3,14 @@ package com.crm.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.crm.dao.UsuarioDao;
 import com.crm.dto.UsuarioDto;
 import com.crm.validacion.ValidacionLogin;
 import com.crm.validacion.ValidacionUsuario;
 
-@Component
+@Service
 public class UsuarioSrv{
 	
 	@Autowired

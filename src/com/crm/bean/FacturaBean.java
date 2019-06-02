@@ -2,15 +2,13 @@ package com.crm.bean;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.primefaces.event.RowEditEvent;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.FacturaCabeceraDto;
 
-@Component
-@Named
+@Controller
 public class FacturaBean {
 
 	private FacturaCabeceraDto facCabeceraDto;

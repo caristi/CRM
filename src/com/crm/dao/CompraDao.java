@@ -1,17 +1,17 @@
 package com.crm.dao;
 
-import java.util.List;			
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
 
-@Component
+@Repository
 public class CompraDao{
 	
 	private Session sesion;				    							

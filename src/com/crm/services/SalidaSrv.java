@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.crm.dao.ProductoDao;
 import com.crm.dao.SalidaDao;
@@ -14,7 +14,7 @@ import com.crm.dto.SalidaCabeceraDto;
 import com.crm.dto.SalidaDetalleDto;
 import com.crm.validacion.ValidacionSalida;
 
-@Component
+@Service
 public class SalidaSrv{
 
 	@Autowired

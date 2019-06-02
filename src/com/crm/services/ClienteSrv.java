@@ -3,12 +3,12 @@ package com.crm.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.crm.dao.ClienteDao;
 import com.crm.dto.ClienteDto;
 
-@Component
+@Service
 public class ClienteSrv{
 	
 	@Autowired

@@ -1,16 +1,15 @@
 package com.crm.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.Date;
+import org.springframework.stereotype.Service;
 
 import com.crm.dao.ReportesDao;
 import com.crm.dto.ReportesDto;
 
-@Component
+@Service
 public class ReportesSrv{
 
 	@Autowired

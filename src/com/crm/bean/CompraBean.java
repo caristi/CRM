@@ -5,18 +5,16 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 import com.crm.services.CompraSrv;
 
-@Component
-@Named
+@Controller
 public class CompraBean {
 
 	@Autowired

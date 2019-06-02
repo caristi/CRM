@@ -2,14 +2,16 @@ package com.crm.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.crm.dto.ClienteHistoricoDto;
 
-@Component
+@Repository
 public class ClienteHistoricoDao{
 	
 	private Session sesion;				    							

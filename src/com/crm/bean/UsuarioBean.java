@@ -3,16 +3,14 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.UsuarioDto;
 import com.crm.services.UsuarioSrv;
 
-@Component
-@Named
+@Controller
 public class UsuarioBean {
 
 	@Autowired

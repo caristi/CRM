@@ -3,16 +3,14 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.ProveedorDto;
 import com.crm.services.ProveedorSrv;
 
-@Component
-@Named
+@Controller
 public class ProveedorBean {
 
 	private ProveedorDto proveedorDto;

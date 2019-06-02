@@ -2,16 +2,13 @@ package com.crm.bean;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Named;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.crm.dto.ReportesDto;
 import com.crm.services.ReportesSrv;
 
-@Component
-@Named
+@Controller
 public class ReportesBean {
 	
 	private ReportesDto reportesDto;

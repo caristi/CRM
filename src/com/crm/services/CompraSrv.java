@@ -3,7 +3,7 @@ package com.crm.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.crm.dao.CompraDao;
 import com.crm.dao.ProductoDao;
@@ -11,7 +11,7 @@ import com.crm.dto.CompraDto;
 import com.crm.dto.FiltroBusquedaDto;
 import com.crm.dto.ProductoDto;
 
-@Component
+@Service
 public class CompraSrv{
 
 	@Autowired
